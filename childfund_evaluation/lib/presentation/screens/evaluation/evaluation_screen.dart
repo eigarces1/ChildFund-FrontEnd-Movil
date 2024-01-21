@@ -4,7 +4,7 @@ class EvaluationScreen extends StatefulWidget {
   final String selectedAge;
   final int selectedLevel;
 
-  EvaluationScreen({required this.selectedAge, required this.selectedLevel});
+  const EvaluationScreen({required this.selectedAge, required this.selectedLevel});
 
   @override
   _EvaluationScreenState createState() => _EvaluationScreenState();
