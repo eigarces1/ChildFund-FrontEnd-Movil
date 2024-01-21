@@ -1,0 +1,1598 @@
+{
+    "edades": [{
+            "level": "1",
+            "edad": "0 a 3 meses",
+            "motores": [{
+                    "motor": "Motor Grueso",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "Acostado boca arriba.",
+                            "materiales": "Una manta o cobija lavable.",
+                            "instrucciones": "El examinador observa movimientos espontáneos del niño por 1 o 2 minutos.",
+                            "respuesta": "El niño extiende sus brazos y piernas libremente.",
+                            "imagen": "0-3_mg_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "Acostado boca abajo.",
+                            "materiales": "Tapete o cobija del bebé sobre el suelo o la cuna.",
+                            "instrucciones": "El examinador observa movimientos espontáneos del niño por 1 o 2 minutos.",
+                            "respuesta": "El bebé levanta la cabeza por breves segundos.",
+                            "imagen": "0-3_mg_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "El niño es sostenido verticalemente en los brazos y de cara hacia la madre.",
+                            "materiales": "Ninguno",
+                            "instrucciones": "El examinador llama la atención y observa el movimiento de la cabeza del niño.",
+                            "respuesta": "El niño sostiene la cabeza, sostiene su peso y la mueve de un lado a otro.",
+                            "imagen": "0-3_mg_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Motor fino",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "Acostado boca abajo.",
+                            "materiales": "Manta o cobija lavable, sonajero o maraca pequeña, 10 juguetes de colores brillantes no menores de 5 cm.",
+                            "instrucciones": "El examinador muestra un objeto llamativo distante de 30 cm, en la línea de su media cara. Cuando el niño mira al objeto, desplazarlo lentamente de izquierda a derecha y de abajo hacia arriba.",
+                            "respuesta": "El niño sigue al objeto con los ojos y la cabeza en la misma dirección em que se lo mueve, por lo menos 3 veces.",
+                            "imagen": "0-3_mf_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "Acostado boca arriba o sentado en el regazo de la madre.",
+                            "materiales": "Manta o cobija lavable.",
+                            "instrucciones": "El examinador estimula con toques suaves y repetidos en el dorso de la mano del niño y observa.",
+                            "respuesta": "El niño espontáneamente o por estimulación en el dorso de la mano, abre el puño y lo mantiene así por algunos segundos antes de volverlo a cerrar.",
+                            "imagen": "0-3_mf_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "Acostado sobre su espalda.",
+                            "materiales": "Juguete u objeto colorido.",
+                            "instrucciones": "El examinador sostiene el objeto de 25 a 30 cm de distancia, frente a la vista del bebé.",
+                            "respuesta": "El bebé mueve los brazos.",
+                            "imagen": "0-3_mf_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Comunicación",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "Acostado boca arriba sobre un tapete o cobija.",
+                            "materiales": "Tapete o cobija del bebé.",
+                            "instrucciones": "El examinador aplaude con fuerza o hace sonar una campana de donde el bebé no lo pueda ver (atrás del bebé o a su lado pero sin que pueda verlo).",
+                            "respuesta": "El bebé se sobresalta, cambia su expresión, comienza a inquietarse o reacciona.",
+                            "imagen": "0-3_com_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "Acostado boca arriba o en el regazo de la madre.",
+                            "materiales": "Manta o cobija lavable.",
+                            "instrucciones": "El examinador o la madre se ubica dentro del campo visual del niño y lo estimula con gestos y hablándole.",
+                            "respuesta": "El niño reacciona haciendo sonidos guturales simples: aaaa- guuu, o algo parecido. También aprueba si durante el examen el niño pronuncia de manera espontánea estos sonidos.",
+                            "imagen": "0-3_com_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "Acostado boca arriba o sobre la falda de la persona a cargo.",
+                            "materiales": "Tapete o cobija, chinesco u otro objeto que haga ruido.",
+                            "instrucciones": "El examinador se para fuera del campo de visión del niño, hace un sonido fuerte con el objeto o golpea un tambor o una mesa. Repita 2 veces la actividad.",
+                            "respuesta": "El bebé reacciona moviendo la cabeza en dirección al sonido.",
+                            "imagen": "0-3_com_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Social/Emocional",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "Acostado boca arriba.",
+                            "materiales": "Manta o cobija lavable.",
+                            "instrucciones": "El examinador se aproxima de frente hacia el niño y le acaricia la cara, cuello o vientre, suavemente.",
+                            "respuesta": "El niño reacciona sonriendo y/o agitando sus brazos. Demuestra alegría por las caricias.",
+                            "imagen": "0-3_se_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "Acostado boca arriba, puede ser que esté llorando.",
+                            "materiales": "Manta o cobija lavable.",
+                            "instrucciones": "El examinador o cuidador habla fuera del campo visual del niño.",
+                            "respuesta": "Al escuchar la voz, el niño suspende una actividad en curso, deja de llorar o simplemente voltea la cabeza para buscar el origen de la voz.",
+                            "imagen": "0-3_se_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "Acostado boca arriba.",
+                            "materiales": "Tapete o cobija.",
+                            "instrucciones": "El examinador observa al bebé establecer contacto visual por unos segundos con la persona que esté a su cargo o con otra persona que se encuentre a la vista del bebé. Puede ser observado en cualquier momento.",
+                            "respuesta": "El bebé hace contacto visual con otra persona.",
+                            "imagen": "0-3_se_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Cognitivo",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "Acostado boca arriba.",
+                            "materiales": "Manta o cobija lavable, linterna pequeña, música (instrumento musical, radio grabadora o canto del examinador).",
+                            "instrucciones": "El examinador produce un ruido fuerte lejos del campo visual del niño, apaga y prende un foco o linterna contra la pared más cercana.",
+                            "respuesta": "El niño reacciona a los dos estímulos: luz y sonido, cerrando los ojos o parpadeando.",
+                            "imagen": "0-3_cog_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "Acostado boca arriba.",
+                            "materiales": "Manta o cobija lavable.",
+                            "instrucciones": "El examinador coloca súbita y rápidamente su mano abierta frente a los ojos del niño.",
+                            "respuesta": "El niño parpadea o cierra los ojos inmediatamente ante la presencia súbita de la mano del examinador.",
+                            "imagen": "0-3_cog_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "Acostado boca arriba sobre un tapete o en faldas de la persona acargo.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "Observe al bebé. El bebé puede mirarse las manos en cualquier momento del examen.",
+                            "respuesta": "El bebé lleva las manos hacia él y las mira.",
+                            "imagen": "0-3_cog_3"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "level": "2",
+            "edad": "3.1 a 6 meses",
+            "motores": [{
+                    "motor": "Motor Grueso",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "Acostado boca abajo.",
+                            "materiales": "Manta o cobija lavable, sonajero o maraca pequeña.",
+                            "instrucciones": "El examinador llama la atención del niño con algún juguete por el frente y sobre el campo visual del niño.",
+                            "respuesta": "El niño se apoya en los codos e intenta levantar los brazos y levanta cabeza y tronco por algunos segundos.",
+                            "imagen": "3-6_mg_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "Acostado boca arriba",
+                            "materiales": "Manta o cobija lavable.",
+                            "instrucciones": "El examinador lo toma suavemente de ambas manos y llama la atención.",
+                            "respuesta": "El niño tensa los brazos haciendo fuerza para incorporarse aunque no lo logre completamente.",
+                            "imagen": "3-6_mg_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "Acostado boca abajo o boca arriba",
+                            "materiales": "Manta o cobija lavable, sonajero o maraca pequeña.",
+                            "instrucciones": "El examinador llama su atención con algún juguete de lado a lado.",
+                            "respuesta": "El niño se voltea hacia los lados o de posición boca abajo o boca arriba o viceversa, de forma espontánea o en respuesta al estímulo.",
+                            "imagen": "3-6_mg_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Motor Fino",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "Acostado boca arriba o sentado en el regazo de la madre.",
+                            "materiales": "Manta o cobija lavable.",
+                            "instrucciones": "Observa la acción espontánea del niño. Si no ocurre nada durante el examen, preguntar a la madre si lo ha observado.",
+                            "respuesta": "Por lo menos en dos ocasiones separadas el niño mira con interés sus manos, mientras las abre y cierra.",
+                            "imagen": "3-6_mf_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "Acostado boca abajo",
+                            "materiales": "Manta o cobija lavable, 10 juguetes de colores brillantes y no menores de 5cm.",
+                            "instrucciones": "El examinador muestra juguetes pequeños, dejándolos al alcance del niño.",
+                            "respuesta": "El niño intenta coger los objetos, los toca con las manos e intenta agarrarlos aunque no lo logra. A momentos los coge y suelta rápidamente.",
+                            "imagen": "3-6_mf_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "El niño se encuentra sentado en el regazo de la madre, frente a la mesa.",
+                            "materiales": "10 juguetes de colores brillantes no menores de 5cm (animales, muñecos, carros, utensilios).",
+                            "instrucciones": "El examinador le da al bebé un juguete en cada mano y observa como utiliza sus manos para sostenerlos.",
+                            "respuesta": "El niño coge un objeto en cada mano y la sostiene. Simultáneamente, sin soltar ninguno de los dos.",
+                            "imagen": "3-6_mf_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Comunicación",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "Sentado o en el regazo de la madre.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El niño escucha la conversación entre el examinador y la madre u otra persona al alcance de la vista del niño.",
+                            "respuesta": "El niño dirige su mirada a las personas que hablan e incluso en algunos casos interviene emitiendo sonidos vocálicos.",
+                            "imagen": "3-6_com_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "Acostado boca arriba.",
+                            "materiales": "Manta o cobija lavable.",
+                            "instrucciones": "El examinador atiende y registra sonidos que el niño emite durante el examen.",
+                            "respuesta": "El niño de manera espontánea o por imitación balbucea vocales sueltas.",
+                            "imagen": "3-6_com_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "Sentado en el regazo de la madre.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador atiende y registra el lenguaje y/o las vocalizaciones del niño durante el examen.",
+                            "respuesta": "El niño parece estar conversando, balbucea durante algunos períodos, solo o en interacción con el examinador o cuidador.",
+                            "imagen": "3-6_com_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Social/Emocional",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "Acostado boca arriba",
+                            "materiales": "Manta o cobija lavable.",
+                            "instrucciones": "El examinador o la madre se acercan sonriendo o haciendo muecas, a 20 cm. de la cara del niño.",
+                            "respuesta": "El niño extiende manos y toca la cara o cabeza del examinador, madre o cuidador",
+                            "imagen": "3-6_se_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "Acostado boca arriba",
+                            "materiales": "Manta o cobija lavable.",
+                            "instrucciones": "El examinador o cuidador se aproxima de frente y le busca suavemente las cosquillas en la cara, cuello o vientre.",
+                            "respuesta": "El niño reaaciona con sonrisas y carcajadas como respuesta a las cosquillas de la madre, cuidador o examinador.",
+                            "imagen": "3-6_se_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "Acostado boca arriba",
+                            "materiales": "Manta o cobija lavable.",
+                            "instrucciones": "El examinador se acerca de frente hacia el niño, llama su atención y extiende sus brazos como si fuera a alcanzarlo.",
+                            "respuesta": "El niño reacciona fijando sus ojos en el examinador y extiende sus brazos como para que lo alce. Repetir en dos oportunidades.",
+                            "imagen": "3-6_se_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Cognitivo",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "Acostado boca arriba o sentado en el regazo de la madre frente a la mesa.",
+                            "materiales": "Manta o cobija lavable, juguetes de colores brillantes y no menores de 5cm (animales, muñecos, carros, utensilios).",
+                            "instrucciones": "El examinador deja a su alcance varios juguetes y observa el comportamiento del niño.",
+                            "respuesta": "El niño toma un objeto espontáneamente, o lo recibe del examinador, lo mira por algunos segundos y luego se lo lleva a la boca.",
+                            "imagen": "3-6_cog_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "Acostado boca arriba o frente a la mesa, en brazos de la persona a cargo.",
+                            "materiales": "Objeto blanco y negro o colorido.",
+                            "instrucciones": "El examinador sostiene un objeto a aproximadamente 25cm de la cara del niñoy lo mueve de un lado a otro hasta hacerlo desaparecer de la vista del bebé.",
+                            "respuesta": "El bebé reacciona ante la desaparición del objeto mediante gestos faciales, mostrando enojo, vocalizando o buscando a donde se fue el objeto que desapareció de su vista.",
+                            "imagen": "3-6_cog_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "Acostado boca arriba o sentado en el regazo del cuidador.",
+                            "materiales": "Manta o cobija lavable, sonajero o maraca pequeña.",
+                            "instrucciones": "El examinador muestra como mover y hacer sonar el sonajero, se lo entrega en la mano y observa la respuesta.",
+                            "respuesta": "El niño agarra el sonajero y lo sacude para hacerlo sonar. Repite al menos tres veces, demostrando que comprende la relación entre su acción y el resultado.",
+                            "imagen": "3-6_cog_3"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "level": "3",
+            "edad": "6.1 a 9 meses",
+            "motores": [{
+                    "motor": "Motor Grueso",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "Acostado boca abajo o boca arriba sobre un tapete.",
+                            "materiales": "Tapete o cobija del bebé, un juguete.",
+                            "instrucciones": "El examinador llama la atención del niño al mover un juguete de lado a lado.",
+                            "respuesta": "El bebé gira completamente. Esto puede ser observado en cualquier momento del examen.",
+                            "imagen": "6-9_mg_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "Acostado boca arriba.",
+                            "materiales": "Manta o cobija lavable.",
+                            "instrucciones": "El examinador observa su movimiento espontáneo.",
+                            "respuesta": "En algún momento del examen el niño lleva las manos a la boca.",
+                            "imagen": "6-9_mg_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "Acostado boca arriba.",
+                            "materiales": "Manta o cobija lavable, maraca o sonajero pequeño.",
+                            "instrucciones": "El examinador llama su atención con un juguete.",
+                            "respuesta": "El niño intenta gatear, se pone en posición de gateo, aunque no logre hacerlo todavía.",
+                            "imagen": "6-9_mg_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Motor Fino",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "Sentado en el regazo de la madre, frente a la mesa.",
+                            "materiales": "10 juguetes de colores brillantes y no menores de 5cm.",
+                            "instrucciones": "El examinador pasa un objeto de una mano a otra y anima al niño a imitarlo.",
+                            "respuesta": "El niño cambia objetos de una mano a otra. Debe observarse por lo menos en dos ocasiones.",
+                            "imagen": "6-9_mf_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "Sentado frente a la mesa, en el regazo de su madre.",
+                            "materiales": "10 juguetes de colores brillantes y no menores de 5cm (animales, carros, utensilios).",
+                            "instrucciones": "La madre o el examinador acercan a la cara del bebé un recipiente de boca pequeña con algo llamativo dentro.",
+                            "respuesta": "Durante el examen el niño utiliza el dedo índice para explorar los objetos, los toca con el dedo y explora su forma.",
+                            "imagen": "6-9_mf_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "Sentado en el regazo de la madre, frente a la mesa.",
+                            "materiales": "10 juguetes de colores brillantes y no menores de 5cm, granos o semillas pequeñas y pegante.",
+                            "instrucciones": "El examinador recoge pedacitos de tres tipos de alimentos (zanahoria, pasas, manzana) haciendo pinzas con los dedos pulgar e índice y luego los deja a disposición del niño y observa su reacción.",
+                            "respuesta": "Espontáneamente o por imitación el niño agarra pedacitos de alimentos, granos o semillas usando el movimiento de pinza con pulgar e índice. Probar con tres alimentos diferentes para controlar el azar.",
+                            "imagen": "6-9_mf_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Comunicación",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "Sentado en el regazo de la madre.",
+                            "materiales": "Manta o cobija lavable.",
+                            "instrucciones": "El examinador se coloca frente al niño a una distancia de 50cm y llama su atención con gestos, muecas y vocalizaciones.",
+                            "respuesta": "El niño reacciona sonriendo, imita algún gesto o movimiento y trata de alcanzar la cara del examinador.",
+                            "imagen": "6-9_com_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "Sentado en el regazo de la madre.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador atiende y registra el vocabulario del niño durante el examen.",
+                            "respuesta": "De forma espontánea o como respuesta al examinador o a la madre, el niño pronuncia al menos dos palabras de dos sílabas: mamá, papá, tata, etc.",
+                            "imagen": "6-9_com_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "Sentado.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador saluda al niño o se despide mediante un movimiento de la mano, señala un objeto moviendo la mano (como es costumbre) y le motiva al niño a hacer lo mismo.",
+                            "respuesta": "El bebé reacciona por imitación y mueve su mano para saludar, despedirse o señalar algún objeto.",
+                            "imagen": "6-9_com_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Social/Emocional",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "Sentado en el piso o en el regazo de la madre.",
+                            "materiales": "10 juguetes de colores brillantes y no menores de 5cm.",
+                            "instrucciones": "El examinador observa atentamente durante el examen las reacciones del niño frente a los objetos o juguetes y las personas.",
+                            "respuesta": "En algún momento el niño demuestra preferencia ante objetos y personas. Elige, conserva y no quiere devolver determinado juguete, sonríe más o no quiere separarse de alguna persona.",
+                            "imagen": "6-9_se_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "Cualquier posición.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador le pide a la persona que cuida al niño que salga.",
+                            "respuesta": "El bebé llora o busca al cuidador con la visión y/o con el movimiento. Puede ponerse serio, triste o callado.",
+                            "imagen": "6-9_se_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "Sentado en el regazo de la madre",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador se coloca frente a él y lo anima para iniciar el juego (totillitas, arepitas, patty, cake, etc).",
+                            "respuesta": "El niño imita al examinador e inicia la repetición de sus acciones siguiendo el juego.",
+                            "imagen": "6-9_se_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Cognitivo",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "Sentado y sostenido en el regazo de la madre o cuidador.",
+                            "materiales": "10 juguetes de colores brillantes y no menores de 5cm (animales, muñecos, carros).",
+                            "instrucciones": "Recibe del examinador un objeto o juguete y el observa desde al frente.",
+                            "respuesta": "El niño lanza el juguete hacia delante o al piso, y sigue el movimiento de caida con sus ojos. Observar en dos ocasiones separadas.",
+                            "imagen": "6-9_cog_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "Sentado o acostado boca abajo.",
+                            "materiales": "Juguete lo suficientemente grande como para que lo pueda agarrar.",
+                            "instrucciones": "El examinador coloca el objeto frente al niño, pero a una distancia que no lo pueda alcanzar. No debe dar al bebé el juguete.",
+                            "respuesta": "El bebé intenta coger el juguete. Puede seguir intentando cogerlo y vocaliza, se menea, rueda o gatea para alcanzarlo. El bebé no necesita coger el juguete.",
+                            "imagen": "6-9_cog_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "Sentado en la cuna o en el regazo de la madre.",
+                            "materiales": "Un pañuelo grande o sábana del niño.",
+                            "instrucciones": "El examinador capta su atención de frente y mientras el niño lo mira cubre y descubre su cara o la del niño con una tela, repite varias veces y espera la reacción del niño.",
+                            "respuesta": "El niño demuestra interés en el juego y participa activa e intencionalmente en varias secuencias de aparecer y esconderse con el examinador o la madre.",
+                            "imagen": "6-9_cog_3"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "level": "4",
+            "edad": "9.1 a 12 meses",
+            "motores": [{
+                    "motor": "Motor Grueso",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "Acostado boca arriba.",
+                            "materiales": "Manta o cobija lavable, 10 juguetes de colores brillantes y no menores de 5cm (animales, muñecos, carros).",
+                            "instrucciones": "El examinador pone a su disposición algunos juguetes y lo anima a sentarse.",
+                            "respuesta": "El niño se esfuerza por sentarse, lo logra y se mantiene sentado sin apoyo y con equilibrio por lo menos durante 2 minutos.",
+                            "imagen": "9-12_mg_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "Acostado boca abajo o sentado en el piso.",
+                            "materiales": "Manta o cobija lavable, 10 juguetes de colores brillantes y no menores de 5cm.",
+                            "instrucciones": "El examinador ofrece algunos juguetes a una distancia de dos metros y lo anima a desplazarse para cogerlos.",
+                            "respuesta": "El niño se desplaza por lo menos dos metros gateando en manos y rodillas con buen control y manteniendo el equilibrio.",
+                            "imagen": "9-12_mg_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "Sentado cerca de las barandas de la cuna o algún otro mueble que pueda servirle de apoyo para levantarse.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "Invitar al niño a incorporarse.",
+                            "respuesta": "El niño se agarra de las barandas de la cuna, asiento u otro mueble. Se agarra y se sostiene parado y da por lo menos 4 pasos laterales, sin soltarse ni perder el equilibrio.",
+                            "imagen": "9-12_mg_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Motor Fino",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "Sentado en el regazo de la madre, frente a la mesa.",
+                            "materiales": "10 juguetes de colores brillantes y no menores de 5cm.",
+                            "instrucciones": "El examinador coloca varios juguetes en la mesa y espera la reacción del niño.",
+                            "respuesta": "El niño toma y sostiene simulatáneamente por lo menos un juguete en cada mano.",
+                            "imagen": "9-12_mf_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "Sentado en el regazo de la madre, frente a la mesa.",
+                            "materiales": "10 juguetes de colores brillantes y no menores de 5cm.",
+                            "instrucciones": "El examinador mete y saca los objetos de la taza. Solicita u observa la acción espontánea.",
+                            "respuesta": "El niño coge los objetos uno a uno o varios a la vez, los mete en la taza y luego los saca de la taza.",
+                            "imagen": "9-12_mf_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "Sentado en el regazo de la madre, frente a la mesa.",
+                            "materiales": "10 juguetes de colores brillantes y no menores de 5cm.",
+                            "instrucciones": "El examinador golpea un objeto contra otro, sostenidos uno en cada mano.",
+                            "respuesta": "Espontáneamente o por imitación el niño toma un objeto en cada mano y los golpea uno contra otro.",
+                            "imagen": "9-12_mf_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Comunicación",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "Sentado en el regazo de la madre.",
+                            "materiales": "Manta o cobija lavable, sonajero o maraca pequeña, 10 juguetes de colores brillantes y no menores de 5cm.",
+                            "instrucciones": "El examinador atiende o registra el lenguaje o expresiones del niño durante el examen. Si el niño no utilzia espontáneamente las palabras No o Si de manera consistente, debe llamar su atención y hacerle preguntas al niño.",
+                            "respuesta": "Espontáneamente o respondiendo al examinador, el niño utiliza los términos No y Si, de forma coherente. Es válido si afirma y niega moviendo la cabeza.",
+                            "imagen": "9-12_com_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "Sentado en el regazo de la madre.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "En algún momento la madre o el examinador preguntan al niño por un hecho o acción que suscite respuesta negativa (¿me regalas .....?¿vienes conmigo?, etc).",
+                            "respuesta": "El niño responde moviendo la cabeza negativamente. Durante el examen niega una petición o acción con movimientos de cabeza.",
+                            "imagen": "9-12_com_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "Sentado en el regazo de la madre.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador llama la atención del niño y le pide realizar una acción sencilla como: Por favor, abre la puerta, guarda el juguete en la caja, alcánzame el lápiz, etc.",
+                            "respuesta": "El niño comprende la orden y ejecuta la acción solicitada.",
+                            "imagen": "9-12_com_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Social/Emocional",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "Sentado en el regazo de la madre.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador observa atentamente el comportamiento del niño durante el examen.",
+                            "respuesta": "El niño expresa afecto hacia la madre o cuidador con besos y abrazos de manera espontánea.",
+                            "imagen": "9-12_se_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "Sentado en el piso o frente a la mesa.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "Preguntar a la madre o cuidador si el niño ya intenta comer sin ayuda y cómo lo hace. Observarlo si es posible.",
+                            "respuesta": "La madre o el cuidador informa o escribe cómo el niño intenta comer por sí mismo. Aprueba aunque sólo lo haga con sólidos y no utilice utensilios.",
+                            "imagen": "9-12_se_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "Sentado en el piso o frente a la mesa.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "Al inicio del examen el examinador pregunta al niño: ¿Cómo te llamas? o llama al niño por su nombre desde alguna distancia en otro momento.",
+                            "respuesta": "El niño conoce su nombre, reacciona cuando se le llama, y/o responde su nombre al preguntarle por éste. Se aprueba aunque solo reconozca el nombre, no se requiere el apellido.",
+                            "imagen": "9-12_se_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Cognitivo",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "Sentado en el piso o en el regazo del cuidador.",
+                            "materiales": "Un pañuelo grande o sábanas del niño, 10 juguetes de colores brillantes no menos de 5cm (animales, muñecos, carros, utensilios).",
+                            "instrucciones": "El examinador llama su atención con un jugeute. Mientras lo está observando lo esconde debajo de un paño. Observa la reacción del niño.",
+                            "respuesta": "El niño sigue el movimiento del objeto con la mirada y lo encuentra debajo del paño en todos los ensayos. Repetir tres veces.",
+                            "imagen": "9-12_cog_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "Sentado o parado.",
+                            "materiales": "Muñeca o peluche que el bebé pueda sostener.",
+                            "instrucciones": "El examinador le entrega al bebé el peluche o la muñeca y le pide que realice ciertas acciones con el juguete (por ejemplo: le pide que haga caminar a la muñeca). El examinador no debe hacer ninguna demostración previa al niño.",
+                            "respuesta": "El bebé sostiene la muñeca o el peluche y lo mueve a lo largo de la superficie.",
+                            "imagen": "9-12_cog_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "Cualquier posición.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador o el cuidador hace un movimiento que el niño ya conoce y puede realizar sin problema, como aplaudir. Cuando el bebé responda a la acción, el examinador o cuidador cambia de movimiento, por ejemplo empieza a golpear la superficie (mesa) o zapatear.",
+                            "respuesta": "El bebé imita el primer movimiento y luego cambia cuando el examinador lo hace (segundo movimiento).",
+                            "imagen": "9-12_cog_3"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "level": "5",
+            "edad": "12.1 a 16 meses",
+            "motores": [{
+                    "motor": "Motor Grueso",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "Colocar al niño de pie en una superfice plana.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador coloca al niño sobre una superficie plana donde puede observar la ación espontánea del niño durante el examen.",
+                            "respuesta": "El niño logra mantenerse parado con apoyo por 2 o 3 segundos antes de perder el equilibrio.",
+                            "imagen": "12-16_mg_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "El niño se encuentra de pie.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador lo invita a venir hacia él. Puede observarse la acción espontánea del niño.",
+                            "respuesta": "El niño camina sin perder el equilibrio por lo menos 10 pasos consecutivos.",
+                            "imagen": "12-16_mg_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "El niño se encuentra de pie.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador toma al niño de ambas manos y lo impulsa para saltar.",
+                            "respuesta": "El niño se impulsa y salta repetidamente por los menos 6 veces consecutivas, demostrando un buen control y tono en el movimiento de sus piernas.",
+                            "imagen": "12-16_mg_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Motor Fino",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "El niño se encuentra sentado frente a la mesa.",
+                            "materiales": "Hojas de papel tamaño carta, un lápiz o crayón.",
+                            "instrucciones": "El examinador demuestra como hacer garabatos en el papelcon el lápiz o el crayón.",
+                            "respuesta": "Espontáneamente o por imitación el niño utiliza el lápiz o cualquier otro objeto para hacer garabatos en una superficie sea papel, arena u otra.",
+                            "imagen": "12-16_mf_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "Parado o sentado frente a una mesa, o sentado sobre el suelo.",
+                            "materiales": "Artículos lo bastante pequeños como para que el niño los pueda agarrar.",
+                            "instrucciones": "El examinador observa los movimientos espontáneos del niño por uno o dos minutos.",
+                            "respuesta": "El niño pone el objeto sobre la superficie y lo deja. El niño no lo deja caer sobre la superficie: Debe hacerlo correctamente por lo menos uno de tres intentos.",
+                            "imagen": "12-16_mf_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "Parado o setado frente a una mesa o sentado en el suelo.",
+                            "materiales": "Un rollo de película de 35 milímetros o un recipiente de 3cm de diámetro y una cuenta. La cuenta debe ser un poco más pequeña que la abertura del recipiente.",
+                            "instrucciones": "El examinador sostiene con dos dedos la cuenta sobre la superficie plana, sin tapar la abertura del recipiente. El examinador pide al niño <<por favor mete la cuenta>>. (El examinador debe tener cuidado con la cuenta para que el niño no se la trague y se atore).",
+                            "respuesta": "El niño logra meter la cuenta en el recipiente. El niño dirige su movimiento con precisión y lo suelta con buen control.",
+                            "imagen": "12-16_mf_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Comunicación",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "El niño se encuentra sentado frente al examinador.",
+                            "materiales": "2 pelotas de caucho de colores vivos, 10 juguetes de colores brillantes y no menores de 5cm.",
+                            "instrucciones": "El examinador llama la atención del niño hacia los objetos colocados enfrente y le pide pasar o mostrar la muñeca, el carro, la pelota...; hasta completar 10. Anotar los que identifique con la palabra adecuada.",
+                            "respuesta": "El niño reconoce, alcanza o señala correctamente, por lo menos tres objetos familiares de los nombrados.",
+                            "imagen": "12-16_com_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "El niño se encuentra sentado en el regazo de la madre.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "Durante el examen debe estar atento al lenguaje que el niño utiliza de forma espontánea o como respuesta a alguna pregunta y anota lo que dice.",
+                            "respuesta": "El niño espontáneamente o como respuesta al examinador o a la madre utiliza por lo menos dos palabras diferentes.",
+                            "imagen": "12-16_com_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "Donde sea que el niño se encuentre a gusto.",
+                            "materiales": "Cinco objetos familiares al niño, que reconoce.",
+                            "instrucciones": "El examinador pone los cinco objetos frente al niño y le pide <<Dame el ______>> o <<enséñame el _______>>.",
+                            "respuesta": "El niño busca, señala, coge o entreg correctamente por lo menos tres de los objetos.",
+                            "imagen": "12-16_com_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Social/Emocional",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "El niño se encuentra sentado frente al examinador.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "Observar directamnte si es posible. Preguntar a la madre si el niño come sin ayuda. ¿Con qué utensillo",
+                            "respuesta": "El niño logra comer sólidos o líquidos utilizando un utensillo. Aprueba aunque derrame o no lo haga perfectamente.",
+                            "imagen": "12-16_se_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "El niño se encuentra de pie frente al examinador.",
+                            "materiales": "Cinco objetos familiares.",
+                            "instrucciones": "El examinador pregunta a la madre o cuidador si el niño colabora y cómo lo hace para vestirse y desvestirse. Si hay dudas verificar con una prenda.",
+                            "respuesta": "El niño colabora al vestirse y desvestirse los brazos, cabeza o piernas; o se pone alguna prenda sin ayuda. Aprueba aunque no lo haga perfectamente.",
+                            "imagen": "12-16_se_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "El niño se encuentra sentado frente al examinador.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "Observar atentamente el comportamiento del niño durante el examen.",
+                            "respuesta": "El niño llora, protesta o se ríe como respuesta a situaciones del examen.",
+                            "imagen": "12-16_se_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Cognitivo",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "El niño se encuentra sentado en el piso o frente a la mesa.",
+                            "materiales": "Un juguete, cinco cordones de zapato.",
+                            "instrucciones": "El examinador muestra un juguete amarrado de una cerda y lo deja fuera del alcance de sus manos.",
+                            "respuesta": "El niño hala de la cuerda, tira de la sábana o utiliza otro juguete para aproximar el juguete y lo logra.",
+                            "imagen": "12-16_cog_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "El niño se encuetra sentado en el piso o frente a la mesa.",
+                            "materiales": "10 juguetes de colores brillantes y no menores de 5cm, tubo de plástico o cartón (50cm de largo por 10cm de diámetro.",
+                            "instrucciones": "El examinador muestra al niño un juguete, mientras lo está mirando lo coloca en la boca superior de un tubo inclinado y lo deja salir por el otro extremo, tres veces.",
+                            "respuesta": "El niño dirige su mirada a la boca inferior del tubo, coloca sus manos a la salida, o simplemente mira y espera que aparezca el objeto por este lugar; por lo menos dos de los tres ensayos.",
+                            "imagen": "12-16_cog_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "De pie",
+                            "materiales": "Juguete del niño, cobija u otro artículo.",
+                            "instrucciones": "El examinador pide a la madre o a la persona a cargo que sugiera un objeto que el niño conozca y que se encuentre cerca. El niño debe ser capaz de encontrar y coger el objeto. El examinador o la persona a cargo pide al niño <<Por favor dame el/la _______>>.",
+                            "respuesta": "El niño es capaz de encontrar el objeto y dárselo al examinador.",
+                            "imagen": "12-16_cog_3"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "level": "6",
+            "edad": "16.1 a 20 meses",
+            "motores": [{
+                    "motor": "Motor Grueso",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "El niño se encuentra de pie.",
+                            "materiales": "10 juguetes de colores llamativos, no menores de 5cm (animales, carros, etc.).",
+                            "instrucciones": "El examinador toma un juguete, lo coloca en el piso y lo invita a recogerlo.",
+                            "respuesta": "El niño sigue las instrucciones, se sienta de cuclillas, recoge el juguete y se pone de pie.",
+                            "imagen": "16-20_mg_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "El niño se encuentra de pie",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador demuestra e invita al niño a pararse en un solo pie. Le ofrece su mano para ayudarlo.",
+                            "respuesta": "El niño toma la mano del examinador, se para en un pie y se mantiene en esta posición por lo menos 3 segndos.",
+                            "imagen": "16-20_mg_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "El niño se encuentra de pie",
+                            "materiales": "Una caja pequeña (15 x 15 cm), cinco cordones de zapato.",
+                            "instrucciones": "El examinador demuestra al niño cómo halar el juguete sujeto a un cordel y caminando hacia atrás.",
+                            "respuesta": "El niño hala el juguete caminando hacia atrás por lo menos 5 pasos consecutivos.",
+                            "imagen": "16-20_mg_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Motor Fino",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "El niño se encuentra sentado en el piso o frente a la mesa.",
+                            "materiales": "10 cubos de madera del mismo color y tamaño (1 pulgada por lado).",
+                            "instrucciones": "El examinador apila los cubos en una torre. Deja los cubos en desorden, al alcance del niño y le solicita hacer una torre lo más alta posible.",
+                            "respuesta": "Espontáneamente por imitación, el niño hace una torre de por lo menos tres cubos.",
+                            "imagen": "16-20_mf_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "El niño se encuentra sentado en el piso o frente a la mesa.",
+                            "materiales": "Un recipiente redondo y con tapa sin rosca (3cm de diámetro y 5cm de alto).",
+                            "instrucciones": "El examinador destapa o tapa un recipiente redondo de plástico o cartón. Anima al niño a hacerlo y deja el recipíente tapado a su disposición.",
+                            "respuesta": "El niño abre y cierra correctamnte un recipiente con la tapa redonda, por lo menos en dos ensayos.",
+                            "imagen": "16-20_mf_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "El niño se encuentra sentado en el piso o frente a la mesa.",
+                            "materiales": "Un tablero de madera, color uniforme, excavado en dos círculos y sus correspondientes de 5 y 10cm de diámetro.",
+                            "instrucciones": "El examinador muestra al niño el tablero excavado con dos círculos, coloca cada uno en su lugar y deja el material frente al niño. Le solicita colocarlos en el tablero. Alternar la posición de los círculos en el hueco correspondiente.",
+                            "respuesta": "El niño encaja correctamente los dos círculos en dos ensayos. Aunque intenta colocar cada círculo en el hueco diferente, se da cuenta del error y corrije rápidamente su respuesta.",
+                            "imagen": "16-20_mf_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Comunicación",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "El niño se encuentra sentado frente al examinador.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador atiende y registra el lenguaje del niño durante el examen.",
+                            "respuesta": "El niño pide juguetes, que lo alcen, alguna bebida o comida, llama a su madre o cuidador; o cualquier expresión de deseos o solicitud de cosas familiares.",
+                            "imagen": "16-20_com_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "El niño sentado frente al examinador.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador pregunta al niño: ¿Cómo hace el perro, el gato o el viento, el auto, el radio, etc.? Elija según el entorno familiar del niño.",
+                            "respuesta": "El niño puede imitar por lo menos dos sonidos del ambiente (animales, objetos, condiciones de la naturaleza, etc.).",
+                            "imagen": "16-20_com_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "Cualquier posición.",
+                            "materiales": "Por lo menos tres objetos familiares.",
+                            "instrucciones": "El examinador pide al niño que realice dos cosas diferentes pero relacionadas con el mismo objeto (por ejemplo <<toma el bloque y ponlo en la mesa>>). Las instrucciones deben estar realcionadas, ser cortas y fáciles de seguir.",
+                            "respuesta": "El niño puede hacer el primer y segundo paso de la instrucción.",
+                            "imagen": "16-20_com_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Social/Emocional",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "El niño se encuentra sentado junto al examinador.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador se sienta junto al niño y le pide señalar sus ojos, la cabeza, la nariz, las manos, los pies, las orejas, el pelo, los dientes, las uñas, las rodillas, etc.",
+                            "respuesta": "El niño identifica y señala correctamente por lo menos 5 partes de su cuerpo.",
+                            "imagen": "16-20_se_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "Cualquier posición.",
+                            "materiales": "Ningún juguete, si la madre informa lo acontecido.",
+                            "instrucciones": "El examinador puede observar el comportamiento del niño o preguntar a la persona a cargo: <<¿Cuando el niño está en compañía de otros niños, juega pos sí solo (sin jugar con los demás) en la misma actividad?>>",
+                            "respuesta": "El examiandor observa al niño jugar al lado de otros niños, pero no juega con ellos. La persona a cargo del niño puede contar lo que ha observado.",
+                            "imagen": "16-20_se_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "Cualquier posición.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador/cuidador pide al niño que ayude con alguna tarea tal como limpiar una mancha, guardar los platos, mezclar, etc.",
+                            "respuesta": "El niño disfruta en alguna tarea que le es familiar en la cocina, limpieza, etc.",
+                            "imagen": "16-20_se_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Cognitivo",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "De pie o sentado.",
+                            "materiales": "Un objeto pequeño que debe ser relativamente más pequeño que el recipoiente para que el niño no pueda sacar el objeto con los dedos. Un recipiente pequeño como un rollo de fotos de 35 milímetros es recomendable si está disponible.",
+                            "instrucciones": "El examinador mete el objeto dentro del recipiente pero no le indica al niño lo que debe hacer. El examinador le pregunta al niño: <<¿Puedes sacarlo?>>. Después de que el niño saque el objeto del recipiente el examinador debe retirárselo lo antes posible para evitar que se lo meta a la boca y se atore.",
+                            "respuesta": "El niño voltea el recipiente para sacar el objeto. Puede suceder que el niño intente coger el objeto con los dedos al principio.",
+                            "imagen": "16-20_cog_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "De pie o sentado.",
+                            "materiales": "Un objeto de uso cotidiano tal como un trapeador para secar los pisos. un trapo de polvos para limpiar los muebles, ollas de cocina con cucharas para mezclar, una muñeca y un peine para muñeca o una cama para muñeca.",
+                            "instrucciones": "El examinador o la persona a cargo le da al niño uno de los objetos o juguetes que el niño ve con frecuencia como lo usan en casa.",
+                            "respuesta": "El niño imita la acción que ve realizar frecuentemente a otras personas.",
+                            "imagen": "16-20_cog_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "Sentado o parado.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador o la persona a cargo modela un movimiento como <<tócate la cabeza>>, <<cierra los ojos>>, <<abre la boca>> y pide al niño que lo haga. El niño no debe ver la parte de su cuerpo con la que realiza la acción. No use una parte del cuerpo que el niño pueda verse como los dedos o los pies.",
+                            "respuesta": "El niño es capaz de imitar por lo menos uno de los gestos.",
+                            "imagen": "16-20_cog_3"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "level": "7",
+            "edad": "20.1 a 24 meses",
+            "motores": [{
+                    "motor": "Motor Grueso",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "De pie.",
+                            "materiales": "Ninguno. Es necesario un espacio adecuado para que el niño corra sin lastimarse.",
+                            "instrucciones": "El examinador solicita al niño que corra.",
+                            "respuesta": "El niño es capaz de moverse rápidamente en dos pies sin caerse. Puede que sus movimientos sean algo torpes.",
+                            "imagen": "20-24_mg_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "De pie.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "Quite los zapatos al niño. El examinador le pide al niño que se pare en puntillas sin ayuda. El examiandor quizás necesite hacer una demostración o poner un obketo interesante en algún lugar elevado para que el niño intente cogerlo.",
+                            "respuesta": "El niño se apra brevemente sobre la punta de sus pies (menos de un minuto).",
+                            "imagen": "20-24_mg_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "El niño se encuentra de pie.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador salta con los pies juntos y solicita al niño repetir el ejercicio.",
+                            "respuesta": "El niño salta con los pies juntos, por lo menos tres veces.",
+                            "imagen": "20-24_mg_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Motor Fino",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "El niño se encuentra sentado o de pie frente a la mesa.",
+                            "materiales": "Hoja de papel tamaño carta, un lápiz o crayón.",
+                            "instrucciones": "El examinador realiza garabatos circulares en el papel, le solicita al niño imitarlo.",
+                            "respuesta": "El niño toma el lápiz o crayón y realiza garabatos circulares repetidos. No requieren control en la parada ni perfección en la forma.",
+                            "imagen": "20-24_mf_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "Sentado frente a una mesa, en el suelo o sobre una superficie plana.",
+                            "materiales": "10 bloques de 3.8cm o 1.5 pulgadas.",
+                            "instrucciones": "El examinador le pide al niño que construya una torre con los bloques.",
+                            "respuesta": "El niño es capaz de apilar por lo menos seis bloques.",
+                            "imagen": "20-24_mf_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "El niño se encuentra frente al examinador.",
+                            "materiales": "Cinco cordones de zapato, 10 cuentas de diferentes colores.",
+                            "instrucciones": "El examinador demuestra como ensartar las cuentas en el cordón, deja el material dispuesto y solicita al niño imitar la acción.",
+                            "respuesta": "El niño logra ensartar por lo menos cinco cuentas en el cordón.",
+                            "imagen": "20-24_mf_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Comunicación",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "El niño se encuentra en una posición determinada.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador atiende y registra el lenguaje del niño durante el examen.",
+                            "respuesta": "El niño dice frases combinando al menos dos palabras espontáneamente o en respuesta a alguna pregunta.",
+                            "imagen": "20-24_com_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "El niño se encuentra sentado frente al examinador.",
+                            "materiales": "Dos pelotas de caucho de colores llamativos (una pequeña y otra grande), 5 juguetes de colores llamativos de uso común.",
+                            "instrucciones": "El examinador coloca sobre la mesa 10 objetos de uso cotidiano y pide al niño: <<alcánzame o muéstrame el lápiz, la cuchara, etc. Hasta completar los objetos disponibles.",
+                            "respuesta": "El niño reconoce por su nombre de 4 a 5 objetos familiares, alcanza los objetos o los señala de acuerdo con la solicitud del examiandor.",
+                            "imagen": "20-24_com_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "Donde sea que el niño se sienta cómodo.",
+                            "materiales": "Cinco objetos familiares.",
+                            "instrucciones": "El examinador le pide al niño dos cosas que no estén relacionadas entre sí como por ejemplo <<Dame el cubo y pon la muñeca en la mesa>> o <<enséñame el tractor y dale la muñeca a tu mamá>>. Las instrucciones deben ser simples, cortas y con acciones familiares al niño.",
+                            "respuesta": "El niño realiza la instrucción completa (los dos pasos sin relación entre sí) sin que el examiandor tenga que repetir el segundo paso.",
+                            "imagen": "20-24_com_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Social/Emocional",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "Cualquier posición.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador le pregunta a la persona a cargo si el niño juega con algún objeto o juguete cuando otro niño o niños están presentes. <<¿El niño habla con el otro niño o niños de vez en cuando, les presta su juguete, o quiere lo que el otro niño/niños tiene/tienen?>>.",
+                            "respuesta": "La persona a cargo informa que el niño juega cuando otro niño está presente y ocasionalmente interactua con el otro niño.",
+                            "imagen": "20-24_se_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "Ninguna en especial.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "Observar el comportamiento del niño durante el examen, en especial cuando quiere algo y no se le responde.",
+                            "respuesta": "El niño se molesta y enoja porque no se le entiende o se responde a un pedido o solicitud, se le impide una acción o se le quita algo que le guste.",
+                            "imagen": "20-24_se_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "El niño se encuentra sentado frente al examinador.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador llama la atención del niño y le pregunta: <<¿Cómo se llama tu mamá?, tus hemanos, tus abuelos, tu papá, tíos?>>.",
+                            "respuesta": "El niño identifica y dice el nombre de por lo menos tres personas de su familia. Importa la asignación correcta del nombre y su pronunciación.",
+                            "imagen": "20-24_se_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Cognitivo",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "El niño se encuentra sentado en una silla frente a la mesa.",
+                            "materiales": "Una lámina con un paisaje colorido, figuras humanas y animales en acción (acorde con el medio y la cultura local). Perfiles de figuras simples (1/4 de página).",
+                            "instrucciones": "El examinador coloca la lámina con los dibujos de objetos familiares y solicita que señale los objetos a medida que los nombra.",
+                            "respuesta": "El niño identifica y señala correctamente con el dedo por lo menos tres de los objetos nombrados por el examinador.",
+                            "imagen": "20-24_cog_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "El niño se encuentra sentado frente a la mesa.",
+                            "materiales": "Una caja pequeña (15 por 15 cm) y un recipiente redondo y con tapa sin rosca (3cm de diámetro por 5 de alto). 5 juguetes de colores llamativos, tamaño medio y de uso común.",
+                            "instrucciones": "El examinador le da una orden de tres pasos, como: <<Recoge _______ (especificar qué) que esta debajo de la mesa>>, <<coloca dentro de _______ que está en la silla y entrega a tu madre>>. Adaptar las órdenes al contexto cultural local.",
+                            "respuesta": "El niño comprende y realiza correctamente por lo menos dos pasos de los tres contenidos en la orden.",
+                            "imagen": "20-24_cog_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "El niño se encuentra sentado o parado.",
+                            "materiales": "Una fotografía o un dibujo de una persona o un objeto.",
+                            "instrucciones": "El examinador entrega la foto cara abajo al niño. El niño mira la foto con la base hacia arriba y la parte superior hacia abajo. No le dice al niño qué hacer.",
+                            "respuesta": "El niño coge la fotografía y la gira al sentido correcto.",
+                            "imagen": "20-24_cog_3"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "level": "8",
+            "edad": "24.1 a 36 meses",
+            "motores": [{
+                    "motor": "Motor Grueso",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "El niño se encuentra de pie.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador camina en línea recta sobre un camino trazado en el piso e invita al niño a repetir el ejercicio.",
+                            "respuesta": "El niño camina, por lo menos 6 pasos, sobre el camino marcado, alternando los pies y sin perder el equilibrio.",
+                            "imagen": "24-36_mg_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "El niño se encuentra de pie.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador camina en puntas de pie y solicita al niño imitarlo.",
+                            "respuesta": "El niño camina en puntas de pie, al menos 6 pasos consecutivos sobre una superficie plana.",
+                            "imagen": "24-36_mg_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "De pie.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador hace una demostración alzando los brazos sobre la cabeza, luego pone ambos brazos rectos al frente, los cruza al frente y los pone hacia atrás.",
+                            "respuesta": "El niño es capaz de imitar los movimientos que observa.",
+                            "imagen": "24-36_mg_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Motor Fino",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "El niño se encuentra acostado boca arriba.",
+                            "materiales": "Frasco plástico pequeño con tapa rosca.",
+                            "instrucciones": "El examinador muestra como destapar y tapar un frasco plástico con tapa de rosca. Le pide al niño imitarlo.",
+                            "respuesta": "El niño de manera espontánea o por imitación, enrosca y desenrosca completamente la tapa del frasco, por lo menos dos veces.",
+                            "imagen": "24-36_mf_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "El niño se encuentra sentado frente a la mesa o al piso.",
+                            "materiales": "plastilina, barro, greda, arcilla o masa de pan.",
+                            "instrucciones": "El examinador muestra como hacer bolas pequeñas, de barro, arcilla o masa con las manos.",
+                            "respuesta": "El niño imita al examinador y hace por lo menos tres bolitas de barro, dándoles forma con movimientos circulares de sus manos.",
+                            "imagen": "24-36_mf_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "El niño se encuentra sentado frente a la mesa.",
+                            "materiales": "Hojas de papel tamaño carta, un lápiz o crayón.",
+                            "instrucciones": "El examinador entrega al niño un lápiz o crayón y una hoja. Le solicita dibujar las figuras lo má parecidas posible a los dibujos.",
+                            "respuesta": "El niño utiliza espontáneamente su mano preferida, dibuja figuras con un buen trazo, sin repasarlos, círculo bien cerrado y proporcional",
+                            "imagen": "24-36_mf_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Comunicación",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "El niño se encuentra de pie frente al examinador.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador o la madre pide al niño cantar alguna canción o rima que conozca.",
+                            "respuesta": "El niño repite con agrado y buena entonación, al menos, un canto o rima.",
+                            "imagen": "24-36_com_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "El niño se encuentra sentado frente al examinador.",
+                            "materiales": "Dos pelotas de caucho de colores llamativos (una pequeña y otra grande), cinco juguetes de colores llamativos de uso común.",
+                            "instrucciones": "Con los objetos a la vista, el examinador pregunta al niño el nombre de cada uno señalando uno por vez, hasta completar los 10 objetos disponibles.",
+                            "respuesta": "El niño, de forma espontánea o como respuesta a las preguntas, dice el nombre específico de 5 o más objetos.",
+                            "imagen": "24-36_com_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "El niño se encuentra sentado frente al examinador.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "Durante el tiempo del examen, el examinador escucha y registra el lenguaje que el niño utiliza.",
+                            "respuesta": "En algún momento o como respuesta a preguntas, el niño dice frases comprensibles de tres o más palabras.",
+                            "imagen": "24-36_com_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Social/Emocional",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "El niño se encuentra sentado frente al examinador.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador le pregunta dos veces e inviertiendo el orden: <<¿eres un niño o una niña?>>.",
+                            "respuesta": "El niño identifica y responde correctamente si es niño o niña a las dos preguntas.",
+                            "imagen": "24-36_se_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "El niño se encuentra sentado frente al examinador.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador pregunta el nombre de sus amigos/as, cómo se llaman, dónde viven, a qué juegan, quién es su mejor amigo, por qué le gusta más.",
+                            "respuesta": "El niño informa de por lo menos un amigo, sabe su nombre e informa sobre los juegos que comparten y da alguna razón de su preferencia.",
+                            "imagen": "24-36_se_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "Cualquier posición.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador observa al niño jugando con otro niño. Este juego debe ser de tipo representativo, es decir, que represente a personas en situaciones reales. Si el examinador no puede observar al niño entonces debe preguntar a la persona a cargo: <<¿su niño juega con otros niños asumiento roles de adultos que observa, tales como la mamá y el papá, ir de compras, limpiar, cuidar la casa, etc?>>.",
+                            "respuesta": "El examinador observa directamente o pide a la persona a cargo que relate lo que ella/él observa cuando el niño juega imitando situaciones de la vida real.",
+                            "imagen": "24-36_se_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Cognitivo",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "El niño se encuentra sentado frente a la mesa.",
+                            "materiales": "Juego de bloques lógicos (3 triángulos, 3 cuadrados, 3 círculos de diferentes tamaños y colores).",
+                            "instrucciones": "El examinador extiende sobre la mesa un juego de bloques lógicos. Solicita al niño agrupar los iguale sy los junte. El examiandor identificará la característica utilizada por el niño o niña para clasificarlos: forma, color o tamaño.",
+                            "respuesta": "El niño espontáneamente o en respuesta al requerimiento del examiandor separa y agrupa los objetos por una característica escogida por el niño de acuerdo a su entendimiento.",
+                            "imagen": "24-36_cog_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "El niño se encuentra sentado frente a la mesa.",
+                            "materiales": "15 parejas de láminas con dibujos de objetos, animales y personas.",
+                            "instrucciones": "El examinador extiende sobre la mesa un juego de 15 pares de dibujos de objetos familiares. Solicita al niño que encuentre los iguales y los junte.",
+                            "respuesta": "El niño identifica y aparea todos los dibujos iguales ya sea espontáneamente o ante la solicitud del examinador.",
+                            "imagen": "24-36_cog_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "El niño y el examinador sentados frente a la mesa.",
+                            "materiales": "10 cubos de madera del mismo color y tamaño (1 pulgada por lado).",
+                            "instrucciones": "El examinador arma un puente utilziando tres objetos: dos cubos y una regla, le pide mirarlo por un momento, lo tumba, revuelve los objetos y solicita el niño armarlo nuevamente.",
+                            "respuesta": "El niño recostruye correctamente el puente utilziando los mismos elementos.",
+                            "imagen": "24-36_cog_3"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "level": "9",
+            "edad": "36.1 a 48 meses",
+            "motores": [{
+                    "motor": "Motor Grueso",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "El niño se encuentra de pie.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador demuestra cómo pararse en un solo pie y solicita al niño repetir el ejercicio. A veces es necesario insistir porque el niño puede sentir temor en el primer intento.",
+                            "respuesta": "El niño imita y se para en un solo pie, sin agarrarse, manteniéndose en esta posición, por lo menos 5 segundos.",
+                            "imagen": "36-48_mg_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "El niño se encuentra de pie.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador se coloca frente al niño, salta hacia atrás con ambos pies y anima al niño a imitarlo.",
+                            "respuesta": "El niño repite el ejercicio, salto hacia atrás por lo menos una vez con los pies juntos.",
+                            "imagen": "36-48_mg_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "El niño se encuentra de pie.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador invita al niño a bajar y subir escaleras. Si no las hay disponibles, el ejercicio puede realizarse en una pendiente de 30 a 45 grados.",
+                            "respuesta": "El niño sube o baja escaleras o la pendiente, alternando los pies y sin ayuda. Por lo menos 5 pasos o escalones.",
+                            "imagen": "36-48_mg_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Motor Fino",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "El niño se encuentra sentado frente a la mesa o en el piso.",
+                            "materiales": "15 cubos de madera del mismo color y tamaño (1 pulgada por lado).",
+                            "instrucciones": "El examinador apila 12 a 15 cubos en una torre. Solicita al niño hacer la torre más alta que pueda y deja los cubos en desorden a disposición del niño.",
+                            "respuesta": "El niño construye por imitación una torre de al menos 10 cubos. Contar todos los cubos colocados hasta que la torre se cae y descontar el último.",
+                            "imagen": "36-48_mf_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "Parado o sentado frente a una mesa, o sentado sobre el suelo.",
+                            "materiales": "Papel suave de diferentes colores.",
+                            "instrucciones": "El examinador hace bolas pequeñas de papel con los dedos de una sola mano. El papel debe ser suave y de fácil rasgado.",
+                            "respuesta": "El niño hace bolas pequeñas con el papel utilizando los dedos de alguna de sus manos.",
+                            "imagen": "36-48_mf_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "El niño se encuentra sentado o de pie al lado derecho del examinador.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador toca los cuatro dedos con el pulgar de la misma mano, anima al niño a que lo haga.",
+                            "respuesta": "El niño repite correctamente el ejercicio por lo menos una vez.",
+                            "imagen": "36-48_mf_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Comunicación",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "El niño no se encuentra en una posición determinada.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador escucha y registra el vocabulario del niño durante el examen. Si no lo escuchara usar pronombre, deberá preguntar al niño sobre sus pretencias, las de la madre, los dos o el examinador.",
+                            "respuesta": "El niño utiliza espontáneamente o como respuesta, por lo menos, 2 pronombres posesivos (mío, suyo, nuestro, de ellos, etc.) para identificar la pertencia de objetos, prendas o utensillos.",
+                            "imagen": "36-48_com_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "Cualquier posición.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador escucha y registra la conversación espontánea del niño durante todo el examen, mientras habla con él, con la madre o con el cuidador.",
+                            "respuesta": "El niño se expresa clara y comprensiblemente, utilizando frases completas para referirse a los demás, a los objetos o a sí mismo.",
+                            "imagen": "36-48_com_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "El niño se encuentra sentado junto al examinador.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador le pregunta su nombre, le pide contar algo sobre su casa, su familia, o acontecimientos cotidianos, etc.",
+                            "respuesta": "El niño elabora una historia, o relata algo de su vida familiar, con vocabulario variado y específico referido a situaciones y personas.",
+                            "imagen": "36-48_com_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Social/Emocional",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "El niño se encuentra sentado frente al examinador.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador pregunta al niño o a la madre: <<¿Quién lo viste y desviste?>>, <<¿Puede hacerlo solo?>>. Verificar con alguna prenda, saco, camiseta.",
+                            "respuesta": "El niño informa que puede vestirse y desvestirse solo sin ayuda, aunque a veces pida ayuda para ponerse prendas complicadas.",
+                            "imagen": "36-48_se_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "El niño se encuentra sentado frente al examinador.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "Preguntar a la madre: ¿Cuánto, con qué, dónde y con quiénes come el niño? Si es posible verificar directamente.",
+                            "respuesta": "El niño puede comer de acuerdo con las normas y costumbres de la familia y la comunidad.",
+                            "imagen": "36-48_se_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "Cualquier posición.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "Observar el comportamiento del niño con personas extrañas o preguntar a la madre o cuidador.",
+                            "respuesta": "El niño habla, pregunta y responde preguntas de las personas que no conoce.",
+                            "imagen": "36-48_se_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Cognitivo",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "El niño se encuentra sentado frente a la mesa.",
+                            "materiales": "Colores, lápices y crayones, 10 juguetes de colores brillantes y no menores de 5cm (animales, muñecas, carros, utensillos), 10 cubos de madera del mismo color y tamaño.",
+                            "instrucciones": "El examinador deja a disposición algunos objetos, y le pide dos juguetes, dos lápices, mostrar dos dedos, etc.",
+                            "respuesta": "El niño comprende la solicitud del examinador correctamente y realiza las acciones solicitadas en todos los casos.",
+                            "imagen": "36-48_cog_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "El niño se encuentra sentado frente al examiandor.",
+                            "materiales": "Una torre de 2 bloques, una torre de 5 bloques.",
+                            "instrucciones": "El examinador pone las dos torres frente al niño y le pide que señale la más alta. El examiandor cambia la posición de las torres y le vuelve a preguntar al niño cuál es la torre más alta.",
+                            "respuesta": "El niño responde correctamente en ambas ocasiones.",
+                            "imagen": "36-48_cog_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "El niño se encuentra sentado frente a la mesa.",
+                            "materiales": "2 pelotas de caucho de colores llamativos, una pequeña y otra grande (15 y 25 cm de diámetro), 10 juguetes de colores brillantes y no menores de 5cm (animales, muñecas, carros y utensillos).",
+                            "instrucciones": "El examinador llama la atención del niño y le propone jugar a colocar un juguete y una caja donde él diga: adelante, debajo, atrás, arriba de la caja.",
+                            "respuesta": "El niño coloca el objeto en la posición solicitada por el examinador, en todos los casos.",
+                            "imagen": "36-48_cog_3"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "level": "10",
+            "edad": "48.1 a 60 meses",
+            "motores": [{
+                    "motor": "Motor Grueso",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "El niño se encuentra de pie.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador se para en un solo pie, abre y levanta los brazos a los costados y se mantiene en equilibrio por algunos segundos.",
+                            "respuesta": "Mantiene el equilibrio parado en un solo pie y extiende los brazos, se queda en esta posición por lo menos 3 segundos.",
+                            "imagen": "48-60_mg_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "El niño se encuentra de pie.",
+                            "materiales": "Dos pelotas de caucho de colores llamativos, una pequeña y otra grande (15 y 25 cm de diámetro).",
+                            "instrucciones": "El examinador lanza la pelota o similar hacia arriba, con una sola mano y luego la agarra de igual manera.",
+                            "respuesta": "El niño toma la pelota pequeña, o similar, en su mano preferida, la lanza hacia arriba y la recibe en una sola mano sin dejarla caer. Lo hace con éxito, por lo menos dos de tres veces.",
+                            "imagen": "48-60_mg_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "El niño se encuentra de pie",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador salta hacia delante, en un solo pie sin agarrarse ni ayudarse. Invita al niño a repetir el ejercicio.",
+                            "respuesta": "El niño salta en un solo pie, avanzando hacia delante, por lo menos tres saltos consecutivos sin perder el equilibrio.",
+                            "imagen": "48-60_mg_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Motor Fino",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "El niño se encuentra sentado frente a la mesa.",
+                            "materiales": "Hojas de papel tamaño carta, 1 lápiz.",
+                            "instrucciones": "El examinador ofrece hoja, lápiz y los modelos de las figuras. Le solicita dibujarlas tan parecidas como le sea posible.",
+                            "respuesta": "El niño reproduce las figuras claramente diferenciadas; el cuadrado cerrado y con los 4 ángulos; el círculo cerrado y proporcionado, los dos con trazos firmes.",
+                            "imagen": "48-60_mf_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "El niño se encuentra sentado frente a la mesa.",
+                            "materiales": "Perfiles de figuras simples (1/4 de página), solo perfil. Punzón de punta roma.",
+                            "instrucciones": "El examinador muestra cómo perforar o puntear una figura sobre la línea del contorno. Entrega al niño una hoja con la misma figura y un punzón o lápiz para hacer el ejercicio insistiendo en que no se salga de la línea.",
+                            "respuesta": "El niño perfora o puntea el contorno de la figura sobre la línea de trazo. Solo se permiten 3 errores. Se considera un error cada vez que la perforación o punto está fuera de la línea de trazo de la figura.",
+                            "imagen": "48-60_mf_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "El niño se encuentra sentado frente a la mesa.",
+                            "materiales": "Cinco cordondes de zapato.",
+                            "instrucciones": "El examinador pregunta al niño si sabe hacer un nudo y le anima a hacerlo.",
+                            "respuesta": "El niño toma el cordón con ambas manos y elabora un nudo simple con el cordón del zapato o alrededor de la muñeca del examinador.",
+                            "imagen": "48-60_mf_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Comunicación",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "El niño se encuentra sentado junto al examinador.",
+                            "materiales": "Cinco caras con gestos de alegría, miedo, tristeza, enojo y cansancio.",
+                            "instrucciones": "El examinador muestra al niño 5 caras con gestos de alegría, miedo, tristeza, enojo, cansancio, etc. Y le pregunta: <<¿qué pasa?>> a cada una. Cuando el niño identifica un sentimiento, pregunta: ¿qué significa?",
+                            "respuesta": "El niño reconoce y describe el significado de, al menos tres sentimientos.",
+                            "imagen": "48-60_com_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "El niño se encuentra sentado frente al examinador.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador hace las preguntas: ¿qué hiciste ayer? Y ¿qué vas a hacer mañana?",
+                            "respuesta": "El niño responde ubicando las acciones en el pasado y futuro, según el tiempo de la pregunta.",
+                            "imagen": "48-60_com_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "El niño se encuentra sentado frente al examinador.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador dice un trabalenguas y pide al niño repetirlo. Este deberá ser de uso común en la región.",
+                            "respuesta": "El niño escucha y repite trabalenguas con buen tono y pronunciación, al menos una vez de tres ensayos.",
+                            "imagen": "48-60_com_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Social/Emocional",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "El niño se encuentra sentado frente al examinador.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "Preguntar al niño a qué juega con sus amigos, qué personajes intervienen, cuáles son las reglas, etc.",
+                            "respuesta": "El niño describe roles o reglas, variaciones del juego creadas por el niño o por sus compañeros.",
+                            "imagen": "48-60_se_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "El niño se encuentra sentado frente al examinador.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador pregunta al niño qué juega con sus amigos, compañeros o vecinos, cuál es su rol y cuáles son las reglas.",
+                            "respuesta": "El niño participa en juegos de grupo como el fútbol que implican cooperación y competencia basada en reglas.",
+                            "imagen": "48-60_se_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "El niño se encuentra sentado frente al examinador.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador pregunta al niño: dónde vive, en qué lugar, barrio o sector, nombre de la calle u otras señales posibles de verificar con la madre.",
+                            "respuesta": "El niño responde con los nombres o señales específicos solicitados y la madre los confirma.",
+                            "imagen": "48-60_se_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Cognitivo",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "El niño se encuentra parado o sentado frente a la mesa.",
+                            "materiales": "Juego de bloques lógicos (3 triángulos, 3 cuadrados y 3 círculos).",
+                            "instrucciones": "El examinador coloca en desorden y frente al niño los bloques lógicos y solicita agruparlos en el mejor orden posible.",
+                            "respuesta": "El niño comprende las instrucciones, agrupa las figuras por color y tamaño.",
+                            "imagen": "48-60_cog_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "El niño puede estar sentado o de pie.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador pregunta al niño cuántos dedos tiene en una y en las dos manos, luego le pide contar en voz alta los dedos de las dos manos para saber cuántos tiene.",
+                            "respuesta": "El niño sabe cuántos dedos tiene en cada mano y puede contar con los de ambas manos correctamente, sin perder la secuencia.",
+                            "imagen": "48-60_cog_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "El niño se encuentra sentado frente a la mesa.",
+                            "materiales": "Hojas de papel tamaño carta, 1 lápiz.",
+                            "instrucciones": "El examinador le entrega una hoja de papel, un lápiz o crayón y le pide dibujar un niño o una niña.",
+                            "respuesta": "El niño dibuja una figura humana con al menos 5 elementos reconocibles: cabeza, ojos, boca, tronco, manos y/o pies.",
+                            "imagen": "48-60_cog_3"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "level": "11",
+            "edad": "60.1 a 72 meses",
+            "motores": [{
+                    "motor": "Motor Grueso",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "El niño se encuentra de pie.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador demuestra: levanta el pie, cierra los ojos y salta en un solo pie. Anima al niño a repetirlo.",
+                            "respuesta": "El niño se mantiene en un solo pie y con los ojos cerrados, por lo menos 5 segundos.",
+                            "imagen": "60-72_mg_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "El niño se encuentra de pie.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador salta hacia delante alternando los pies, levantando los pies con cada salto. No debe haber ningún objeto que haga que el niño se caiga o tropiece.",
+                            "respuesta": "El niño puede saltar las marcas alternando los pies sin perder el equilibrio, con la misma velocidad y longitud en cada salto, por lo menos 5 veces consecutivas.",
+                            "imagen": "60-72_mg_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "El niño se encuentra de pie.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador pide al niño que se suba en una superficie más alta (61cm de alto) y le pide que salte sin ayuda.",
+                            "respuesta": "El niño salta sin ayuda de una superficie más alta.",
+                            "imagen": "60-72_mg_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Motor Fino",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "El niño se encuentra sentado o de pie al lado derecho del examinador.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador toca los puntos de todos los dedos con su pulgar y ambas manos simultáneamente. Solicita al niño repetir el ejercicio.",
+                            "respuesta": "El niño se toca con el pulgar, uno a uno los dedos de ambas manos simultáneamente, se admiten dos ensayos y en por lo menos uno de ellos el ejercicio se hace sin errores.",
+                            "imagen": "60-72_mf_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "El niño se encuentra de pie.",
+                            "materiales": "Dos pelotas de caucho de colores llamativos, una pequeña y otra grande (15 y 25 cm de diámetro).",
+                            "instrucciones": "El examinador de pie frente al niño, lanza una pelota u  objeto pequeño hacia arriba y la atrapa con una mano. Pide al niño repetir el ejercicio.",
+                            "respuesta": "El niño lanza la pelota hacia arriba y la atrapa al caer con una mano, por lo menos dos veces consecutivas",
+                            "imagen": "60-72_mf_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "El niño se encuentra sentado frente a la mesa.",
+                            "materiales": "Perfiles de figuras simples, tijeras pequeñas de punta roma, colores: lápices y crayones.",
+                            "instrucciones": "El niño recibe lápices de colores, hoja con figura, tijeras y explicación del examinador para colorearla por dentro y recortarla por el trazo. Solicita al niño realizar el ejercicio.",
+                            "respuesta": "El niño pinta la figura sin salirse del trazo y luego la recorta por su perfil. Solo se permiten tres errores como pequeñas salidas del trazo.",
+                            "imagen": "60-72_mf_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Comunicación",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "El niño se encuentra sentado frente al examinador.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador muestra al niño la lámina y lo invita a describirla: qué ocurre, quiénes son, cómo son, etc.",
+                            "respuesta": "El niño describe con buen nivel de detalle el dibujo, identificando las acciones y los personajes y les asigna cualidades.",
+                            "imagen": "60-72_com_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "El niño se encuentra en una posición determianda.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador pregunta al niño sobre el uso que tiene cada objeto, que son de uso común en la región.",
+                            "respuesta": "El niño define correctamente por su uso 10 objetos, conocidos de uso cotidiano.",
+                            "imagen": "60-72_com_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "El niño se encuentra en una posición determianda.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador pregunta al niño la diferencia entre un perro y un pájaro, un caballo y una gallina... Debe asegurarse que los animales sean conocidos por él.",
+                            "respuesta": "El niño identifica y expresa correctamente, por lo menos una diferencia entre dos animales conocidos por él.",
+                            "imagen": "60-72_com_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Social/Emocional",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "Cualquier lugar donde el niño se encuentre cómodo.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador observa o le pregunta a la persona a cargo si el niño participa en juegos que están alejados a su experiencia, en los que deba asignar roles imaginarios a los personajes (por ejemplo: princesa, héroe, estrella de fútbol).",
+                            "respuesta": "El niño juega con otros asignando roles imaginarios a los particiántes (por ejemplo un niño es un cazador mientras el otro es un león).",
+                            "imagen": "60-72_se_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "Cualquier posición.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador le pregunta al niño sobre algún aspecto cultural que le es familiar, como por ejemplo: <<tu mami quiere que juegues con tu hermano, pero tu no quieres jugar con tu hermano. ¿Qué haces?>>, <<Tu quieres un caramelo y tu mamá dice que no. ¿Qué haces?>>.",
+                            "respuesta": "La persona a cargo informa que el niño juega cuando otro niño está presente y ocasionalmente interactua con el otro niño.",
+                            "imagen": "60-72_se_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "Cualquier posición.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador observa al niño jugar o le pregunta a la persona a cargo <<¿El niño se muestra preocupado cuando algún compañero de juego se lastima?>>.",
+                            "respuesta": "El niño extiende muestra preocupación cuando un niño se lastima. El niño previene a los demás cuando están haciendo algo peligroso.",
+                            "imagen": "60-72_se_3"
+                        }
+                    ]
+                },
+                {
+                    "motor": "Cognitivo",
+                    "indicadores": [{
+                            "indicador": "1",
+                            "posicion": "El niño se encuentra de pie frente al examinador.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador solicita al niño cantar o recitar una canción, poema o rima que conozca o le guste.",
+                            "respuesta": "El niño sabe de memoria una pequeña canción o rima y atiende la solicitud del examinador.",
+                            "imagen": "60-72_cog_1"
+                        },
+                        {
+                            "indicador": "2",
+                            "posicion": "El niño se encuentra frente al examinador.",
+                            "materiales": "Ninguno.",
+                            "instrucciones": "El examinador le pide mostrar o señalar su mano, ojo, pie, oreja, pierna derecha o izquierda, de manera indistinta cada vez.",
+                            "respuesta": "El niño identifica y muestra las partes nombradas y del lado correcto de su cuerpo. No se permite ningún error.",
+                            "imagen": "60-72_cog_2"
+                        },
+                        {
+                            "indicador": "3",
+                            "posicion": "El niño se encuentra sentado o de pie.",
+                            "materiales": "Fichas de cartón o madera con el abecedario y los números del 0 al 9.",
+                            "instrucciones": "El examinador muestra al niño plantillas de números y letras. Los nombra y le pide señalar la letra, forma o número nombrado.",
+                            "respuesta": "El niño identifica y señala correctamente por lo menos 10 letras y/o números.",
+                            "imagen": "60-72_cog_3"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
