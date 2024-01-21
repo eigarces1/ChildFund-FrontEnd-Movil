@@ -1,16 +1,19 @@
-//PANTALLA PARA ELEJIR UN RANGO DE EDAD E INICIAR LA EVALUACION CORRESPONDIENTE
+//PANTALLA PARA ELEGIR UN RANGO DE EDAD E INICIAR LA EVALUACION CORRESPONDIENTE
 
 import 'package:flutter/material.dart';
 import 'evaluation/evaluation_screen.dart';
 
 class AgeSelectionScreen extends StatefulWidget {
+  const AgeSelectionScreen({super.key});
+
   @override
   _AgeSelectionScreenState createState() => _AgeSelectionScreenState();
 }
 
 class _AgeSelectionScreenState extends State<AgeSelectionScreen> {
   String selectedAge = '0 a 3 meses';
-  int selectedLevel = 1; // Inicializa con el nivel correspondiente al primer rango
+  int selectedLevel =
+      1; // Inicializa con el nivel correspondiente al primer rango
 
   // Define un mapa que asocie cada rango con su nivel
   final Map<String, int> ageLevelMap = {
@@ -31,7 +34,7 @@ class _AgeSelectionScreenState extends State<AgeSelectionScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Seleccione el Rango de Edad'),
+        title: const Text('Seleccione el Rango de Edad'),
         backgroundColor: Colors.lightGreen,
       ),
       body: Center(
@@ -41,20 +44,21 @@ class _AgeSelectionScreenState extends State<AgeSelectionScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Text(
+              const Text(
                 'Seleccione el rango de edad del infante:',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               buildAgeDropdown(),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Text(
                 'Nivel seleccionado: $selectedLevel',
-                style: TextStyle(fontSize: 16),
+                style: const TextStyle(fontSize: 16),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 32), // Agrega un espacio entre el texto y el botón
+              const SizedBox(
+                  height: 32), // Agrega un espacio entre el texto y el botón
               ElevatedButton(
                 onPressed: () {
                   // Navegar a la pantalla de evaluación al presionar el botón
@@ -68,7 +72,7 @@ class _AgeSelectionScreenState extends State<AgeSelectionScreen> {
                     ),
                   );
                 },
-                child: Text('Continuar'),
+                child: const Text('Continuar'),
               ),
             ],
           ),
@@ -101,10 +105,10 @@ class _AgeSelectionScreenState extends State<AgeSelectionScreen> {
       child: DropdownButtonHideUnderline(
         child: DropdownButton<String>(
           value: selectedAge,
-          icon: Icon(Icons.arrow_drop_down, color: Colors.deepPurple),
+          icon: const Icon(Icons.arrow_drop_down, color: Colors.deepPurple),
           iconSize: 24,
           elevation: 16,
-          style: TextStyle(color: Colors.deepPurple, fontSize: 16),
+          style: const TextStyle(color: Colors.deepPurple, fontSize: 16),
           onChanged: (String? value) {
             setState(() {
               selectedAge = value!;
