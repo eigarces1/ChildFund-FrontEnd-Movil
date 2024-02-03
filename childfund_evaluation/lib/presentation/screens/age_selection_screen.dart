@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'evaluation/evaluation_screen.dart';
 
 class AgeSelectionScreen extends StatefulWidget {
-  const AgeSelectionScreen({super.key});
+  const AgeSelectionScreen({Key? key}) : super(key: key);
 
   @override
   _AgeSelectionScreenState createState() => _AgeSelectionScreenState();
@@ -12,10 +12,9 @@ class AgeSelectionScreen extends StatefulWidget {
 
 class _AgeSelectionScreenState extends State<AgeSelectionScreen> {
   String selectedAge = '0 a 3 meses';
-  int selectedLevel =
-      1; // Inicializa con el nivel correspondiente al primer rango
+  int selectedLevel = 1;
+  String childAgeMonths = '';
 
-  // Define un mapa que asocie cada rango con su nivel
   final Map<String, int> ageLevelMap = {
     '0 a 3 meses': 1,
     '3.1 a 6 meses': 2,
@@ -45,29 +44,41 @@ class _AgeSelectionScreenState extends State<AgeSelectionScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const Text(
-                'Seleccione el rango de edad del infante:',
+                'Ingrese la edad del niño en meses:',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 16),
-              buildAgeDropdown(),
+              TextField(
+                decoration: const InputDecoration(
+                  labelText: 'Edad del niño en meses',
+                  border: OutlineInputBorder(),
+                ),
+                keyboardType: TextInputType.number,
+                onChanged: (value) {
+                  setState(() {
+                    childAgeMonths = value;
+                    selectedLevel = calculateLevel(
+                        int.tryParse(value) == null ? 0 : int.parse(value));
+                  });
+                },
+              ),
               const SizedBox(height: 16),
               Text(
-                'Nivel seleccionado: $selectedLevel',
+                'Nivel calculado: $selectedLevel',
                 style: const TextStyle(fontSize: 16),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(
-                  height: 32), // Agrega un espacio entre el texto y el botón
+              const SizedBox(height: 32),
               ElevatedButton(
                 onPressed: () {
-                  // Navegar a la pantalla de evaluación al presionar el botón
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => EvaluationScreen(
                         selectedAge: selectedAge,
                         selectedLevel: selectedLevel,
+                        childAgeMonths: childAgeMonths,
                       ),
                     ),
                   );
@@ -81,59 +92,30 @@ class _AgeSelectionScreenState extends State<AgeSelectionScreen> {
     );
   }
 
-  Widget buildAgeDropdown() {
-    final ageOptions = [
-      '0 a 3 meses',
-      '3.1 a 6 meses',
-      '6.1 a 9 meses',
-      '9.1 a 12 meses',
-      '12.1 a 16 meses',
-      '16.1 a 20 meses',
-      '20.1 a 24 meses',
-      '24.1 a 36 meses',
-      '36.1 a 48 meses',
-      '48.1 a 60 meses',
-      '60.1 a 72 meses',
-    ];
-
-    return Container(
-      width: 200,
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.deepPurpleAccent),
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: DropdownButtonHideUnderline(
-        child: DropdownButton<String>(
-          value: selectedAge,
-          icon: const Icon(Icons.arrow_drop_down, color: Colors.deepPurple),
-          iconSize: 24,
-          elevation: 16,
-          style: const TextStyle(color: Colors.deepPurple, fontSize: 16),
-          onChanged: (String? value) {
-            setState(() {
-              selectedAge = value!;
-              selectedLevel = ageLevelMap[selectedAge]!;
-            });
-            print(selectedAge);
-          },
-          items: ageOptions.map<DropdownMenuItem<String>>((String value) {
-            return DropdownMenuItem<String>(
-              value: value,
-              child: Center(
-                child: Text(value),
-              ),
-            );
-          }).toList(),
-          isExpanded: true,
-          selectedItemBuilder: (BuildContext context) {
-            return ageOptions.map<Widget>((String item) {
-              return Center(
-                child: Text(item),
-              );
-            }).toList();
-          },
-        ),
-      ),
-    );
+  int calculateLevel(int ageInMonths) {
+    // Perform calculations to determine the level based on the child's age
+    if (ageInMonths >= 72) {
+      return 11;
+    } else if (ageInMonths >= 60) {
+      return 10;
+    } else if (ageInMonths >= 48) {
+      return 9;
+    } else if (ageInMonths >= 36) {
+      return 8;
+    } else if (ageInMonths >= 24) {
+      return 7;
+    } else if (ageInMonths >= 20) {
+      return 6;
+    } else if (ageInMonths >= 16) {
+      return 5;
+    } else if (ageInMonths >= 12) {
+      return 4;
+    } else if (ageInMonths >= 9) {
+      return 3;
+    } else if (ageInMonths >= 6) {
+      return 2;
+    } else {
+      return 1;
+    }
   }
 }

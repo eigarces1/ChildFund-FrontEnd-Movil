@@ -1,3 +1,8 @@
+import 'package:childfund_evaluation/presentation/screens/evaluation/results_screen.dart';
+import 'package:childfund_evaluation/utils/json_parse.dart';
+import 'package:childfund_evaluation/utils/models/age_group.dart';
+import 'package:childfund_evaluation/utils/models/indicator.dart';
+import 'package:childfund_evaluation/utils/models/motor.dart';
 import 'package:flutter/material.dart';
 import '../../../utils/colors.dart';
 import '../../widgets/child_evaluation_form.dart';
@@ -5,9 +10,13 @@ import '../../widgets/child_evaluation_form.dart';
 class EvaluationScreen extends StatefulWidget {
   final String selectedAge;
   final int selectedLevel;
+  final String childAgeMonths;
 
   const EvaluationScreen(
-      {required this.selectedAge, required this.selectedLevel});
+      {super.key,
+      required this.selectedAge,
+      required this.selectedLevel,
+      required this.childAgeMonths});
 
   @override
   _EvaluationScreenState createState() => _EvaluationScreenState();
@@ -16,92 +25,228 @@ class EvaluationScreen extends StatefulWidget {
 class _EvaluationScreenState extends State<EvaluationScreen> {
   int currentQuestionIndex = 0;
   int currentStep = 0;
+  int currentMotorIndex = 0;
+  bool isLowerLevel = false;
+  bool isUpperLevel = false;
+  Motor? currentMotor;
+  AgeGroup? currentAgeGroup;
+  int score = 0;
+  List<AgeGroup> ageGroupsData = [];
 
-  List<Step> getSteps() => [
-        Step(
-          isActive: currentStep >= 0,
-          title: const Text(''),
-          content: const ChildEvaluationFormWidget(
-            posicion: "Acostado boca abajo.",
-            materiales:
-                "Manta o cobija lavable, sonajero o maraca pequeña, 10 juguetes de colores brillantes no menores de 5 cm.",
-            instrucciones:
-                "El examinador muestra un objeto llamativo distante de 30 cm, en la línea de su media cara. Cuando el niño mira al objeto, desplazarlo lentamente de izquierda a derecha y de abajo hacia arriba.",
-            respuesta:
-                "El niño sigue al objeto con los ojos y la cabeza en la misma dirección em que se lo mueve, por lo menos 3 veces.",
-          ),
+  @override
+  void initState() {
+    super.initState();
+    loadData();
+  }
+
+  Future<void> loadData() async {
+    try {
+      List<AgeGroup> data = await loadIndicatorsJsonData();
+
+      AgeGroup currentAgeGroupData =
+          data.firstWhere((ageGroup) => ageGroup.level == widget.selectedLevel);
+
+      setState(() {
+        ageGroupsData = data;
+        currentAgeGroup = currentAgeGroupData;
+        currentMotor = currentAgeGroup?.motors[currentMotorIndex];
+      });
+    } catch (e) {
+      print('Error loading JSON data: $e');
+    }
+  }
+
+  List<Step> getCurrentMotorStep() {
+    List<Indicator> indicatorsToUse = isLowerLevel
+        ? currentMotor!.indicators.reversed.toList()
+        : currentMotor!.indicators;
+
+    List<Step> steps = indicatorsToUse.map((indicator) {
+      return Step(
+        isActive:
+            true, // You may set isActive conditionally based on your requirements
+        title: const Text(""), // Use indicator data as title
+        content: ChildEvaluationFormWidget(
+          // Use indicator data to populate the content of the ChildEvaluationFormWidget
+          indicator: indicator.indicator,
+          image: indicator.image,
+          level:
+              '${!isLowerLevel ? !isUpperLevel ? widget.selectedLevel : widget.selectedLevel + 1 : widget.selectedLevel - 1}',
+          motorName: currentMotor!.motorName,
+          posicion: indicator.position,
+          materiales: indicator.materials,
+          instrucciones: indicator.instructions,
+          respuesta: indicator.response,
+          accomplished: indicator
+              .accomplished, // Pass the value of accomplished to the ChildEvaluationFormWidget
+          onChanged: (value) {
+            updateStepAccomplished(indicator,
+                value!); // Callback function to update the accomplished value
+          },
         ),
-        Step(
-            isActive: currentStep >= 1,
-            title: const Text(''),
-            content: Container()),
-        Step(
-            isActive: currentStep >= 2,
-            title: const Text(''),
-            content: Container())
-      ];
+      );
+    }).toList();
+
+    return steps;
+  }
+
+  void updateStepAccomplished(Indicator indicator, bool value) {
+    setState(() {
+      indicator.accomplished = value;
+    });
+  }
+
+  int countAccomplishedIndicators() {
+    if (currentMotor == null) {
+      return 0;
+    }
+
+    return currentMotor!.indicators
+        .where((indicator) => indicator.accomplished == true)
+        .length;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('Evaluación - ${widget.selectedAge}'),
-          backgroundColor: AppColors.primaryColor,
-        ),
-        body: Stepper(
-          type: StepperType.horizontal,
-          steps: getSteps(),
-          currentStep: currentStep,
-          onStepContinue: () {
-            final isLastStep = currentStep == getSteps().length - 1;
-            if (isLastStep) {
-              print('Completed');
-              //TO DO: save data
-            } else {
-              setState(() {
-                currentStep += 1;
-              });
-            }
-          },
-          onStepCancel:
-              currentStep == 0 ? null : () => setState(() => currentStep -= 1),
-        ),
-        // body: Column(
-        //   children: [
-        //     // Aquí muestra la pregunta actual según la lógica de evaluación
-        //     // Puedes usar switch - case para decidir qué preguntas mostrar
-        //     // según el nivel y el área de desarrollo infantil
-        //     Text(getCurrentQuestion()),
-        //     // Botones de respuesta, lógica de respuesta, etc.
-        //   ],
-        // ),
-      ),
-    );
-  }
+    // Check if currentMotor is null
+    if (currentMotor == null) {
+      // Show a loading indicator or any other appropriate widget until currentMotor is initialized
+      return const CircularProgressIndicator();
+    } else {
+      // Once currentMotor is initialized, build the Stepper widget
+      return SafeArea(
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text('Evaluación - ${widget.selectedAge}'),
+            backgroundColor: AppColors.primaryColor,
+          ),
+          body: Column(
+            children: [
+              Expanded(
+                child: Stepper(
+                  type: StepperType.horizontal,
+                  steps: getCurrentMotorStep(),
+                  currentStep: currentStep,
+                  onStepContinue: () {
+                    final isLastStep =
+                        currentStep == getCurrentMotorStep().length - 1;
 
-  String getCurrentQuestion() {
-    // Lógica para obtener la pregunta actual
-    // Puedes llamar a funciones en otros archivos para manejar la lógica específica del nivel y área
+                    List<Indicator> indicatorsToUse = isLowerLevel
+                        ? currentMotor!.indicators.reversed.toList()
+                        : currentMotor!.indicators;
 
-    // Aquí puedes usar switch - case para manejar diferentes niveles
-    switch (widget.selectedLevel) {
-      case 1:
-        return getLevel1Question(currentQuestionIndex);
-      case 2:
-        // Lógica para el nivel 2
-        break;
-      // Añade más casos según sea necesario
+                    final isCurrentStepCompleted =
+                        indicatorsToUse[currentStep].accomplished != null;
+                    if (!isCurrentStepCompleted) {
+                      return;
+                    }
+
+                    if (isLastStep) {
+                      if (currentMotorIndex >= 4) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ResultsScreen(
+                              selectedAge: widget.selectedAge,
+                              selectedLevel: widget.selectedLevel,
+                              childAgeMonths: widget.childAgeMonths,
+                              developmentCoeficient: getDevelopmentCoeficient(),
+                            ),
+                          ),
+                        );
+                        return;
+                      }
+
+                      int currentScore = countAccomplishedIndicators();
+                      score += isLowerLevel ? -currentScore : currentScore;
+
+                      if (isLowerLevel ||
+                          isUpperLevel ||
+                          currentScore == 2 ||
+                          (currentScore < 2 && widget.selectedLevel == 1) ||
+                          (currentScore == 3 && widget.selectedLevel == 11)) {
+                        setState(() {
+                          isLowerLevel = false;
+                          isUpperLevel = false;
+                          currentStep = 0;
+                          currentMotorIndex += 1;
+                          currentMotor =
+                              currentAgeGroup?.motors[currentMotorIndex];
+                        });
+                      }
+
+                      if (currentScore == 3 &&
+                          widget.selectedLevel < 11 &&
+                          !isUpperLevel) {
+                        AgeGroup nextAgeGroup = ageGroupsData.firstWhere(
+                            (ageGroup) =>
+                                ageGroup.level == (widget.selectedLevel + 1));
+
+                        setState(() {
+                          isUpperLevel = true;
+                          currentMotor = nextAgeGroup.motors[currentMotorIndex];
+                          currentStep = 0;
+                        });
+                        return;
+                      }
+                      if (currentScore < 2 &&
+                          widget.selectedLevel > 1 &&
+                          !isLowerLevel) {
+                        AgeGroup prevousAgeGroup = ageGroupsData.firstWhere(
+                            (ageGroup) =>
+                                ageGroup.level == (widget.selectedLevel - 1));
+
+                        setState(() {
+                          isLowerLevel = true;
+                          currentMotor =
+                              prevousAgeGroup.motors[currentMotorIndex];
+                          currentStep = 0;
+                        });
+                        return;
+                      }
+
+                      //TO DO: save data
+                    } else {
+                      setState(() {
+                        currentStep += 1;
+                      });
+                    }
+                  },
+                  onStepCancel: currentStep == 0
+                      ? null
+                      : () => setState(() => currentStep -= 1),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
     }
-
-    return 'No hay más preguntas';
   }
 
-  // Define la función getLevel1Question o cualquier otra función necesaria
-  // para obtener preguntas según el nivel y el índice de pregunta.
-  String getLevel1Question(int index) {
-    // Implementa la lógica para obtener la pregunta del nivel 1.
-    // Usa la variable 'index' para obtener la pregunta correspondiente.
-    return 'Pregunta del nivel 1 - Pregunta $index';
+  double getDevelopmentCoeficient() {
+    int expectedScore = getExpectedScore();
+    // int chronologicalAgeInDays = int.parse(widget.childAgeMonths) * 30;
+    // IDK the formula is weird af, this is simplified and chronological age is not needed
+    return (score / expectedScore) * 100;
+  }
+
+  int getExpectedScore() {
+    int ageInMonths = int.tryParse(widget.childAgeMonths) == null
+        ? 0
+        : int.parse(widget.childAgeMonths);
+    if (ageInMonths >= 9) {
+      return 30;
+    } else if (ageInMonths >= 8) {
+      return 25;
+    } else if (ageInMonths >= 7) {
+      return 20;
+    } else if (ageInMonths >= 6) {
+      return 15;
+    } else if (ageInMonths >= 5) {
+      return 10;
+    } else {
+      return 5;
+    }
   }
 }
