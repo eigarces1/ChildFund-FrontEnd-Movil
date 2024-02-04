@@ -61,10 +61,18 @@ class _EvaluationScreenState extends State<EvaluationScreen> {
         ? currentMotor!.indicators.reversed.toList()
         : currentMotor!.indicators;
 
-    List<Step> steps = indicatorsToUse.map((indicator) {
+    List<Step> steps = indicatorsToUse.asMap().entries.map((entry) {
+      final index = entry.key;
+      final indicator = entry.value;
+
       return Step(
         isActive:
             true, // You may set isActive conditionally based on your requirements
+        state: currentStep == index
+            ? StepState.editing
+            : index < currentStep
+                ? StepState.complete
+                : StepState.indexed,
         title: const Text(""), // Use indicator data as title
         content: ChildEvaluationFormWidget(
           // Use indicator data to populate the content of the ChildEvaluationFormWidget
@@ -142,7 +150,8 @@ class _EvaluationScreenState extends State<EvaluationScreen> {
                     }
 
                     if (isLastStep) {
-                      if (currentMotorIndex >= 4) {
+                      if (currentMotorIndex >= 4 &&
+                          (isLowerLevel || isUpperLevel)) {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -232,9 +241,9 @@ class _EvaluationScreenState extends State<EvaluationScreen> {
   }
 
   int getExpectedScore() {
-    int ageInMonths = int.tryParse(widget.childAgeMonths) == null
+    double ageInMonths = double.tryParse(widget.childAgeMonths) == null
         ? 0
-        : int.parse(widget.childAgeMonths);
+        : double.parse(widget.childAgeMonths);
     if (ageInMonths >= 9) {
       return 30;
     } else if (ageInMonths >= 8) {

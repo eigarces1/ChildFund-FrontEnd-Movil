@@ -59,7 +59,9 @@ class _AgeSelectionScreenState extends State<AgeSelectionScreen> {
                   setState(() {
                     childAgeMonths = value;
                     selectedLevel = calculateLevel(
-                        int.tryParse(value) == null ? 0 : int.parse(value));
+                        double.tryParse(value) == null
+                            ? 0
+                            : double.parse(value));
                   });
                 },
               ),
@@ -92,7 +94,7 @@ class _AgeSelectionScreenState extends State<AgeSelectionScreen> {
     );
   }
 
-  int calculateLevel(int ageInMonths) {
+  int calculateLevel(double ageInMonths) {
     // Perform calculations to determine the level based on the child's age
     if (ageInMonths >= 60.1) {
       return 11;
