@@ -151,7 +151,10 @@ class _EvaluationScreenState extends State<EvaluationScreen> {
 
                     if (isLastStep) {
                       if (currentMotorIndex >= 4 &&
-                          (isLowerLevel || isUpperLevel)) {
+                          (isLowerLevel ||
+                              isUpperLevel ||
+                              widget.selectedLevel == 1 ||
+                              widget.selectedLevel == 11)) {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
