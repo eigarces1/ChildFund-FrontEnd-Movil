@@ -162,9 +162,8 @@ class _EvaluationScreenState extends State<EvaluationScreen> {
 
                       if (isLowerLevel ||
                           isUpperLevel ||
-                          currentScore == 2 ||
                           (currentScore < 2 && widget.selectedLevel == 1) ||
-                          (currentScore == 3 && widget.selectedLevel == 11)) {
+                          (currentScore >= 2 && widget.selectedLevel == 11)) {
                         setState(() {
                           isLowerLevel = false;
                           isUpperLevel = false;
@@ -173,9 +172,10 @@ class _EvaluationScreenState extends State<EvaluationScreen> {
                           currentMotor =
                               currentAgeGroup?.motors[currentMotorIndex];
                         });
+                        return;
                       }
 
-                      if (currentScore == 3 &&
+                      if (currentScore >= 2 &&
                           widget.selectedLevel < 11 &&
                           !isUpperLevel) {
                         AgeGroup nextAgeGroup = ageGroupsData.firstWhere(

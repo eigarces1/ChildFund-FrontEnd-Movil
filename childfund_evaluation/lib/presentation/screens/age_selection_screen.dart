@@ -94,25 +94,25 @@ class _AgeSelectionScreenState extends State<AgeSelectionScreen> {
 
   int calculateLevel(int ageInMonths) {
     // Perform calculations to determine the level based on the child's age
-    if (ageInMonths >= 72) {
+    if (ageInMonths >= 60.1) {
       return 11;
-    } else if (ageInMonths >= 60) {
+    } else if (ageInMonths >= 48.1) {
       return 10;
-    } else if (ageInMonths >= 48) {
+    } else if (ageInMonths >= 36.1) {
       return 9;
-    } else if (ageInMonths >= 36) {
+    } else if (ageInMonths >= 24.1) {
       return 8;
-    } else if (ageInMonths >= 24) {
+    } else if (ageInMonths >= 20.1) {
       return 7;
-    } else if (ageInMonths >= 20) {
+    } else if (ageInMonths >= 16.1) {
       return 6;
-    } else if (ageInMonths >= 16) {
+    } else if (ageInMonths >= 12.1) {
       return 5;
-    } else if (ageInMonths >= 12) {
+    } else if (ageInMonths >= 9.1) {
       return 4;
-    } else if (ageInMonths >= 9) {
+    } else if (ageInMonths >= 6.1) {
       return 3;
-    } else if (ageInMonths >= 6) {
+    } else if (ageInMonths >= 3.1) {
       return 2;
     } else {
       return 1;
