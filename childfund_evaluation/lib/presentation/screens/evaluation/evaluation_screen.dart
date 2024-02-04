@@ -117,7 +117,7 @@ class _EvaluationScreenState extends State<EvaluationScreen> {
       return SafeArea(
         child: Scaffold(
           appBar: AppBar(
-            title: Text('Evaluación - ${widget.selectedAge}'),
+            title: Text('Evaluación'),
             backgroundColor: AppColors.primaryColor,
           ),
           body: Column(
