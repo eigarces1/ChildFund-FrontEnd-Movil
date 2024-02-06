@@ -65,6 +65,7 @@ flutter:
 
   assets:
     - assets/data/indicadores.json
+    - assets/data/coeficients.json
     - assets/images/0-3_cog_1.jpg
     - assets/images/0-3_cog_2.jpg
     - assets/images/0-3_cog_3.jpg
