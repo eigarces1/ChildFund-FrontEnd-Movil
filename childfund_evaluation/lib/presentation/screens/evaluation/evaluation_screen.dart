@@ -32,6 +32,7 @@ class _EvaluationScreenState extends State<EvaluationScreen> {
   AgeGroup? currentAgeGroup;
   int score = 0;
   List<AgeGroup> ageGroupsData = [];
+  List<List<int>> coeficientTable = [];
 
   @override
   void initState() {
@@ -42,11 +43,13 @@ class _EvaluationScreenState extends State<EvaluationScreen> {
   Future<void> loadData() async {
     try {
       List<AgeGroup> data = await loadIndicatorsJsonData();
+      List<List<int>> dataCoeficent = await loadCoeficientTable();
 
       AgeGroup currentAgeGroupData =
           data.firstWhere((ageGroup) => ageGroup.level == widget.selectedLevel);
 
       setState(() {
+        coeficientTable = dataCoeficent;
         ageGroupsData = data;
         currentAgeGroup = currentAgeGroupData;
         currentMotor = currentAgeGroup?.motors[currentMotorIndex];
@@ -150,11 +153,16 @@ class _EvaluationScreenState extends State<EvaluationScreen> {
                     }
 
                     if (isLastStep) {
+                      int currentScore = countAccomplishedIndicators();
+                      score += isLowerLevel ? -currentScore : currentScore;
+
                       if (currentMotorIndex >= 4 &&
                           (isLowerLevel ||
                               isUpperLevel ||
                               widget.selectedLevel == 1 ||
                               widget.selectedLevel == 11)) {
+                        int currentScore = countAccomplishedIndicators();
+                        score += isLowerLevel ? -currentScore : currentScore;
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -168,9 +176,6 @@ class _EvaluationScreenState extends State<EvaluationScreen> {
                         );
                         return;
                       }
-
-                      int currentScore = countAccomplishedIndicators();
-                      score += isLowerLevel ? -currentScore : currentScore;
 
                       if (isLowerLevel ||
                           isUpperLevel ||
@@ -237,10 +242,10 @@ class _EvaluationScreenState extends State<EvaluationScreen> {
   }
 
   double getDevelopmentCoeficient() {
-    int expectedScore = getExpectedScore();
-    // int chronologicalAgeInDays = int.parse(widget.childAgeMonths) * 30;
-    // IDK the formula is weird af, this is simplified and chronological age is not needed
-    return (score / expectedScore) * 100;
+    print(score);
+    print(widget.childAgeMonths);
+    return coeficientTable[score][int.parse(widget.childAgeMonths) - 1]
+        .toDouble();
   }
 
   int getExpectedScore() {

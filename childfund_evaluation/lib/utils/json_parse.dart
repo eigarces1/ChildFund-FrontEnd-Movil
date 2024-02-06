@@ -4,6 +4,37 @@ import 'package:childfund_evaluation/utils/models/indicator.dart';
 import 'package:childfund_evaluation/utils/models/motor.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
+Future<List<List<int>>> loadCoeficientTable() async {
+  try {
+    String jsonString =
+        await rootBundle.loadString('assets/data/coeficients.json');
+    Map<String, dynamic> data = jsonDecode(jsonString);
+
+    List<dynamic> dynamicList = data["coeficients"] ?? [];
+    List<List<int>> listOfLists = [];
+
+    // Iterate over the dynamic list and cast each element to int
+    for (var dynamicInnerList in dynamicList) {
+      if (dynamicInnerList is List) {
+        List<int> innerList = [];
+        for (var value in dynamicInnerList) {
+          if (value is int) {
+            innerList.add(value);
+          } else {
+            // Handle if the value is not an integer (e.g., ignore or handle accordingly)
+          }
+        }
+        listOfLists.add(innerList);
+      }
+    }
+
+    return listOfLists;
+  } catch (e) {
+    print('Error loading JSON data: $e');
+    return [];
+  }
+}
+
 Future<List<AgeGroup>> loadIndicatorsJsonData() async {
   try {
     String jsonString =
