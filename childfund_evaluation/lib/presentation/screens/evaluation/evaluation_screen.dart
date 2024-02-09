@@ -154,15 +154,14 @@ class _EvaluationScreenState extends State<EvaluationScreen> {
 
                     if (isLastStep) {
                       int currentScore = countAccomplishedIndicators();
-                      score += isLowerLevel ? -currentScore : currentScore;
+                      //score += isLowerLevel ? -currentScore : currentScore;
 
                       if (currentMotorIndex >= 4 &&
                           (isLowerLevel ||
                               isUpperLevel ||
-                              widget.selectedLevel == 1 ||
-                              widget.selectedLevel == 11)) {
-                        int currentScore = countAccomplishedIndicators();
-                        score += isLowerLevel ? -currentScore : currentScore;
+                              (widget.selectedLevel == 1 && currentScore < 2) ||
+                              (widget.selectedLevel == 11 &&
+                                  currentScore >= 2))) {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -170,7 +169,8 @@ class _EvaluationScreenState extends State<EvaluationScreen> {
                               selectedAge: widget.selectedAge,
                               selectedLevel: widget.selectedLevel,
                               childAgeMonths: widget.childAgeMonths,
-                              developmentCoeficient: getDevelopmentCoeficient(),
+                              developmentCoeficient:
+                                  getDevelopmentCoeficient(getScore()),
                             ),
                           ),
                         );
@@ -221,8 +221,6 @@ class _EvaluationScreenState extends State<EvaluationScreen> {
                         });
                         return;
                       }
-
-                      //TO DO: save data
                     } else {
                       setState(() {
                         currentStep += 1;
@@ -241,10 +239,44 @@ class _EvaluationScreenState extends State<EvaluationScreen> {
     }
   }
 
-  double getDevelopmentCoeficient() {
-    print(score);
+  int getScore() {
+    int score = 0;
+    AgeGroup ageLevelSelected = ageGroupsData
+        .firstWhere((element) => element.level == widget.selectedLevel);
+    score += countQuestions(ageLevelSelected);
+
+    if (widget.selectedLevel > 1) {
+      AgeGroup ageLevelLower = ageGroupsData
+          .firstWhere((element) => element.level == (widget.selectedLevel - 1));
+
+      score -= countQuestions(ageLevelLower);
+    }
+
+    if (widget.selectedLevel < 11) {
+      AgeGroup ageLevelUpper = ageGroupsData
+          .firstWhere((element) => element.level == (widget.selectedLevel + 1));
+      score += countQuestions(ageLevelUpper);
+    }
+    return score;
+  }
+
+  int countQuestions(AgeGroup ageGroup) {
+    int score = 0;
+    for (var motor in ageGroup.motors) {
+      for (var indicator in motor.indicators) {
+        if (indicator.accomplished == true) {
+          score++;
+        }
+      }
+    }
+
+    return score;
+  }
+
+  double getDevelopmentCoeficient(int scoreObtained) {
+    print(scoreObtained);
     print(widget.childAgeMonths);
-    return coeficientTable[score][int.parse(widget.childAgeMonths) - 1]
+    return coeficientTable[scoreObtained][int.parse(widget.childAgeMonths) - 1]
         .toDouble();
   }
 
