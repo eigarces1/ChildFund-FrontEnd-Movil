@@ -40,7 +40,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Resultados - ${widget.selectedAge}'),
+          title: Text('Resultados'),
           backgroundColor: AppColors.primaryColor,
         ),
         body: Center(

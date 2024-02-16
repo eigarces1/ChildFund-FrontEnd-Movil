@@ -45,93 +45,168 @@ class _AgeSelectionScreenState extends State<AgeSelectionScreen> {
     11: '60.1 a 72 meses',
   };
   Future<void> _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: _selectedDate,
-      firstDate: DateTime(1900),
-      lastDate: DateTime(2100),
-    );
-    if (picked != null && picked != _selectedDate) {
-      DateTime currentDate = DateTime.now();
-      int differenceInDays = currentDate.difference(picked).inDays;
+  final DateTime? picked = await showDatePicker(
+    context: context,
+    initialDate: _selectedDate,
+    firstDate: DateTime(1900),
+    lastDate: DateTime(2100),
+  );
 
-      int months = differenceInDays ~/ 30; // Calculate the number of months
-      int remainingDays = differenceInDays % 30; // Calculate the remaining days
+  if (picked != null && picked != _selectedDate) {
+    DateTime currentDate = DateTime.now();
 
-      if (remainingDays > 0) {
-        months++; // Increment the number of months if there are remaining days
-      }
-
-      int level = calculateLevel(months.toDouble());
-
-      setState(() {
-        _selectedDate = picked;
-        numberOfDays = differenceInDays;
-        childAgeMonths = '$months';
-        selectedLevel = level;
-        selectedAge = ageLevelMapReversed[level]!;
-      });
+    if (currentDate.isBefore(picked)) {
+      print('La fecha seleccionada debe ser anterior a la fecha actual');
+      return;
     }
-  }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Seleccione el Rango de Edad'),
-        backgroundColor: Colors.lightGreen,
-      ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const SizedBox(height: 32),
-              ElevatedButton(
-                onPressed: () => _selectDate(context),
-                child:
-                    const Text('Seleccione la fecha de nacimiento del infante'),
+    int years = currentDate.year - picked.year;
+    int months = currentDate.month - picked.month;
+    int days = currentDate.day - picked.day;
+
+    if (months < 0 || (months == 0 && days < 0)) {
+      years--;
+      months += 12;
+    }
+
+    if (days <= 0) {
+      DateTime previousMonth = DateTime(currentDate.year, currentDate.month, 0);
+      days += previousMonth.day;
+      months--;
+
+      if (months < 0) {
+        years--;
+        months += 12;
+      }
+    }
+
+    int differenceInDays = years * 360 + months * 30 + days;
+    print(differenceInDays);
+    int differenceInMonths = differenceInDays ~/ 30;
+    int remainingDays = differenceInDays % 30;
+
+    if (remainingDays > 0) {
+      differenceInMonths++;
+    }
+
+    int level = calculateLevel(differenceInMonths.toDouble());
+
+    setState(() {
+      _selectedDate = picked;
+      numberOfDays = differenceInDays;
+      childAgeMonths = '$differenceInMonths';
+      selectedLevel = level;
+      selectedAge = ageLevelMapReversed[level]!;
+    });
+  }
+}
+
+@override
+Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(
+      title: const Text('Cálculo de nivel'),
+      backgroundColor: Colors.lightGreen,
+    ),
+    body: Center(
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            const SizedBox(height: 32),
+            Text(
+              'Seleccione la edad del infante',
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
               ),
-              const SizedBox(height: 32),
-              Text(
-                'Fecha de nacimiento: ${_selectedDate?.year}-${_selectedDate?.month}-${_selectedDate?.day}',
-                style:
-                    const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              ),
-              if (numberOfDays != null)
+            ),
+            const SizedBox(height: 32),
+            ElevatedButton(
+              onPressed: () => _selectDate(context),
+              child: const Text('Seleccione la fecha'),
+            ),
+            const SizedBox(height: 32),
+            Row(
+              children: [
                 Text(
-                  'Dias calculados $numberOfDays dias',
-                  style: const TextStyle(fontSize: 16),
+                  'Fecha de nacimiento: ',
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
+                Text(
+                  '${_selectedDate?.year}-${_selectedDate?.month}-${_selectedDate?.day}',
+                  style: const TextStyle(
+                    fontSize: 18,
+                  ),
+                ),
+              ],
+            ),
+            if (numberOfDays != null)
+            Row(
+              children: [
               Text(
-                'Nivel calculado: $selectedLevel',
-                style: const TextStyle(fontSize: 16),
+                'Días calculados: ',
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-              const SizedBox(height: 32),
-              const SizedBox(height: 32),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => EvaluationScreen(
-                        selectedAge: selectedAge,
-                        selectedLevel: selectedLevel,
-                        childAgeMonths: childAgeMonths,
-                      ),
-                    ),
-                  );
-                },
-                child: const Text('Continuar'),
+              Text(
+                '$numberOfDays días',
+                style: const TextStyle(
+                  fontSize: 18,
+                ),
               ),
+              ],
+            ),
+            Row(
+              children: [
+            Text(
+              'Nivel calculado: ',
+              style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              '$selectedLevel',
+              style: const TextStyle(
+                fontSize: 18,
+              ),
+            ),
             ],
-          ),
+            ),
+            const SizedBox(height: 32),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => EvaluationScreen(
+                      selectedAge: selectedAge,
+                      selectedLevel: selectedLevel,
+                      childAgeMonths: childAgeMonths,
+                    ),
+                  ),
+                );
+              },
+              child: const Text('Continuar'),
+            ),
+          ],
         ),
       ),
-    );
-  }
+    ),
+  );
+}
+
+
+
+
 
   int calculateLevel(double ageInMonths) {
     // Perform calculations to determine the level based on the child's age

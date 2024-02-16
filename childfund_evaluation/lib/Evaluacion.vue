@@ -2829,3 +2829,7 @@ export default {
     }
 }
 </script>
+
+
+*/ puntos esperados   |  CD 1m | CD 2m | ----- | CD 72|
+   0 a 30
