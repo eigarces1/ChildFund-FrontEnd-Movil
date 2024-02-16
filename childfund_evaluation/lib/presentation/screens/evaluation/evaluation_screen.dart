@@ -171,6 +171,7 @@ class _EvaluationScreenState extends State<EvaluationScreen> {
                               childAgeMonths: widget.childAgeMonths,
                               developmentCoeficient:
                                   getDevelopmentCoeficient(getScore()),
+                              ageGroups: ageGroupsData,
                             ),
                           ),
                         );
@@ -274,8 +275,6 @@ class _EvaluationScreenState extends State<EvaluationScreen> {
   }
 
   double getDevelopmentCoeficient(int scoreObtained) {
-    print(scoreObtained);
-    print(widget.childAgeMonths);
     return coeficientTable[scoreObtained][int.parse(widget.childAgeMonths) - 1]
         .toDouble();
   }
