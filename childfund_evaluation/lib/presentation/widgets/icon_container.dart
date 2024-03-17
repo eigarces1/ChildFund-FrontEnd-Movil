@@ -5,8 +5,7 @@ class IconContainer extends StatelessWidget {
   final double size;
 
   const IconContainer({Key? key, required this.url, required this.size})
-      : assert(url != null),
-        super(key: key);
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

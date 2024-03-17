@@ -1,7 +1,12 @@
+import 'package:childfund_evaluation/presentation/screens/evaluator/evaluator_screen.dart';
+import 'package:childfund_evaluation/presentation/screens/parent/parent_screen.dart';
 import 'package:childfund_evaluation/presentation/widgets/input_text.dart';
 import 'package:childfund_evaluation/utils/api_service.dart';
 import 'package:childfund_evaluation/utils/colors.dart';
+import 'package:childfund_evaluation/utils/models/evaluator.dart';
+import 'package:childfund_evaluation/utils/models/parent.dart';
 import 'package:flutter/material.dart';
+import 'package:childfund_evaluation/system/globals.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({Key? key}) : super(key: key);
@@ -17,18 +22,54 @@ class _LoginFormState extends State<LoginForm> {
 
   Future<void> _submit() async {
     final form = _formkey.currentState;
-    if (form != null && form.validate()) {
-      form.save();
 
-      final token = await ApiService.signIn(_email, _password);
+    final token = await ApiService.signIn(_email, _password);
 
-      if (token != null) {
-        // Manejar el éxito del inicio de sesión aquí
-        print('Token recibido: $token');
-      } else {
-        // Manejar el error del inicio de sesión aquí
-      }
+    if (token != null) {
+      // Manejar el éxito del inicio de sesión aquí
+      print('Token recibido: $token');
+      tokenGlobal = token;
+      Future<dynamic> user = _getMe(token);
+      user.then((userData) {
+        if (userData is Evaluator) {
+          Evaluator evaluator = userData;
+          evGlobal.name = evaluator.name;
+          evGlobal.lastname = evaluator.lastname;
+          evGlobal.identificacion = evaluator.identificacion;
+          evGlobal.mail = evaluator.mail;
+          evGlobal.phone = evaluator.phone;
+          evGlobal.position = evaluator.position;
+          evGlobal.rol = evaluator.rol;
+          evGlobal.userId = evaluator.userId;
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => EvaluatorPage()),
+          );
+        } else if (userData is Parent) {
+          Parent parent = userData;
+          paGlobal.name = parent.name;
+          paGlobal.lastname = parent.lastname;
+          paGlobal.identificacion = parent.identificacion;
+          paGlobal.mail = parent.mail;
+          paGlobal.phone = parent.phone;
+          paGlobal.position = parent.position;
+          paGlobal.rol = parent.rol;
+          paGlobal.userId = parent.userId;
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ParentPage()),
+          );
+        } else {
+          print('Usuario no reconocido');
+        }
+      });
+    } else {
+      // Manejar el error del inicio de sesión aquí
+      print("hola -> error");
     }
+  }
+  Future<dynamic> _getMe(String t) async {
+    return ApiService.getMe(t);
   }
 
   @override
@@ -48,7 +89,8 @@ class _LoginFormState extends State<LoginForm> {
               });
             },
             validator: (data) {
-              if (!data.contains('@')) { // Elimina la comprobación de nulabilidad
+              if (!data.contains('@')) {
+                // Elimina la comprobación de nulabilidad
                 return "Invalid email";
               }
               return '';
@@ -68,7 +110,8 @@ class _LoginFormState extends State<LoginForm> {
               });
             },
             validator: (data) {
-              if (data == null || data.trim().isEmpty) { // Maneja el caso de que data sea nulo
+              if (data == null || data.trim().isEmpty) {
+                // Maneja el caso de que data sea nulo
                 return "Invalid password";
               }
               return '';
@@ -81,7 +124,7 @@ class _LoginFormState extends State<LoginForm> {
             width: double.infinity,
             child: MaterialButton(
               color: Colors.pink,
-              onPressed: _submit, 
+              onPressed: _submit,
               child: Text(
                 'Sing In',
                 style: TextStyle(

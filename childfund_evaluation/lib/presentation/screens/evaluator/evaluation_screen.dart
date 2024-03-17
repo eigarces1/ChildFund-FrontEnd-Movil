@@ -1,4 +1,4 @@
-import 'package:childfund_evaluation/presentation/screens/evaluation/results_screen.dart';
+import 'package:childfund_evaluation/presentation/screens/evaluator/results_screen.dart';
 import 'package:childfund_evaluation/utils/json_parse.dart';
 import 'package:childfund_evaluation/utils/models/age_group.dart';
 import 'package:childfund_evaluation/utils/models/indicator.dart';
