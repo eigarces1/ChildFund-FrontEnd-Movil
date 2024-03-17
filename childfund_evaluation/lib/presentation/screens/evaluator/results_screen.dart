@@ -118,21 +118,24 @@ class _ResultsScreenState extends State<ResultsScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              const SizedBox(height: 8),
               const Text(
                 "Resultados",
                 style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
               ),
               Text(
-                  "Coeficiente de desarrollo obtenido: ${widget.developmentCoeficient.toInt()}"),
+                  "Cociente de desarrollo obtenido: ${widget.developmentCoeficient.toInt()}"),
               Text("Interpretación: ${getInterpretation()}"),
               Text("Total de puntos: ${getScore()}"),
+              const SizedBox(height: 6),
+              const Text("Puntos obtenidos", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
               Expanded(
                 child: ResultsListWidget(
                   motorsDict: motorsDict,
                   selectedLevel: widget.selectedLevel,
                 ),
               ),
-              const SizedBox(height: 32),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
                   Navigator.pushAndRemoveUntil(
@@ -145,6 +148,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
                 },
                 child: const Text('Volver a Inicio'),
               ),
+              const SizedBox(height: 10),
             ],
           ),
         ),
@@ -157,42 +161,57 @@ class ResultsListWidget extends StatelessWidget {
   final Map<String, List<IndicatorWithLevel>> motorsDict;
   final int selectedLevel;
 
-  const ResultsListWidget(
-      {Key? key, required this.motorsDict, required this.selectedLevel})
-      : super(key: key);
+  const ResultsListWidget({
+    Key? key,
+    required this.motorsDict,
+    required this.selectedLevel,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: motorsDict.length,
-      itemBuilder: (context, index) {
-        final motorName = motorsDict.keys.toList()[index];
-        final indicatorsWithLevels = motorsDict[motorName]!;
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Motor: $motorName',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: indicatorsWithLevels.map((indicatorWithLevel) {
-                final indicator = indicatorWithLevel.indicator;
-                final level = indicatorWithLevel.level;
-                var accomplishedStatus =
-                    indicator.accomplished == true ? '1' : '0';
+    return Container(
+      padding: EdgeInsets.all(16.0),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxWidth: 600.0), // Ajusta según tus necesidades
+        child: Center(
+          child: ListView.builder(
+            shrinkWrap: true,
+            itemCount: motorsDict.length,
+            itemBuilder: (context, index) {
+              final motorName = motorsDict.keys.toList()[index];
+              final indicatorsWithLevels = motorsDict[motorName]!;
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Center(
+                    child: Text(
+                      'Área: $motorName',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: indicatorsWithLevels.map((indicatorWithLevel) {
+                      final indicator = indicatorWithLevel.indicator;
+                      final level = indicatorWithLevel.level;
+                      var accomplishedStatus =
+                          indicator.accomplished == true ? '1' : '0';
 
-                return Text(
-                  'Pregunta: ${indicator.indicator ?? ""} / Nivel $level / ${selectedLevel - 1 == level ? "-" : accomplishedStatus == "0" ? "" : "+"}$accomplishedStatus',
-                  style: TextStyle(fontStyle: FontStyle.italic),
-                );
-              }).toList(),
-            ),
-            Divider(),
-          ],
-        );
-      },
+                      return Center(
+                        child: Text(
+                          'Pregunta: ${indicator.indicator ?? ""} / Nivel $level / ${selectedLevel - 1 == level ? "-" : accomplishedStatus == "0" ? "" : "+"}$accomplishedStatus',
+                          style: TextStyle(fontStyle: FontStyle.italic),
+                        ),
+                      );
+                    }).toList(),
+                  ),
+                  Divider(),
+                ],
+              );
+            },
+          ),
+        ),
+      ),
     );
   }
 }

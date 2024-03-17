@@ -30,11 +30,20 @@ class ChildEvaluationFormWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(10.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('$motorName - $indicator - Nivel $level'),
+          Center(
+            child: Text(
+              '$motorName - $indicator - Nivel $level',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 18, // Ajusta el tamaño del texto según tus necesidades
+              ),
+            ),
+          ),   
+          const SizedBox(height: 8.0),       
           const Text(
             'Posición:',
             style: TextStyle(
@@ -73,7 +82,7 @@ class ChildEvaluationFormWidget extends StatelessWidget {
             height: 200, // Adjust height as needed
             fit: BoxFit.contain, // Adjust the fit as needed
           ),
-          const SizedBox(height: 16.0),
+          const SizedBox(height: 10.0),
           Row(
             children: [
               IconButton(

@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'evaluation/evaluation_screen.dart';
+import 'package:childfund_evaluation/utils/colors.dart';
+
 
 class AgeSelectionScreen extends StatefulWidget {
   const AgeSelectionScreen({Key? key}) : super(key: key);
@@ -16,6 +18,9 @@ class _AgeSelectionScreenState extends State<AgeSelectionScreen> {
   String childAgeMonths = '';
   DateTime? _selectedDate = DateTime.now();
   int? numberOfDays;
+  String anio = '0';
+  String mes = '0';
+  String dia = '0';
 
   final Map<String, int> ageLevelMap = {
     '0 a 3 meses': 1,
@@ -59,7 +64,6 @@ class _AgeSelectionScreenState extends State<AgeSelectionScreen> {
       print('La fecha seleccionada debe ser anterior a la fecha actual');
       return;
     }
-
     int years = currentDate.year - picked.year;
     int months = currentDate.month - picked.month;
     int days = currentDate.day - picked.day;
@@ -69,7 +73,7 @@ class _AgeSelectionScreenState extends State<AgeSelectionScreen> {
       months += 12;
     }
 
-    if (days <= 0) {
+    if (days < 0) {
       DateTime previousMonth = DateTime(currentDate.year, currentDate.month, 0);
       days += previousMonth.day;
       months--;
@@ -79,10 +83,12 @@ class _AgeSelectionScreenState extends State<AgeSelectionScreen> {
         months += 12;
       }
     }
-
+   
     int differenceInDays = years * 360 + months * 30 + days;
     print(differenceInDays);
     int differenceInMonths = differenceInDays ~/ 30;
+    int meses = differenceInMonths;
+    print(meses);
     int remainingDays = differenceInDays % 30;
 
     if (remainingDays > 0) {
@@ -95,6 +101,8 @@ class _AgeSelectionScreenState extends State<AgeSelectionScreen> {
       _selectedDate = picked;
       numberOfDays = differenceInDays;
       childAgeMonths = '$differenceInMonths';
+      mes = meses.toString(); // Convertir a String
+      dia = days.toString();     // Convertir a String
       selectedLevel = level;
       selectedAge = ageLevelMapReversed[level]!;
     });
@@ -106,7 +114,7 @@ Widget build(BuildContext context) {
   return Scaffold(
     appBar: AppBar(
       title: const Text('Cálculo de nivel'),
-      backgroundColor: Colors.lightGreen,
+      backgroundColor: AppColors.primaryColor,
     ),
     body: Center(
       child: Padding(
@@ -150,14 +158,14 @@ Widget build(BuildContext context) {
             Row(
               children: [
               Text(
-                'Días calculados: ',
+                'Meses calculados: ',
                 style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               Text(
-                '$numberOfDays días',
+                '$mes meses con $dia días',
                 style: const TextStyle(
                   fontSize: 18,
                 ),
@@ -203,10 +211,6 @@ Widget build(BuildContext context) {
     ),
   );
 }
-
-
-
-
 
   int calculateLevel(double ageInMonths) {
     // Perform calculations to determine the level based on the child's age
