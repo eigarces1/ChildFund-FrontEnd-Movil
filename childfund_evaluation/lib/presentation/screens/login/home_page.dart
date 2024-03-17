@@ -44,9 +44,11 @@ class _HomePageState extends State<HomePage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    IconContainer(url: 'assets/logos/logo-fenpidec.png', size: 140.0),
+                    IconContainer(
+                        url: 'assets/logos/logo-fenpidec.png', size: 140.0),
                     SizedBox(width: 20.0), // Añade un espacio entre los logos
-                    IconContainer(url: 'assets/logos/logo-childfund.png', size: 140.0),
+                    IconContainer(
+                        url: 'assets/logos/logo-childfund.png', size: 140.0),
                   ],
                 ),
                 Divider(
@@ -58,8 +60,8 @@ class _HomePageState extends State<HomePage> {
                   child: MaterialButton(
                     color: AppColors.primaryColor,
                     onPressed: () {
-                      final route = MaterialPageRoute(
-                        builder: (context) => SingIn());
+                      final route =
+                          MaterialPageRoute(builder: (context) => SingIn());
                       Navigator.push(context, route);
                     },
                     child: Text(
