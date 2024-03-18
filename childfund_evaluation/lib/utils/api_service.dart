@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:js_interop';
 import 'package:http/http.dart' as http;
 import '../utils/models/evaluator.dart';
 import '../utils/models/parent.dart';

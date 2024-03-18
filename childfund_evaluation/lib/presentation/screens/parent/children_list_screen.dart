@@ -1,5 +1,7 @@
+import 'package:childfund_evaluation/presentation/screens/parent/child_details_screen.dart';
 import 'package:flutter/material.dart';
 import '../../../utils/api_service.dart';
+import '../../../utils/models/child.dart'; // Importa la clase Child
 
 class ChildrenListPage extends StatefulWidget {
   final int parentId;
@@ -11,7 +13,7 @@ class ChildrenListPage extends StatefulWidget {
 }
 
 class _ChildrenListPageState extends State<ChildrenListPage> {
-  List<Map<String, dynamic>>? children;
+  List<Child>? children;
 
   @override
   void initState() {
@@ -22,7 +24,20 @@ class _ChildrenListPageState extends State<ChildrenListPage> {
   Future<void> _loadChildren() async {
     final childrenData = await ApiService.getChildrenByParentId(widget.parentId);
     setState(() {
-      children = childrenData;
+      children = childrenData?.map((data) => Child(
+        childId: data['child_id'],
+        name: data['name'],
+        lastname: data['lastname'],
+        childNumber: data['child_number'],
+        gender: data['gender'],
+        birthdate: data['birthdate'],
+        community: data['community'],
+        communityType: data['community_type'],
+        village: data['village'],
+        status: data['status'],
+        updatedAt: data['updated_at'],
+        createdAt: data['created_at'],
+      )).toList();
     });
   }
 
@@ -39,12 +54,23 @@ class _ChildrenListPageState extends State<ChildrenListPage> {
               itemBuilder: (context, index) {
                 final child = children![index];
                 return ListTile(
-                  title: Text(child['name']),
-                  subtitle: Text(child['lastname']),
-                  // Otros campos del hijo que desees mostrar
+                  title: Text('${child.name} ${child.lastname}'),
+                  subtitle: Text('Género: ${child.gender}, Fecha de nacimiento: ${child.birthdate}'),
+                  onTap: () {
+                    _navigateToChildDetails(child); // Navegar a la página de detalles del niño al hacer clic
+                  },
                 );
               },
             ),
+    );
+  }
+
+  void _navigateToChildDetails(Child child) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ChildDetailsPage(child: child), // Pasa el niño seleccionado a la página de detalles
+      ),
     );
   }
 }

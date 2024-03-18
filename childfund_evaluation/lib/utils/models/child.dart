@@ -1,7 +1,5 @@
 class Child {
   final int childId;
-  final int localPartnerId;
-  final int parentId;
   final String name;
   final String lastname;
   final int childNumber;
@@ -16,8 +14,6 @@ class Child {
 
   Child({
     required this.childId,
-    required this.localPartnerId,
-    required this.parentId,
     required this.name,
     required this.lastname,
     required this.childNumber,
