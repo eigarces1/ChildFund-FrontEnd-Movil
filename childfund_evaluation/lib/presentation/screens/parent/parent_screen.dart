@@ -7,9 +7,11 @@ class ParentPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final parentId = paGlobal.parentId;
-    return Card(
-        child: Padding(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Padre'),
+      ),
+      body: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -30,7 +32,7 @@ class ParentPage extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => ChildrenListPage(parentId: parentId,)),
+                      MaterialPageRoute(builder: (context) => ChildrenListPage()),
                     );
                     }, 
                     child: const Text('Mis hijos'))

@@ -111,14 +111,14 @@ class ApiService {
 
   // Método para obtener la lista de hijos por el ID del padre
   static Future<List<Map<String, dynamic>>?> getChildrenByParentId(
-      int parentId) async {
+      int parentId, String t) async {
     final url = Uri.parse(
         'https://escalav2.app/api/child/list_by_parent_id?parent_id=$parentId&limit=10&offset=0');
     final response = await http.get(
       url,
       headers: <String, String>{
         'Content-Type': 'application/json',
-        'Authorization': token,
+        'Authorization': t,
       },
     );
 
