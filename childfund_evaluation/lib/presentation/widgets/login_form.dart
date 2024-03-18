@@ -41,6 +41,8 @@ class _LoginFormState extends State<LoginForm> {
           evGlobal.position = evaluator.position;
           evGlobal.rol = evaluator.rol;
           evGlobal.userId = evaluator.userId;
+          evGlobal.officerId = evaluator.officerId;
+          print(evGlobal.getData());
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => EvaluatorPage()),
@@ -69,6 +71,7 @@ class _LoginFormState extends State<LoginForm> {
       print("hola -> error");
     }
   }
+
   Future<dynamic> _getMe(String t) async {
     return ApiService.getMe(t);
   }

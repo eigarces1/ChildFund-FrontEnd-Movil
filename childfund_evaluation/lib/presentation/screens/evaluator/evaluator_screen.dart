@@ -1,5 +1,7 @@
-import 'package:flutter/material.dart';
+import 'package:childfund_evaluation/presentation/screens/evaluator/asignaciones_screen.dart';
 import 'package:childfund_evaluation/system/globals.dart';
+import 'package:flutter/material.dart';
+import 'package:childfund_evaluation/utils/api_service.dart';
 
 class EvaluatorPage extends StatelessWidget {
   const EvaluatorPage({Key? key}) : super(key: key);
@@ -25,7 +27,14 @@ class EvaluatorPage extends StatelessWidget {
                 const Divider(),
                 const SizedBox(height: 8.0),
                 ElevatedButton(
-                    onPressed: () {}, child: const Text('Mis asignaciones'))
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => AsignacionesPage()),
+                      );
+                    },
+                    child: const Text('Mis asignaciones'))
               ],
             )));
   }

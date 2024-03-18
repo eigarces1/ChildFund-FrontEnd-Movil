@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:js_interop';
 import 'package:http/http.dart' as http;
 import '../utils/models/evaluator.dart';
 import '../utils/models/parent.dart';
@@ -47,28 +48,31 @@ class ApiService {
         final String role = userData['rol'];
         if (role == 'evaluator') {
           return Evaluator(
-              userId: responseData['data']['user_id'],
-              rol: responseData['data']['rol'],
-              mail: responseData['data']['mail'],
-              name: responseData['data']['name'],
-              lastname: responseData['data']['lastname'],
-              identificacion: responseData['data']['identification'],
-              phone: responseData['data']['phone'],
-              position: responseData['data']['position'] ?? '', // Aquí se maneja el valor nulo
+            userId: responseData['data']['user_id'],
+            rol: responseData['data']['rol'],
+            mail: responseData['data']['mail'],
+            name: responseData['data']['name'],
+            lastname: responseData['data']['lastname'],
+            identificacion: responseData['data']['identification'],
+            phone: responseData['data']['phone'],
+            position: responseData['data']['position'] ??
+                '', // Aquí se maneja el valor nulo
+            officerId: responseData['data']['officer_id'],
           );
         } else if (role == 'parent') {
           return Parent(
-              userId: responseData['data']['user_id'],
-              parentId: responseData['data']['parent_id'],
-              rol: responseData['data']['rol'],
-              mail: responseData['data']['mail'],
-              name: responseData['data']['name'],
-              lastname: responseData['data']['lastname'],
-              identificacion: responseData['data']['identification'],
-              phone: responseData['data']['phone'],
-              position: responseData['data']['position'] ?? '', // Aquí se maneja el valor nulo
+            userId: responseData['data']['user_id'],
+            parentId: responseData['data']['parent_id'],
+            rol: responseData['data']['rol'],
+            mail: responseData['data']['mail'],
+            name: responseData['data']['name'],
+            lastname: responseData['data']['lastname'],
+            identificacion: responseData['data']['identification'],
+            phone: responseData['data']['phone'],
+            position: responseData['data']['position'] ??
+                '', // Aquí se maneja el valor nulo
           );
-          }
+        }
       }
     } else {
       print("Error al conseguir el usuario");
@@ -76,9 +80,40 @@ class ApiService {
     }
   }
 
+  static Future<List<Map<String, dynamic>>?> getAsignaciones(
+      int id, String t) async {
+    final url = Uri.parse(
+        'https://escalav2.app/api/test/list_by_last_stage_and_officer_id?last_stage=ASSIGNED&officer_id=$id');
+    final response = await http.get(url, headers: <String, String>{
+      'Content-Type': 'application/json',
+      'Authorization': t,
+    });
+    if (response.statusCode == 200) {
+      final Map<String, dynamic> responseData = json.decode(response.body);
+      if (responseData['success'] == true) {
+        // La clave 'data' contiene una lista de hijos
+        List<dynamic> asignedData = responseData['data']['tests'];
+        // Mapear los datos de los hijos en una lista de mapas
+        List<Map<String, dynamic>> childrenList = asignedData
+            .map((child) => Map<String, dynamic>.from(child))
+            .toList();
+        return childrenList;
+      } else {
+        print(
+            'Error al obtener la lista de asignados: ${responseData['message']}');
+        return null;
+      }
+    } else {
+      print('Error al obtener la lista de asignados: ${response.statusCode}');
+      return null;
+    }
+  }
+
   // Método para obtener la lista de hijos por el ID del padre
-  static Future<List<Map<String, dynamic>>?> getChildrenByParentId(int parentId) async {
-    final url = Uri.parse('https://escalav2.app/api/child/list_by_parent_id?parent_id=$parentId&limit=10&offset=0');
+  static Future<List<Map<String, dynamic>>?> getChildrenByParentId(
+      int parentId) async {
+    final url = Uri.parse(
+        'https://escalav2.app/api/child/list_by_parent_id?parent_id=$parentId&limit=10&offset=0');
     final response = await http.get(
       url,
       headers: <String, String>{
@@ -93,7 +128,9 @@ class ApiService {
         // La clave 'data' contiene una lista de hijos
         List<dynamic> childrenData = responseData['data'];
         // Mapear los datos de los hijos en una lista de mapas
-        List<Map<String, dynamic>> childrenList = childrenData.map((child) => Map<String, dynamic>.from(child)).toList();
+        List<Map<String, dynamic>> childrenList = childrenData
+            .map((child) => Map<String, dynamic>.from(child))
+            .toList();
         return childrenList;
       } else {
         print('Error al obtener la lista de hijos: ${responseData['message']}');
@@ -104,5 +141,4 @@ class ApiService {
       return null;
     }
   }
-
 }
