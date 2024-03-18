@@ -1,6 +1,5 @@
 import 'dart:convert';
-import 'dart:js_interop';
-import 'package:childfund_evaluation/utils/models/children.dart';
+import 'package:childfund_evaluation/utils/models/child.dart';
 import 'package:http/http.dart' as http;
 import '../utils/models/evaluator.dart';
 import '../utils/models/parent.dart';
@@ -143,9 +142,9 @@ class ApiService {
     }
   }
 
-  static Future<dynamic> getChildrenInfo(int childId) async {
+  static Future<dynamic> getChildrenById(int parentId) async {
     final url = Uri.parse(
-        'https://escalav2.app/api/child/get_by_child_id?child_id=$childId');
+        'https://escalav2.app/api/child/get_by_child_id?child_id=$parentId');
     final response = await http.get(
       url,
       headers: <String, String>{
@@ -158,20 +157,22 @@ class ApiService {
       final Map<String, dynamic> responseData = json.decode(response.body);
       final Map<String, dynamic>? childData = responseData['data'];
       if (childData != null) {
-        return Children(
-            name: childData['name'],
-            lastName: childData['lastname'],
-            childNumber: childData['child_number'],
-            gender: childData['gender'],
-            birthdate: childData['birthdate'],
-            community: childData['community'],
-            communityType: childData['community_type'],
-            village: childData['village'],
-            updatedAt: childData['update_at'],
-            createdAt: childData['created_at']);
+        return Child(
+            childId: responseData['data']['child_id'],
+            name: responseData['data']['name'],
+            lastname: responseData['data']['lastname'],
+            childNumber: responseData['data']['child_number'],
+            gender: responseData['data']['gender'],
+            birthdate: responseData['data']['birthdate'],
+            community: responseData['data']['community'],
+            communityType: responseData['data']['community_type'],
+            village: responseData['data']['village'],
+            status: responseData['data']['status'],
+            updatedAt: responseData['data']['updated_at'],
+            createdAt: responseData['data']['created_at']);
       }
     } else {
-      print('Error al obtener la info del infante: ${response.statusCode}');
+      print('Error al obtener la lista de hijos: ${response.statusCode}');
       return null;
     }
   }
