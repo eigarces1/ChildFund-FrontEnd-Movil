@@ -273,7 +273,7 @@ class _EvaluationScreenState extends State<EvaluationFormScreen> {
                     onChanged: (bool? value) {
                       setState(() {
                         chilFun = value!;
-                        evaluation?.childfundPartner = "ABCD";
+                        evaluation?.childfundPartner = chilFun;
                       });
                     },
                   ),
