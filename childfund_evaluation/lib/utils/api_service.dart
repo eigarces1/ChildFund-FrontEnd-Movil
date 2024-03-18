@@ -59,6 +59,7 @@ class ApiService {
         } else if (role == 'parent') {
           return Parent(
               userId: responseData['data']['user_id'],
+              parentId: responseData['data']['parent_id'],
               rol: responseData['data']['rol'],
               mail: responseData['data']['mail'],
               name: responseData['data']['name'],
@@ -74,4 +75,34 @@ class ApiService {
       return null;
     }
   }
+
+  // Método para obtener la lista de hijos por el ID del padre
+  static Future<List<Map<String, dynamic>>?> getChildrenByParentId(int parentId) async {
+    final url = Uri.parse('https://escalav2.app/api/child/list_by_parent_id?parent_id=$parentId&limit=10&offset=0');
+    final response = await http.get(
+      url,
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+        'Authorization': token,
+      },
+    );
+
+    if (response.statusCode == 200) {
+      final Map<String, dynamic> responseData = json.decode(response.body);
+      if (responseData['success'] == true) {
+        // La clave 'data' contiene una lista de hijos
+        List<dynamic> childrenData = responseData['data'];
+        // Mapear los datos de los hijos en una lista de mapas
+        List<Map<String, dynamic>> childrenList = childrenData.map((child) => Map<String, dynamic>.from(child)).toList();
+        return childrenList;
+      } else {
+        print('Error al obtener la lista de hijos: ${responseData['message']}');
+        return null;
+      }
+    } else {
+      print('Error al obtener la lista de hijos: ${response.statusCode}');
+      return null;
+    }
+  }
+
 }

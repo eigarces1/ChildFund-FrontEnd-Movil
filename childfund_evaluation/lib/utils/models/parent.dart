@@ -1,5 +1,6 @@
 class Parent {
   int userId;
+  int parentId;
   String rol;
   String mail;
   String name;
@@ -10,6 +11,7 @@ class Parent {
 
   Parent({
     required this.userId,
+    required this.parentId,
     required this.rol,
     required this.mail,
     required this.name,
@@ -27,7 +29,8 @@ class Parent {
         identificacion = '',
         phone = '',
         position = '',
-        userId = 0;
+        userId = 0,
+        parentId = 0;
 
   String getData() {
     return 'Usuario {name: $name $lastname, identificacion: $identificacion, rol: $rol, mail: $mail}';
