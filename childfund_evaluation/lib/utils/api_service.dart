@@ -178,39 +178,39 @@ class ApiService {
     }
   }
 
-  Future<void> enviarEvaluacion(Evaluation evaluation, int testId) async {
+  static Future<void> enviarEvaluacion(
+      Evaluation evaluation, int testId) async {
     final url = Uri.parse(
         'https://escalav2.app/api/test_child_condition/create?test_id=$testId');
-
-    final Map<String, dynamic> body = {
-      'person_in_charge': evaluation.personInCharge,
-      'reading': evaluation.reading.toString(),
-      'education': evaluation.education.toString(),
-      'education_years': evaluation.educationYears,
-      'initial_stimulation': evaluation.initialStimulation.toString(),
-      'program_place': evaluation.programPlace,
-      'childfund_partner': evaluation.childfundPartner,
-      'nongovernmental': evaluation.nongovernmental,
-      'governmental': evaluation.governmental,
-      'CIBV': evaluation.CIBV.toString(),
-      'CNH': evaluation.CNH.toString(),
-      'initial_education': evaluation.initialEducation.toString(),
-      'other_sponsor': evaluation.otherSponsor,
-      'disability': evaluation.disability,
-      'health_condition': evaluation.healthCondition,
-      'health_condition_description': evaluation.healthConditionDescription,
-      'height': evaluation.height.toString(),
-      'weight': evaluation.weight.toString(),
-      'observations': evaluation.observations,
-    };
 
     try {
       final response = await http.post(url,
           headers: <String, String>{
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json; charset=UTF-8',
             'Authorization': token,
           },
-          body: body);
+          body: jsonEncode(<String, dynamic>{
+            'person_in_charge': evaluation.personInCharge,
+            'reading': evaluation.reading.toString(),
+            'education': evaluation.education.toString(),
+            'education_years': evaluation.educationYears,
+            'initial_stimulation': evaluation.initialStimulation.toString(),
+            'program_place': evaluation.programPlace,
+            'childfund_partner': evaluation.childfundPartner,
+            'nongovernmental': evaluation.nongovernmental,
+            'governmental': evaluation.governmental,
+            'CIBV': evaluation.CIBV.toString(),
+            'CNH': evaluation.CNH.toString(),
+            'initial_education': evaluation.initialEducation.toString(),
+            'other_sponsor': evaluation.otherSponsor,
+            'disability': evaluation.disability,
+            'health_condition': evaluation.healthCondition,
+            'health_condition_description':
+                evaluation.healthConditionDescription,
+            'height': evaluation.height.toString(),
+            'weight': evaluation.weight.toString(),
+            'observations': evaluation.observations,
+          }));
       if (response.statusCode == 200) {
         print('Solicitud POST enviada con éxito');
       } else {

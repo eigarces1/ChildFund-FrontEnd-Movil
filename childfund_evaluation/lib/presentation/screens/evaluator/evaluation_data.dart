@@ -54,9 +54,8 @@ class _EvaluationScreenState extends State<EvaluationScreen> {
   bool estMalo = false;
   bool estRegular = false;
 
-  void _submit() {
-    print("Info a enviar: ");
-    print(evaluation.toString());
+  Future<void> _submit() async {
+    await ApiService.enviarEvaluacion(evaluation, widget.testId);
   }
 
   @override
@@ -73,7 +72,7 @@ class _EvaluationScreenState extends State<EvaluationScreen> {
             children: [
               Text('1. Persona responsable del niño:'),
               CheckboxListTile(
-                title: Text(widget.testId.toString()),
+                title: Text('Madre'),
                 value: personaMadre,
                 onChanged: (bool? newValue) {
                   setState(() {
