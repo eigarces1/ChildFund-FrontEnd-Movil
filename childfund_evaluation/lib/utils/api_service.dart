@@ -182,42 +182,36 @@ class ApiService {
       Evaluation evaluation, int testId) async {
     final url = Uri.parse(
         'https://escalav2.app/api/test_child_condition/create?test_id=$testId');
-
-    try {
-      final response = await http.post(url,
-          headers: <String, String>{
-            'Content-Type': 'application/json; charset=UTF-8',
-            'Authorization': token,
-          },
-          body: jsonEncode(<String, dynamic>{
-            'person_in_charge': evaluation.personInCharge,
-            'reading': evaluation.reading.toString(),
-            'education': evaluation.education.toString(),
-            'education_years': evaluation.educationYears,
-            'initial_stimulation': evaluation.initialStimulation.toString(),
-            'program_place': evaluation.programPlace,
-            'childfund_partner': evaluation.childfundPartner,
-            'nongovernmental': evaluation.nongovernmental,
-            'governmental': evaluation.governmental,
-            'CIBV': evaluation.CIBV.toString(),
-            'CNH': evaluation.CNH.toString(),
-            'initial_education': evaluation.initialEducation.toString(),
-            'other_sponsor': evaluation.otherSponsor,
-            'disability': evaluation.disability,
-            'health_condition': evaluation.healthCondition,
-            'health_condition_description':
-                evaluation.healthConditionDescription,
-            'height': evaluation.height.toString(),
-            'weight': evaluation.weight.toString(),
-            'observations': evaluation.observations,
-          }));
-      if (response.statusCode == 200) {
-        print('Solicitud POST enviada con éxito');
-      } else {
-        print('Error al enviar la solicitud POST: ${response.statusCode}');
-      }
-    } catch (e) {
-      print('Excepción al enviar la solicitud POST: $e');
+    final response = await http.post(url,
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+          'Authorization': token,
+        },
+        body: jsonEncode(<String, dynamic>{
+          'person_in_charge': evaluation.personInCharge,
+          'reading': evaluation.reading.toString(),
+          'education': evaluation.education.toString(),
+          'education_years': evaluation.educationYears,
+          'initial_stimulation': evaluation.initialStimulation.toString(),
+          'program_place': evaluation.programPlace,
+          'childfund_partner': evaluation.childfundPartner,
+          'nongovernmental': evaluation.nongovernmental,
+          'governmental': evaluation.governmental,
+          'CIBV': evaluation.CIBV.toString(),
+          'CNH': evaluation.CNH.toString(),
+          'initial_education': evaluation.initialEducation.toString(),
+          'other_sponsor': evaluation.otherSponsor,
+          'disability': evaluation.disability,
+          'health_condition': evaluation.healthCondition,
+          'health_condition_description': evaluation.healthConditionDescription,
+          'height': evaluation.height.toString(),
+          'weight': evaluation.weight.toString(),
+          'observations': evaluation.observations,
+        }));
+    if (response.statusCode == 200) {
+      print('Solicitud POST enviada con éxito');
+    } else {
+      print('Error al enviar la solicitud POST: ${response.body}');
     }
   }
 }

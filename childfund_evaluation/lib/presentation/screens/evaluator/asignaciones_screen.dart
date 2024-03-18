@@ -3,6 +3,7 @@ import 'package:childfund_evaluation/system/globals.dart';
 import 'package:childfund_evaluation/utils/models/child.dart';
 import 'package:flutter/material.dart';
 import '../../../utils/api_service.dart';
+import '../../../utils/controllers/age_controller.dart';
 
 class AsignacionesPage extends StatefulWidget {
   const AsignacionesPage({Key? key}) : super(key: key);
@@ -64,9 +65,9 @@ class _AsignacionesPageState extends State<AsignacionesPage> {
           context,
           MaterialPageRoute(
             builder: (context) => ChildDetailsPage(
-                child: children,
-                testid:
-                    testId), // Pasa el niño seleccionado a la página de detalles
+              child: children,
+              testid: testId,
+            ), // Pasa el niño seleccionado a la página de detalles
           ),
         );
       } else {

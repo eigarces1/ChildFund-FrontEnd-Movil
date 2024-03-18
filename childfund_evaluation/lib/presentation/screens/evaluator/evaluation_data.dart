@@ -2,16 +2,17 @@ import 'package:childfund_evaluation/utils/models/evaluation.dart';
 import 'package:flutter/material.dart';
 import 'package:childfund_evaluation/utils/api_service.dart';
 
-class EvaluationScreen extends StatefulWidget {
+class EvaluationFormScreen extends StatefulWidget {
   final int testId;
 
-  const EvaluationScreen({Key? key, required this.testId}) : super(key: key);
+  const EvaluationFormScreen({Key? key, required this.testId})
+      : super(key: key);
 
   @override
   _EvaluationScreenState createState() => _EvaluationScreenState();
 }
 
-class _EvaluationScreenState extends State<EvaluationScreen> {
+class _EvaluationScreenState extends State<EvaluationFormScreen> {
   Evaluation evaluation = Evaluation.vacio();
   // **Estas si
   //1
@@ -32,7 +33,7 @@ class _EvaluationScreenState extends State<EvaluationScreen> {
   bool edYears4 = false;
   bool edYears5 = false;
 
-  //4
+  //4ed
   bool estInSi = false;
   bool estInNo = false;
   bool dondeCentro = false;
@@ -56,8 +57,11 @@ class _EvaluationScreenState extends State<EvaluationScreen> {
 
   Future<void> _submit() async {
     await ApiService.enviarEvaluacion(evaluation, widget.testId);
-    print(evaluation.toString());
   }
+
+  /*Future<void> _submit() async {
+    await ApiService.enviarEvaluacion(evaluation, widget.testId);
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -330,7 +334,17 @@ class _EvaluationScreenState extends State<EvaluationScreen> {
                         onChanged: (bool? value) {
                           setState(() {
                             edIn = value!;
-                            evaluation?.initialEducation = cibv ? 1 : 0;
+                            evaluation?.initialEducation = edIn ? 1 : 0;
+                          });
+                        },
+                      ),
+                      TextFormField(
+                        decoration: InputDecoration(
+                          hintText: 'Ingresar',
+                        ),
+                        onChanged: (data) {
+                          setState(() {
+                            evaluation?.governmental = data;
                           });
                         },
                       ),
