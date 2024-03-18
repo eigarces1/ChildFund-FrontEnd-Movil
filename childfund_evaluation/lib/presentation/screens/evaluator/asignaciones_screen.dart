@@ -1,3 +1,4 @@
+import 'package:childfund_evaluation/presentation/screens/evaluator/children_information_screen.dart';
 import 'package:childfund_evaluation/system/globals.dart';
 import 'package:flutter/material.dart';
 import '../../../utils/api_service.dart';
@@ -41,6 +42,15 @@ class _AsignacionesPageState extends State<AsignacionesPage> {
                 return ListTile(
                   title: Text(child['child_name']),
                   subtitle: Text(child['child_lastname']),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ChildrenInfoPage(
+                                childId: child['child_id'],
+                              )),
+                    );
+                  },
                   // Otros campos del hijo que desees mostrar
                 );
               },
