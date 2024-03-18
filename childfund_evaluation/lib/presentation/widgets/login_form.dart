@@ -57,6 +57,7 @@ class _LoginFormState extends State<LoginForm> {
           paGlobal.position = parent.position;
           paGlobal.rol = parent.rol;
           paGlobal.userId = parent.userId;
+          paGlobal.parentId = parent.parentId;
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => ParentPage()),

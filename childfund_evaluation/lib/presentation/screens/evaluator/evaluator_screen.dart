@@ -14,6 +14,7 @@ class EvaluatorPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                const SizedBox(height: 20),
                 Text(
                   'Hola ' + evGlobal.name,
                   style: const TextStyle(
