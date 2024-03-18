@@ -1,16 +1,16 @@
 class Child {
-  final int childId;
-  final String name;
-  final String lastname;
-  final int childNumber;
-  final String gender;
-  final String birthdate;
-  final String community;
-  final String communityType;
-  final String village;
-  final int status;
-  final String updatedAt;
-  final String createdAt;
+  int childId;
+  String name;
+  String lastname;
+  int childNumber;
+  String gender;
+  String birthdate;
+  String community;
+  String communityType;
+  String village;
+  int status;
+  String updatedAt;
+  String createdAt;
 
   Child({
     required this.childId,
@@ -26,4 +26,18 @@ class Child {
     required this.updatedAt,
     required this.createdAt,
   });
+
+  Child.vacio()
+      : childId = 0,
+        name = "",
+        lastname = "",
+        childNumber = 0,
+        gender = '',
+        birthdate = '',
+        community = '',
+        communityType = '',
+        village = '',
+        status = 0,
+        updatedAt = '',
+        createdAt = '';
 }

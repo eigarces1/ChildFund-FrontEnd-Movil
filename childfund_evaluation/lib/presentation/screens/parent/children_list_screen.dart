@@ -22,22 +22,25 @@ class _ChildrenListPageState extends State<ChildrenListPage> {
   }
 
   Future<void> _loadChildren() async {
-    final childrenData = await ApiService.getChildrenByParentId(widget.parentId);
+    final childrenData =
+        await ApiService.getChildrenByParentId(widget.parentId);
     setState(() {
-      children = childrenData?.map((data) => Child(
-        childId: data['child_id'],
-        name: data['name'],
-        lastname: data['lastname'],
-        childNumber: data['child_number'],
-        gender: data['gender'],
-        birthdate: data['birthdate'],
-        community: data['community'],
-        communityType: data['community_type'],
-        village: data['village'],
-        status: data['status'],
-        updatedAt: data['updated_at'],
-        createdAt: data['created_at'],
-      )).toList();
+      children = childrenData
+          ?.map((data) => Child(
+                childId: data['child_id'],
+                name: data['name'],
+                lastname: data['lastname'],
+                childNumber: data['child_number'],
+                gender: data['gender'],
+                birthdate: data['birthdate'],
+                community: data['community'],
+                communityType: data['community_type'],
+                village: data['village'],
+                status: data['status'],
+                updatedAt: data['updated_at'],
+                createdAt: data['created_at'],
+              ))
+          .toList();
     });
   }
 
@@ -55,9 +58,11 @@ class _ChildrenListPageState extends State<ChildrenListPage> {
                 final child = children![index];
                 return ListTile(
                   title: Text('${child.name} ${child.lastname}'),
-                  subtitle: Text('Género: ${child.gender}, Fecha de nacimiento: ${child.birthdate}'),
+                  subtitle: Text(
+                      'Género: ${child.gender}, Fecha de nacimiento: ${child.birthdate}'),
                   onTap: () {
-                    _navigateToChildDetails(child); // Navegar a la página de detalles del niño al hacer clic
+                    _navigateToChildDetails(
+                        child); // Navegar a la página de detalles del niño al hacer clic
                   },
                 );
               },
@@ -69,7 +74,8 @@ class _ChildrenListPageState extends State<ChildrenListPage> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => ChildDetailsPage(child: child), // Pasa el niño seleccionado a la página de detalles
+        builder: (context) => ChildDetailsPage(
+            child: child), // Pasa el niño seleccionado a la página de detalles
       ),
     );
   }

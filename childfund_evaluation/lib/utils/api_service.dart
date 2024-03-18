@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:childfund_evaluation/utils/models/child.dart';
 import 'package:http/http.dart' as http;
 import '../utils/models/evaluator.dart';
 import '../utils/models/parent.dart';
@@ -134,6 +135,41 @@ class ApiService {
       } else {
         print('Error al obtener la lista de hijos: ${responseData['message']}');
         return null;
+      }
+    } else {
+      print('Error al obtener la lista de hijos: ${response.statusCode}');
+      return null;
+    }
+  }
+
+  static Future<dynamic> getChildrenById(int parentId) async {
+    final url = Uri.parse(
+        'https://escalav2.app/api/child/get_by_child_id?child_id=$parentId');
+    final response = await http.get(
+      url,
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+        'Authorization': token,
+      },
+    );
+
+    if (response.statusCode == 200) {
+      final Map<String, dynamic> responseData = json.decode(response.body);
+      final Map<String, dynamic>? childData = responseData['data'];
+      if (childData != null) {
+        return Child(
+            childId: responseData['data']['child_id'],
+            name: responseData['data']['name'],
+            lastname: responseData['data']['lastname'],
+            childNumber: responseData['data']['child_number'],
+            gender: responseData['data']['gender'],
+            birthdate: responseData['data']['birthdate'],
+            community: responseData['data']['community'],
+            communityType: responseData['data']['community_type'],
+            village: responseData['data']['village'],
+            status: responseData['data']['status'],
+            updatedAt: responseData['data']['updated_at'],
+            createdAt: responseData['data']['created_at']);
       }
     } else {
       print('Error al obtener la lista de hijos: ${response.statusCode}');
