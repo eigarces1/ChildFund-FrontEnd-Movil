@@ -56,6 +56,7 @@ class _EvaluationScreenState extends State<EvaluationScreen> {
 
   Future<void> _submit() async {
     await ApiService.enviarEvaluacion(evaluation, widget.testId);
+    print(evaluation.toString());
   }
 
   @override

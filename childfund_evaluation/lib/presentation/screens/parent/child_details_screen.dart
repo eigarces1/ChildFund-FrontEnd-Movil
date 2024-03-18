@@ -11,7 +11,7 @@ class ChildDetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Detalles del Niño'),
+        title: Text('Información Personal del Niño'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
