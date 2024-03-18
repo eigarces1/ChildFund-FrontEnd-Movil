@@ -1,7 +1,9 @@
 import 'dart:convert';
 import 'package:childfund_evaluation/utils/models/age_group.dart';
+import 'package:childfund_evaluation/utils/models/age_group_parent.dart';
 import 'package:childfund_evaluation/utils/models/indicator.dart';
 import 'package:childfund_evaluation/utils/models/motor.dart';
+import 'package:childfund_evaluation/utils/models/tarea.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
 Future<List<List<int>>> loadCoeficientTable() async {
@@ -74,6 +76,44 @@ Future<List<AgeGroup>> loadIndicatorsJsonData() async {
         level: int.parse(ageGroupData["level"]),
         range: ageGroupData["edad"],
         motors: motors,
+      );
+      ageGroups.add(ageGroup);
+    }
+
+    return ageGroups;
+  } catch (e) {
+    print('Error loading JSON data: $e');
+    return []; // Or handle the error appropriately
+  }
+}
+
+Future<List<AgeGroupParent>> loadTasksJsonData() async {
+  try {
+    String jsonString =
+        await rootBundle.loadString('assets/data/tareas_familia.json');
+
+    Map<String, dynamic> data = jsonDecode(jsonString);
+
+    List<AgeGroupParent> ageGroups = [];
+
+    // Extracting age groups
+    List<dynamic> ageGroupDataList = data["edades"];
+    for (var ageGroupData in ageGroupDataList) {
+      List<Tarea> tareas = [];
+      // Extracting motors for each age group
+      List<dynamic> motorDataList = ageGroupData["tareas"];
+      for (var motorData in motorDataList) {
+        Tarea tarea = Tarea(
+            indicador: motorData['indicador'],
+            materiales: motorData['materiales'],
+            instrucciones: motorData['instrucciones'],
+            imagen: motorData['imagen']);
+        tareas.add(tarea);
+      }
+      AgeGroupParent ageGroup = AgeGroupParent(
+        level: int.parse(ageGroupData['level']),
+        range: ageGroupData['edad'],
+        tareas: tareas,
       );
       ageGroups.add(ageGroup);
     }

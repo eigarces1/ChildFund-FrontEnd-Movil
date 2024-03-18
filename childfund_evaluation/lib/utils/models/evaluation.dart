@@ -5,7 +5,7 @@ class Evaluation {
   String educationYears;
   int initialStimulation;
   String programPlace;
-  String childfundPartner;
+  bool childfundPartner;
   String nongovernmental;
   String governmental;
   int CIBV;
@@ -48,7 +48,7 @@ class Evaluation {
         educationYears = "",
         initialStimulation = 0,
         programPlace = "",
-        childfundPartner = "",
+        childfundPartner = false,
         nongovernmental = "",
         governmental = "",
         CIBV = 0,

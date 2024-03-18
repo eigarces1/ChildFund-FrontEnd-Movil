@@ -68,6 +68,7 @@ flutter:
   #Correspondientes a la evaluación del profesor
     - assets/data/indicadores.json
     - assets/data/coeficients.json
+    - assets/data/tareas_familia.json
     - assets/images/0-3_cog_1.jpg
     - assets/images/0-3_cog_2.jpg
     - assets/images/0-3_cog_3.jpg
