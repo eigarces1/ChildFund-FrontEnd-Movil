@@ -1,0 +1,840 @@
+{
+    "edades": [{
+            "level": "1",
+            "edad": "0 a 3 meses",
+            "tareas": [{
+                    "indicador": "1",
+                    "materiales": "Cobija, Pañuelo grande o Sábana de niño, sonajero, Instrumento musical o grabadora, Juguetes de colores brillantes y de tamaño mediano, Linterna.",
+                    "instrucciones": "Si llora, hace ruido o sonríe pide atención, alimento o comodidad.",
+                    "imagen": "0-3_1"
+                },
+                {
+                    "indicador": "2",
+                    "instrucciones": "Boca abajo: extiéndale suavemente piernas y brazos.",
+                    "imagen": "0-3_2"
+                },
+                {
+                    "indicador": "3",
+                    "instrucciones": "Boca arriba: álcele las piernas estiradas, flexiónelas y hágale pedalear.",
+                    "imagen": "0-3_3"
+                },
+                {
+                    "indicador": "4",
+                    "instrucciones": "Levántele los brazos hacia la cabeza y hágale rodar.",
+                    "imagen": "0-3_4"
+                },
+                {
+                    "indicador": "5",
+                    "instrucciones": "Agite el sonajero y mueva juguetes coloridos cerca a su cara.",
+                    "imagen": "0-3_5"
+                },
+                {
+                    "indicador": "6",
+                    "instrucciones": "Repitan los sonidos que hace: agú, gú, a ,e, i, o, u.",
+                    "imagen": "0-3_6"
+                },
+                {
+                    "indicador": "7",
+                    "instrucciones": "Ponga y retire juguetes o sus dedos entre las manitos del niño provocando que los sostenga.",
+                    "imagen": "0-3_7"
+                },
+                {
+                    "indicador": "8",
+                    "instrucciones": "Expóngale a sonidos cotidianos y a la música, evite ruidos fuertes.",
+                    "imagen": "0-3_8"
+                },
+                {
+                    "indicador": "9",
+                    "instrucciones": "Cántele o arrúllelo para dormir.",
+                    "imagen": "0-3_9"
+                },
+                {
+                    "indicador": "10",
+                    "instrucciones": "Báñele, aliméntele o duérmale a la misma hora, siempre.",
+                    "imagen": "0-3_10"
+                },
+                {
+                    "indicador": "11",
+                    "instrucciones": "Cúbrale la cara con un pañuelo para que lo retire. Tape y destape su cara hasta que sonría.",
+                    "imagen": "0-3_11"
+                },
+                {
+                    "indicador": "12",
+                    "instrucciones": "Háblele desde lejos y cuéntele lo que hace.",
+                    "imagen": "0-3_12"
+                }
+
+            ]
+        },
+        {
+            "level": "2",
+            "edad": "3.1 a 6 meses",
+            "tareas": [{
+                    "indicador": "13",
+                    "materiales": "Sonajero, Juguetes de colores brillantes y de tamaño mediano, Cojín en forma de tubo, Espejo, Instrumento musical o grabadora.",
+                    "instrucciones": "Sostenga sus manos, atráigale y acuéstele varias veces.",
+                    "imagen": "3-6_1"
+                },
+                {
+                    "indicador": "14",
+                    "instrucciones": "Háblele claro y mueva cosas de colores cerca a su cara.",
+                    "imagen": "3-6_2"
+                },
+                {
+                    "indicador": "15",
+                    "instrucciones": "Coloque cerca juguetes plásticos, limpios, sin puntas, coloridos, medianos y sonoros para que trate de cogerlos.",
+                    "imagen": "3-6_3"
+                },
+                {
+                    "indicador": "16",
+                    "instrucciones": "Póngalo boca abajo y provoque que se voltee.",
+                    "imagen": "3-6_4"
+                },
+                {
+                    "indicador": "17",
+                    "instrucciones": "Con el vientre sobre un rollo o pelota suave, agarre sus pies y ruédele suavemente hacia el pecho y viceversa.",
+                    "imagen": "3-6_5"
+                },
+                {
+                    "indicador": "18",
+                    "instrucciones": "Al cargarle libre su cara, muévase y háblele con ritmo.",
+                    "imagen": "3-6_6"
+                },
+                {
+                    "indicador": "19",
+                    "instrucciones": "Relacione los sonidos con la causa diciéndole: papá, perro, carro, gallo, etc.",
+                    "imagen": "3-6_7"
+                },
+                {
+                    "indicador": "20",
+                    "instrucciones": "Frente al espejo o a su cara haga gestos, acérquelo y retírelo.",
+                    "imagen": "3-6_8"
+                },
+                {
+                    "indicador": "21",
+                    "instrucciones": "Exprese alegría, tristeza, susto para concentrar su atención.",
+                    "imagen": "3-6_9"
+                },
+                {
+                    "indicador": "22",
+                    "instrucciones": "Si suelta un objeto, ayúdele a alcanzarlo, escóndalo para que lo busque y celébrele cuando lo encuentre.",
+                    "imagen": "3-6_10"
+                },
+                {
+                    "indicador": "23",
+                    "instrucciones": "Al amamantarlo que ponga las manos en su pecho.",
+                    "imagen": "3-6_11"
+                },
+                {
+                    "indicador": "24",
+                    "instrucciones": "Cante o hable mientras le baña.",
+                    "imagen": "3-6_12"
+                },
+                {
+                    "indicador": "25",
+                    "instrucciones": "La familia deberá atenderle, saludarle y hablarle con cariño al llegar a casa.",
+                    "imagen": "3-6_13"
+                }
+            ]
+        },
+        {
+            "level": "3",
+            "edad": "6.1 a 9 meses",
+            "tareas": [{
+                    "indicador": "26",
+                    "materiales": "Cobija, Sonajero, Frasco redondo, Instrumento musical o grabadora, Juguetes de colores brillantes y de tamaño mediano.",
+                    "instrucciones": "En posición de gateo: adelántele una mano y la pierna contraria con la rodilla apoyada; luego altérnelas.",
+                    "imagen": "6-9_1"
+                },
+                {
+                    "indicador": "27",
+                    "instrucciones": "Ruédenle en una sábana sin que quede boca abajo.",
+                    "imagen": "6-9_2"
+                },
+                {
+                    "indicador": "28",
+                    "instrucciones": "Descubra sus pies y permita que se los lleve a la boca.",
+                    "imagen": "6-9_3"
+                },
+                {
+                    "indicador": "29",
+                    "instrucciones": "Que tape y destape un tarro redondo.",
+                    "imagen": "6-9_4"
+                },
+                {
+                    "indicador": "30",
+                    "instrucciones": "Llame a las personas por su nombre o parentesco mientras le acerca y le aleja de ellas.",
+                    "imagen": "6-9_5"
+                },
+                {
+                    "indicador": "31",
+                    "instrucciones": "Háblele, cántele o cuéntele pronunciando las palabras y relacionando cosas, personas y acciones.",
+                    "imagen": "6-9_6"
+                },
+                {
+                    "indicador": "32",
+                    "instrucciones": "Diga sí y no con la cabeza, salude o despídase, aplauda y pídale imitarla.",
+                    "imagen": "6-9_7"
+                },
+                {
+                    "indicador": "33",
+                    "instrucciones": "Siéntele con juguetes cerca para que los alcance gateando o jalando.",
+                    "imagen": "6-9_8"
+                },
+                {
+                    "indicador": "34",
+                    "instrucciones": "Escóndase y llámele de lugares distintos para que la busque y conteste.",
+                    "imagen": "6-9_9"
+                },
+                {
+                    "indicador": "35",
+                    "instrucciones": "Nombre y descríbale las cosas que hay a su alrededor.",
+                    "imagen": "6-9_10"
+                },
+                {
+                    "indicador": "36",
+                    "instrucciones": "Esconda y busque objetos debajo o dentro de algo mientras la mira y la imita.",
+                    "imagen": "6-9_11"
+                },
+                {
+                    "indicador": "37",
+                    "instrucciones": "Póngale pedacitos de comida para que coja con los dedos.",
+                    "imagen": "6-9_12"
+                },
+                {
+                    "indicador": "38",
+                    "instrucciones": "Jueguen tortillitas, a nombrar los dedos, a esconderse en las cobijas, detrás de alguien.",
+                    "imagen": "6-9_13"
+                }
+            ]
+        },
+        {
+            "level": "4",
+            "edad": "9.1 a 12 meses",
+            "tareas": [{
+                    "indicador": "39",
+                    "materiales": "Tarro de boca ancha redondo, Juguetes de colores brillantes y de tamaño mediano, Cubos, Tambor o tarro redondo, Círculos y Tablero con sus respectivos orificios circulares.",
+                    "instrucciones": "Parado, anímele a agarrarse de algo y dar pasos laterales. Extiéndale los brazos y que camine hacia usted, aléjese un poco cada vez.",
+                    "imagen": "9-12_1"
+                },
+                {
+                    "indicador": "40",
+                    "instrucciones": "Póngale al alcance cajas o cubos medianos para apilarlos.",
+                    "imagen": "9-12_2"
+                },
+                {
+                    "indicador": "41",
+                    "instrucciones": "Frente al espejo háblele, haga gestos: sí, no, guiños o muecas y diga las partes de la cara.",
+                    "imagen": "9-12_3"
+                },
+                {
+                    "indicador": "42",
+                    "instrucciones": "Jueguen a lanzar y pasar los objetos, nombrándolos.",
+                    "imagen": "9-12_4"
+                },
+                {
+                    "indicador": "43",
+                    "instrucciones": "Entréguele un tarro redondo y ancho con juguetes pequeños y jueguen a sacarlos y meterlos.",
+                    "imagen": "9-12_5"
+                },
+                {
+                    "indicador": "44",
+                    "instrucciones": "Imiten ruidos de animales: perro, gato, gallo, pato, etc.",
+                    "imagen": "9-12_6"
+                },
+                {
+                    "indicador": "45",
+                    "instrucciones": "Al bañarle, señale y diga el nombre de las partes del cuerpo.",
+                    "imagen": "9-12_7"
+                },
+                {
+                    "indicador": "46",
+                    "instrucciones": "Ordenen objetos en fila y luego déjelo hacerlo solo.",
+                    "imagen": "9-12_8"
+                },
+                {
+                    "indicador": "47",
+                    "instrucciones": "Desenvuelva, envuelva y ofrézcale el dulce envuelto.",
+                    "imagen": "9-12_9"
+                },
+                {
+                    "indicador": "48",
+                    "instrucciones": "Lávese las manos para comer, permítale coger los alimentos con la mano y demuéstrale cómo masticar.",
+                    "imagen": "9-12_10"
+                },
+                {
+                    "indicador": "49",
+                    "instrucciones": "Hágale escuchar música y anímelo a cantar.",
+                    "imagen": "9-12_11"
+                },
+                {
+                    "indicador": "50",
+                    "instrucciones": "Demuéstrale y practiquen a hacer sonar un tambor.",
+                    "imagen": "9-12_12"
+                },
+                {
+                    "indicador": "51",
+                    "instrucciones": "Abrácenle, bésenle y acarícienle, animándole a que lo haga también. Celébrele si lo hace.",
+                    "imagen": "9-12_13"
+                },
+                {
+                    "indicador": "52",
+                    "instrucciones": "Jueguen a encajar círculos de distinto tamaño en los espacios correspondientes.",
+                    "imagen": "9-12_14"
+                }
+            ]
+        },
+        {
+            "level": "5",
+            "edad": "12.1 a 16 meses",
+            "tareas": [{
+                    "indicador": "53",
+                    "materiales": "Instrumento musical o grabadora, Juguetes de colores brillantes y de tamaño mediano, Lápiz o colores y hojas, Cuentos infantiles con dibujos, Soga y frascos plásticos para amarrar, Tablero con círculos, y cuadrados excavados y sus respectivas figuras para encajar.",
+                    "instrucciones": "Ayúdele a caminar descalzo en hierba, arena o madera, subir, bajar y saltar escalones.",
+                    "imagen": "12-16_1"
+                },
+                {
+                    "indicador": "54",
+                    "instrucciones": "Si está sentado llámelo para que vaya hacia usted.",
+                    "imagen": "12-16_2"
+                },
+                {
+                    "indicador": "55",
+                    "instrucciones": "Hacer gestos de alegría, enojo, tristeza, etc, frente al espejo.",
+                    "imagen": "12-16_3"
+                },
+                {
+                    "indicador": "56",
+                    "instrucciones": "Lleven el ritmo de la música con las manos, pies y cuerpo.",
+                    "imagen": "12-16_4"
+                },
+                {
+                    "indicador": "57",
+                    "instrucciones": "Ayúdele a saltar sosteniéndole de las manos.",
+                    "imagen": "12-16_5"
+                },
+                {
+                    "indicador": "58",
+                    "instrucciones": "Esconda cosas y pídale que busque.",
+                    "imagen": "12-16_6"
+                },
+                {
+                    "indicador": "59",
+                    "instrucciones": "Dígale y anímelo a decir SÍ con la cabeza.",
+                    "imagen": "12-16_7"
+                },
+                {
+                    "indicador": "60",
+                    "instrucciones": "Léale cuentos mostrándole los dibujos.",
+                    "imagen": "12-16_8"
+                },
+                {
+                    "indicador": "61",
+                    "instrucciones": "Háblele pronunciando correcta, despacio y suavemente.",
+                    "imagen": "12-16_9"
+                },
+                {
+                    "indicador": "62",
+                    "instrucciones": "Mientras le viste o ven un libro nómbrele cada prenda o dibujo y pídale repetir.",
+                    "imagen": "12-16_10"
+                },
+                {
+                    "indicador": "63",
+                    "instrucciones": "Frente al espejo pregúntele quiénes son y cómo se llaman.",
+                    "imagen": "12-16_11"
+                },
+                {
+                    "indicador": "64",
+                    "instrucciones": "Póngale al alcance lápiz y papel para hacer garabatos.",
+                    "imagen": "12-16_12"
+                },
+                {
+                    "indicador": "65",
+                    "instrucciones": "Colocar y sacar cosas en recipientes.",
+                    "imagen": "12-16_13"
+                },
+                {
+                    "indicador": "66",
+                    "instrucciones": "Déjele comer por su cuenta aunque derrame, nombre los alimentos y describa su sabor o estado con palabras y gestos.",
+                    "imagen": "12-16_14"
+                },
+                {
+                    "indicador": "67",
+                    "instrucciones": "Pídale mostrar sus cosas a otros familiares y celébralo.",
+                    "imagen": "12-16_15"
+                }
+            ]
+        },
+        {
+            "level": "6",
+            "edad": "16.1 a 20 meses",
+            "tareas": [{
+                    "indicador": "68",
+                    "materiales": "Juguetes de colores brillantes, Cubos o cajas para apilar, Láminas, frascos, tarrinas, tubos, etc. en parejas, Plastilina o barro, Hojas y Lápices de colores o crayolas, Cuentos infantiles ilustrados.",
+                    "instrucciones": "Provéale un objeto amarrado a un cordón para arrastrar.",
+                    "imagen": "16-20_1"
+                },
+                {
+                    "indicador": "69",
+                    "instrucciones": "Escuche y responda con simpleza a preguntas que le haga.",
+                    "imagen": "16-20_2"
+                },
+                {
+                    "indicador": "70",
+                    "instrucciones": "Cuéntele lo que hace: a dónde van, con quién saluda, etc.",
+                    "imagen": "16-20_3"
+                },
+                {
+                    "indicador": "71",
+                    "instrucciones": "Canten con gestos y muévanse con ritmo.",
+                    "imagen": "16-20_4"
+                },
+                {
+                    "indicador": "72",
+                    "instrucciones": "Pídale traer, llevar cosas o llamar personas por su nombre.",
+                    "imagen": "16-20_5"
+                },
+                {
+                    "indicador": "73",
+                    "instrucciones": "Que señale y nombre las partes del cuerpo de un muñeco.",
+                    "imagen": "16-20_6"
+                },
+                {
+                    "indicador": "74",
+                    "instrucciones": "Pregúntele ¿de quién es? cada cosa y dígale mío o tuyo.",
+                    "imagen": "16-20_7"
+                },
+                {
+                    "indicador": "75",
+                    "instrucciones": "Encajar círculos y cuadrados de colores.",
+                    "imagen": "16-20_8"
+                },
+                {
+                    "indicador": "76",
+                    "instrucciones": "Pararse en un pie con ayuda.",
+                    "imagen": "16-20_9"
+                },
+                {
+                    "indicador": "77",
+                    "instrucciones": "Amasen y moldeen con masa, plastilina o barro.",
+                    "imagen": "16-20_10"
+                },
+                {
+                    "indicador": "78",
+                    "instrucciones": "Mantenga las rutinas de higiene: lavarse las manos, cepillarse los dientes y baño diario.",
+                    "imagen": "16-20_11"
+                },
+                {
+                    "indicador": "79",
+                    "instrucciones": "Apilen cajas o cubos aumentándolos progresivamente de 3 a 10, hasta que pueda hacerlo sin ayuda.",
+                    "imagen": "16-20_12"
+                },
+                {
+                    "indicador": "80",
+                    "instrucciones": "Miren libros o revistas con gráficos y descríbanlos.",
+                    "imagen": "16-20_13"
+                },
+                {
+                    "indicador": "81",
+                    "instrucciones": "Mezcle parejas de tapas, cajas, palos, etc., saque una y pídale elegir la otra igual.",
+                    "imagen": "16-20_14"
+                }
+            ]
+        },
+        {
+            "level": "7",
+            "edad": "20.1 a 24 meses",
+            "tareas": [{
+                    "indicador": "82",
+                    "materiales": "Instrumento musical o grabadora, Juguetes de colores brillantes y de tamaño mediano, Lápiz o colores y hojas, Cuentos infantiles con dibujos, Bolas perforadas y cordones, Soga y frascos plásticos para amarrar, Tablero con círculos, y cuadrados excavados y sus respectivas figuras para encajar.",
+                    "instrucciones": "Alcanzar cosas que están sobre su altura (en puntas).",
+                    "imagen": "20-24_1"
+                },
+                {
+                    "indicador": "83",
+                    "instrucciones": "Pídale recoger objetos desde el piso o pasárselos, nombrándolos y diciendo su uso.",
+                    "imagen": "20-24_2"
+                },
+                {
+                    "indicador": "84",
+                    "instrucciones": "Sin pañal acordar y ayudarlo para que avise cuando quiera orinar y/o defecar.",
+                    "imagen": "20-24_3"
+                },
+                {
+                    "indicador": "85",
+                    "instrucciones": "Jueguen a perseguirse corriendo.",
+                    "imagen": "20-24_4"
+                },
+                {
+                    "indicador": "86",
+                    "instrucciones": "Ayúdalo a saltar.",
+                    "imagen": "20-24_5"
+                },
+                {
+                    "indicador": "87",
+                    "instrucciones": "Provéale de material para apilar y hacer torres.",
+                    "imagen": "20-24_6"
+                },
+                {
+                    "indicador": "88",
+                    "instrucciones": "Dele papel y lápiz para hacer círculos.",
+                    "imagen": "20-24_7"
+                },
+                {
+                    "indicador": "89",
+                    "instrucciones": "Identificar objetos y personajes en los dibujos por su nombre y características.",
+                    "imagen": "20-24_8"
+                },
+                {
+                    "indicador": "90",
+                    "instrucciones": "Ayúdalo a pasar cordones en los zapatos, en bolitas perforadas, etc.",
+                    "imagen": "20-24_9"
+                },
+                {
+                    "indicador": "91",
+                    "instrucciones": "Hablar por teléfono con familiares.",
+                    "imagen": "20-24_10"
+                },
+                {
+                    "indicador": "92",
+                    "instrucciones": "Hacerle preguntas como ¿Qué quieres?, ¿Qué te pasa?, ¿Qué haces?",
+                    "imagen": "20-24_11"
+                },
+                {
+                    "indicador": "93",
+                    "instrucciones": "Mostrarle objetos y pedirle reconocer.",
+                    "imagen": "20-24_12"
+                }
+            ]
+        },
+        {
+            "level": "8",
+            "edad": "24.1 a 36 meses",
+            "tareas": [{
+                    "indicador": "94",
+                    "materiales": "Juguetes de colores brillantes y de tamaño mediano, Pelotas de caucho de colores llamativos, Tijeras y papeles para recortar, Lápices y hojas para dibujar, Tablero con excavados y sus respectivos triángulos, círculos y cuadrados de diferente tamaño y color.",
+                    "instrucciones": "Caminen hacia atrás, de cuclillas y estirándose en puntas de pie.",
+                    "imagen": "24-36_1"
+                },
+                {
+                    "indicador": "95",
+                    "instrucciones": "Ayúdalo a saltar desde partes altas, con el pie y con la cuerda.",
+                    "imagen": "24-36_2"
+                },
+                {
+                    "indicador": "96",
+                    "instrucciones": "Que alterne los pies pisando 1 frijol en un escalón y un maíz en el siguiente.",
+                    "imagen": "24-36_3"
+                },
+                {
+                    "indicador": "97",
+                    "instrucciones": "Provéale tijeras y papel para que recorte como quiera.",
+                    "imagen": "24-36_4"
+                },
+                {
+                    "indicador": "98",
+                    "instrucciones": "Láncele una pelota a sus manos y que se la devuelva.",
+                    "imagen": "24-36_5"
+                },
+                {
+                    "indicador": "99",
+                    "instrucciones": "Que se ponga y quite, abotone y desabotone la ropa con y sin ayuda y pídale seleccionarla por color o modelo.",
+                    "imagen": "24-36_6"
+                },
+                {
+                    "indicador": "100",
+                    "instrucciones": "Permítale quitar envolturas, tomar agua y comer sin ayuda.",
+                    "imagen": "24-36_7"
+                },
+                {
+                    "indicador": "101",
+                    "instrucciones": "Cántele, cuéntele, léale o dele un masaje antes de dormir.",
+                    "imagen": "24-36_8"
+                },
+                {
+                    "indicador": "102",
+                    "instrucciones": "Acostúmbrele a lavarse las manos y cepillarse los dientes después de cada comida y al acostarse.",
+                    "imagen": "24-36_9"
+                },
+                {
+                    "indicador": "103",
+                    "instrucciones": "Al ordenar cosas diga dónde las pone y de quién son: arriba, abajo, atrás, dentro, fuera, mío, tuyo, de papá, etc.",
+                    "imagen": "24-36_10"
+                },
+                {
+                    "indicador": "104",
+                    "instrucciones": "En las celebraciones familiares disfrácelo y estimúlelo a dramatizar, recitar o cantar.",
+                    "imagen": "24-36_11"
+                },
+                {
+                    "indicador": "105",
+                    "instrucciones": "Pídale recoger, traer cosas y decir su uso, dar mensajes.",
+                    "imagen": "24-36_12"
+                },
+                {
+                    "indicador": "106",
+                    "instrucciones": "Cuenten gradas, dedos, ojos, años, etc.; cuente 1, 2, 3 para iniciar una acción.",
+                    "imagen": "24-36_13"
+                },
+                {
+                    "indicador": "107",
+                    "instrucciones": "Encajen círculo, cuadrado y triángulo, animándolo a hacerlo por su cuenta.",
+                    "imagen": "24-36_14"
+                },
+                {
+                    "indicador": "108",
+                    "instrucciones": "Pregunte al niño: ¿Con quién juegas?, ¿Quién está contigo?, ¿A quién le das? y celebre sus respuestas.",
+                    "imagen": "24-36_15"
+                }
+            ]
+        },
+        {
+            "level": "9",
+            "edad": "36.1 a 48 meses",
+            "tareas": [{
+                    "indicador": "109",
+                    "materiales": "Cordones de zapato para enseñarle a anudar, Pelotas de caucho de colores llamativos, Tijeras de punta roma, Goma blanca, Hojas de colores, Libros de cuentos ilustrados, Cubos, Láminas con figuras humanas y de animales en acción, Rompecabezas.",
+                    "instrucciones": "Que elija su ropa, se vista solo, anude y desate cordones.",
+                    "imagen": "36-48_1"
+                },
+                {
+                    "indicador": "110",
+                    "instrucciones": "Al aire libre, jueguen carreras, pelota, rondas y saltos.",
+                    "imagen": "36-48_2"
+                },
+                {
+                    "indicador": "111",
+                    "instrucciones": "Hagan sombras móviles con las manos y dedos.",
+                    "imagen": "36-48_3"
+                },
+                {
+                    "indicador": "112",
+                    "instrucciones": "Doblen y desdoblen papeles, pinten, recorten y peguen.",
+                    "imagen": "36-48_4"
+                },
+                {
+                    "indicador": "113",
+                    "instrucciones": "Muéstrele colores y formas y compruebe si los distingue en los objetos de la casa.",
+                    "imagen": "36-48_5"
+                },
+                {
+                    "indicador": "114",
+                    "instrucciones": "Armen rompecabezas de 5 a 10 piezas progresivamente, buscando las relaciones de color y figura.",
+                    "imagen": "36-48_6"
+                },
+                {
+                    "indicador": "115",
+                    "instrucciones": "Nombre y caracterice los días, mañana, tarde y noche.",
+                    "imagen": "36-48_7"
+                },
+                {
+                    "indicador": "116",
+                    "instrucciones": "Pídale contar lo que ve y repetir el cuento que le leyó.",
+                    "imagen": "36-48_8"
+                },
+                {
+                    "indicador": "117",
+                    "instrucciones": "Enséñele a distinguir y evitar peligros: fuego, zanjas, pozos, objetos cortantes y punzantes, autos, etc.",
+                    "imagen": "36-48_9"
+                },
+                {
+                    "indicador": "118",
+                    "instrucciones": "Con otros niños y adultos practiquen saludos, permisos, recados, por favor, agradecer y esperar turno.",
+                    "imagen": "36-48_10"
+                },
+                {
+                    "indicador": "119",
+                    "instrucciones": "Imite los movimientos y características de los animales.",
+                    "imagen": "36-48_11"
+                },
+                {
+                    "indicador": "120",
+                    "instrucciones": "Con cajas y palos armen puentes, torres y otras figuras.",
+                    "imagen": "36-48_12"
+                },
+                {
+                    "indicador": "121",
+                    "instrucciones": "Repitan rimas con números, días y meses: a la una como tuna, a las dos me da la tos, abril lluvias mil, etc.",
+                    "imagen": "36-48_13"
+                },
+                {
+                    "indicador": "122",
+                    "instrucciones": "Hágale contar historias o acciones de los dibujos.",
+                    "imagen": "36-48_14"
+                },
+                {
+                    "indicador": "123",
+                    "instrucciones": "Pídale agrupar cosas por el material: metal, madera, tela, vidrio, etc. también por el color.",
+                    "imagen": "36-48_15"
+                },
+                {
+                    "indicador": "124",
+                    "instrucciones": "Comparen personas, animales o cosas por tamaño: grande, pequeño, largo, corto; ancho y delgado, pesado y liviano.",
+                    "imagen": "36-48_16"
+                }
+            ]
+        },
+        {
+            "level": "10",
+            "edad": "48.1 a 60 meses",
+            "tareas": [{
+                    "indicador": "125",
+                    "materiales": "Tabla de madera consistente, Soga, Modelos de triángulo, círculo y cuadrado, Hojas de papel, Perfiles de animales en cartulina, Aguja mocha y lana, Hojas y Lápices, Rompecabezas de 10 a 20 piezas, Modelos o rompecabezas de letras y números.",
+                    "instrucciones": "Caminen sobre una línea o un puente de tabla y ladrillos.",
+                    "imagen": "48-60_1"
+                },
+                {
+                    "indicador": "126",
+                    "instrucciones": "El que más aguanta en un pie, a saltar con pies juntos la cuerda templada (a 5 cm del suelo), a rebotar la pelota con una mano.",
+                    "imagen": "48-60_2"
+                },
+                {
+                    "indicador": "127",
+                    "instrucciones": "Copien y recorten círculo, cuadrado, triángulo, línea recta y curva, figuras humanas.",
+                    "imagen": "48-60_3"
+                },
+                {
+                    "indicador": "128",
+                    "instrucciones": "Permítale jugar con sus amigos o parientes sin interferir.",
+                    "imagen": "48-60_4"
+                },
+                {
+                    "indicador": "129",
+                    "instrucciones": "Cuéntele y que cuente historias o recite expresando: alegría, tristeza, miedo, etc. Apláudanle.",
+                    "imagen": "48-60_5"
+                },
+                {
+                    "indicador": "130",
+                    "instrucciones": "Que realice tareas sencillas: barrer, regar, poner la mesa, secar cubiertos, etc.",
+                    "imagen": "48-60_6"
+                },
+                {
+                    "indicador": "131",
+                    "instrucciones": "Rasguen papel suave en pedazos y hagan bolitas con los dedos.",
+                    "imagen": "48-60_7"
+                },
+                {
+                    "indicador": "132",
+                    "instrucciones": "Pongan puntos o cosas líneas dibujadas en papel.",
+                    "imagen": "48-60_8"
+                },
+                {
+                    "indicador": "133",
+                    "instrucciones": "Que al comer use cuchara, cuchillo, vaso, sin ayuda.",
+                    "imagen": "48-60_9"
+                },
+                {
+                    "indicador": "134",
+                    "instrucciones": "Entréguele dinero y acompáñalo a comprar lo que desee.",
+                    "imagen": "48-60_10"
+                },
+                {
+                    "indicador": "135",
+                    "instrucciones": "Jugar con modelos, moldes y rompecabezas de vocales y números.",
+                    "imagen": "48-60_11"
+                },
+                {
+                    "indicador": "136",
+                    "instrucciones": "Pídale agrupar círculos, cuadrados y triángulos de 3 colores y tamaños por la forma, por color y tamaño.",
+                    "imagen": "48-60_12"
+                },
+                {
+                    "indicador": "137",
+                    "instrucciones": "Armen rompecabezas de 10 a 20 piezas.",
+                    "imagen": "48-60_13"
+                },
+                {
+                    "indicador": "138",
+                    "instrucciones": "Que se vista y se desvista sin ayuda, muéstrele cómo distinguir derecho y revés, izquierdo y derecho.",
+                    "imagen": "48-60_14"
+                },
+                {
+                    "indicador": "139",
+                    "instrucciones": "Anímelo a conversar y distinguir actividades de ayer, hoy y mañana.",
+                    "imagen": "48-60_15"
+                }
+            ]
+        },
+        {
+            "level": "11",
+            "edad": "60.1 a 72 meses",
+            "tareas": [{
+                    "indicador": "140",
+                    "materiales": "Lápices de colores y colores, Lápiz, Hojas Blancas o cuaderno, Hojas de colores, Lámina o foto de figura humana, Láminas con personas o animales en acción, Fichas de cartón con el abecedario y los números del 0 al 9.",
+                    "instrucciones": "Ayúdele a subir y bajar escalera de mano vigilándole.",
+                    "imagen": "60-72_1"
+                },
+                {
+                    "indicador": "141",
+                    "instrucciones": "Realicen competencias de salto con obstáculos pequeños.",
+                    "imagen": "60-72_2"
+                },
+                {
+                    "indicador": "142",
+                    "instrucciones": "Jueguen a golpear y lanzar la pelota con un palo o raqueta y a rebotar con una mano.",
+                    "imagen": "60-72_3"
+                },
+                {
+                    "indicador": "143",
+                    "instrucciones": "En dibujos pídale ubicar dónde está algo: arriba, abajo, adelante, atrás, dentro y fuera, día, noche, antes, después.",
+                    "imagen": "60-72_4"
+                },
+                {
+                    "indicador": "144",
+                    "instrucciones": "Demuéstrele y copien letras y números en un papel, memorice canciones de contar y nombrar letras.",
+                    "imagen": "60-72_5"
+                },
+                {
+                    "indicador": "145",
+                    "instrucciones": "Pídale distinguir las partes del cuerpo en un dibujo o foto.",
+                    "imagen": "60-72_6"
+                },
+                {
+                    "indicador": "146",
+                    "instrucciones": "Pinten cuadrados, triángulos y círculos sin salirse.",
+                    "imagen": "60-72_7"
+                },
+                {
+                    "indicador": "147",
+                    "instrucciones": "Que mire láminas, invente una historia y la repita a otros.",
+                    "imagen": "60-72_8"
+                },
+                {
+                    "indicador": "148",
+                    "instrucciones": "Hágale memorizar dirección de la casa y teléfono.",
+                    "imagen": "60-72_9"
+                },
+                {
+                    "indicador": "149",
+                    "instrucciones": "Permítale participar en actividades familiares y de vecinos.",
+                    "imagen": "60-72_10"
+                },
+                {
+                    "indicador": "150",
+                    "instrucciones": "Estimule sus expresiones de alegría y apóyalo si está triste o aburrido.",
+                    "imagen": "60-72_11"
+                },
+                {
+                    "indicador": "151",
+                    "instrucciones": "Mantenga rutinas, horarios y estimule prácticas de cortesía.",
+                    "imagen": "60-72_12"
+                },
+                {
+                    "indicador": "152",
+                    "instrucciones": "Dibujar líneas largas y cortas, arcos, bastones y círculos.",
+                    "imagen": "60-72_13"
+                },
+                {
+                    "indicador": "153",
+                    "instrucciones": "Pídale contar sus sueños.",
+                    "imagen": "60-72_14"
+                },
+                {
+                    "indicador": "154",
+                    "instrucciones": "Cuando paseen identifiquen servicios, lugares, ubicación.",
+                    "imagen": "60-72_15"
+                }
+            ]
+        }
+    ]
+}

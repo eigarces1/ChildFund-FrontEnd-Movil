@@ -8,8 +8,11 @@ class EvaluatorPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-        child: Padding(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Evaluador'),
+      ),
+      body: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,

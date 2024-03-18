@@ -1,19 +1,19 @@
 import 'package:childfund_evaluation/presentation/screens/parent/child_details_screen.dart';
+import 'package:childfund_evaluation/system/globals.dart';
 import 'package:flutter/material.dart';
 import '../../../utils/api_service.dart';
 import '../../../utils/models/child.dart'; // Importa la clase Child
 
 class ChildrenListPage extends StatefulWidget {
-  final int parentId;
 
-  const ChildrenListPage({Key? key, required this.parentId}) : super(key: key);
+  const ChildrenListPage({Key? key}) : super(key: key);
 
   @override
   _ChildrenListPageState createState() => _ChildrenListPageState();
 }
 
 class _ChildrenListPageState extends State<ChildrenListPage> {
-  List<Child>? children;
+  List<Map<String, dynamic>>? children;
 
   @override
   void initState() {
@@ -23,24 +23,9 @@ class _ChildrenListPageState extends State<ChildrenListPage> {
 
   Future<void> _loadChildren() async {
     final childrenData =
-        await ApiService.getChildrenByParentId(widget.parentId);
+        await ApiService.getChildrenByParentId(paGlobal.parentId, tokenGlobal);
     setState(() {
-      children = childrenData
-          ?.map((data) => Child(
-                childId: data['child_id'],
-                name: data['name'],
-                lastname: data['lastname'],
-                childNumber: data['child_number'],
-                gender: data['gender'],
-                birthdate: data['birthdate'],
-                community: data['community'],
-                communityType: data['community_type'],
-                village: data['village'],
-                status: data['status'],
-                updatedAt: data['updated_at'],
-                createdAt: data['created_at'],
-              ))
-          .toList();
+      children = childrenData;
     });
   }
 
@@ -57,26 +42,40 @@ class _ChildrenListPageState extends State<ChildrenListPage> {
               itemBuilder: (context, index) {
                 final child = children![index];
                 return ListTile(
-                  title: Text('${child.name} ${child.lastname}'),
+                  title: Text('${child['name'] ?? ''} ${child['lastname'] ?? ''}'),
                   subtitle: Text(
-                      'Género: ${child.gender}, Fecha de nacimiento: ${child.birthdate}'),
+                      'Género: ${child['gender'] ?? ''}, Fecha de nacimiento: ${child['birthdate'] ?? ''}'),
                   onTap: () {
                     _navigateToChildDetails(
-                        child); // Navegar a la página de detalles del niño al hacer clic
+                        child['child_id']); // Navegar a la página de detalles del niño al hacer clic
                   },
                 );
               },
             ),
     );
   }
+  void _navigateToChildDetails(int id) {
+    Future<dynamic> childOne = _getChild(id);
 
-  void _navigateToChildDetails(Child child) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => ChildDetailsPage(
-            child: child), // Pasa el niño seleccionado a la página de detalles
-      ),
-    );
+    childOne.then((ch) {
+      if (ch is Child) {
+        Child children = ch;
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ChildDetailsPage(
+                child:
+                    children), // Pasa el niño seleccionado a la página de detalles
+          ),
+        );
+      } else {
+        print('Niño no encontrado');
+      }
+    });
+  }
+
+  Future<dynamic> _getChild(int id) async {
+    return ApiService.getChildrenById(id);
   }
 }
+
