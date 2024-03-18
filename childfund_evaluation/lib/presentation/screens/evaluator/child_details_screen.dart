@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../utils/models/child.dart'; 
+import 'package:childfund_evaluation/presentation/screens/evaluator/evaluation_data.dart';
+import '../../../utils/models/child.dart';
 
 class ChildDetailsPage extends StatelessWidget {
   final Child child;
@@ -27,6 +28,23 @@ class ChildDetailsPage extends StatelessWidget {
             Text('Comunidad: ${child.community}'),
             Text('Tipo de Comunidad: ${child.communityType}'),
             Text('Número de Niño: ${child.childNumber}'),
+            Text('Número de Niño: ${child.childNumber}'),
+            const Divider(),
+            const SizedBox(height: 8.0),
+            Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          EvaluationScreen(), // Pasa el niño seleccionado a la página de detalles
+                    ),
+                  );
+                },
+                child: Text('Continuar'),
+              ),
+            )
             // Agrega más detalles según sea necesario
           ],
         ),

@@ -1,4 +1,4 @@
-import 'package:childfund_evaluation/presentation/screens/parent/child_details_screen.dart';
+import 'package:childfund_evaluation/presentation/screens/evaluator/child_details_screen.dart';
 import 'package:childfund_evaluation/system/globals.dart';
 import 'package:childfund_evaluation/utils/models/child.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +42,7 @@ class _AsignacionesPageState extends State<AsignacionesPage> {
                 final child = children![index];
                 return ListTile(
                   title: Text(child['child_name']),
-                  subtitle: Text(child['child_lastname']),
+                  subtitle: Text(child['test_id']),
                   onTap: () {
                     _navigateToChildDetails(child['child_id']);
                   },
