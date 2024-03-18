@@ -54,9 +54,13 @@ class _EvaluationScreenState extends State<EvaluationScreen> {
   bool estMalo = false;
   bool estRegular = false;
 
-  Future<void> _submit() async {
-    await ApiService.enviarEvaluacion(evaluation, widget.testId);
+  void _submit() {
+    print(evaluation.toString());
   }
+
+  /*Future<void> _submit() async {
+    await ApiService.enviarEvaluacion(evaluation, widget.testId);
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -330,6 +334,16 @@ class _EvaluationScreenState extends State<EvaluationScreen> {
                           setState(() {
                             edIn = value!;
                             evaluation?.initialEducation = cibv ? 1 : 0;
+                          });
+                        },
+                      ),
+                      TextFormField(
+                        decoration: InputDecoration(
+                          hintText: 'Ingresar',
+                        ),
+                        onChanged: (data) {
+                          setState(() {
+                            evaluation?.governmental = data;
                           });
                         },
                       ),
