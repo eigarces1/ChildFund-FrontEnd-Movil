@@ -44,7 +44,7 @@ class ChildDetailsPage extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => EvaluationScreen(
+                      builder: (context) => EvaluationFormScreen(
                           testId:
                               testid), // Pasa el niño seleccionado a la página de detalles
                     ),
