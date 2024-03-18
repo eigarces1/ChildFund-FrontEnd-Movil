@@ -42,9 +42,10 @@ class _AsignacionesPageState extends State<AsignacionesPage> {
                 final child = children![index];
                 return ListTile(
                   title: Text(child['child_name']),
-                  subtitle: Text(child['test_id']),
+                  subtitle: Text(child['child_lastname']),
                   onTap: () {
-                    _navigateToChildDetails(child['child_id']);
+                    _navigateToChildDetails(
+                        child['child_id'], child['test_id']);
                   },
                   // Otros campos del hijo que desees mostrar
                 );
@@ -53,7 +54,7 @@ class _AsignacionesPageState extends State<AsignacionesPage> {
     );
   }
 
-  void _navigateToChildDetails(int id) {
+  void _navigateToChildDetails(int id, int testId) {
     Future<dynamic> childOne = _getChild(id);
 
     childOne.then((ch) {
@@ -63,8 +64,9 @@ class _AsignacionesPageState extends State<AsignacionesPage> {
           context,
           MaterialPageRoute(
             builder: (context) => ChildDetailsPage(
-                child:
-                    children), // Pasa el niño seleccionado a la página de detalles
+                child: children,
+                testid:
+                    testId), // Pasa el niño seleccionado a la página de detalles
           ),
         );
       } else {

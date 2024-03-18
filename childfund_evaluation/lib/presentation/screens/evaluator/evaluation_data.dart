@@ -1,9 +1,12 @@
-import 'dart:math';
-
 import 'package:childfund_evaluation/utils/models/evaluation.dart';
 import 'package:flutter/material.dart';
+import 'package:childfund_evaluation/utils/api_service.dart';
 
 class EvaluationScreen extends StatefulWidget {
+  final int testId;
+
+  const EvaluationScreen({Key? key, required this.testId}) : super(key: key);
+
   @override
   _EvaluationScreenState createState() => _EvaluationScreenState();
 }
@@ -70,7 +73,7 @@ class _EvaluationScreenState extends State<EvaluationScreen> {
             children: [
               Text('1. Persona responsable del niño:'),
               CheckboxListTile(
-                title: Text('Madre'),
+                title: Text(widget.testId.toString()),
                 value: personaMadre,
                 onChanged: (bool? newValue) {
                   setState(() {

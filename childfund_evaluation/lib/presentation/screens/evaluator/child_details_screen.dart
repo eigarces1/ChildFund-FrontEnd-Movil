@@ -4,8 +4,10 @@ import '../../../utils/models/child.dart';
 
 class ChildDetailsPage extends StatelessWidget {
   final Child child;
+  final int testid;
 
-  const ChildDetailsPage({Key? key, required this.child}) : super(key: key);
+  const ChildDetailsPage({Key? key, required this.child, required this.testid})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +35,7 @@ class ChildDetailsPage extends StatelessWidget {
             Text('Pueblo: ${child.village}'),
             Text('Fecha de actualización: ${child.updatedAt}'),
             Text('Fecha de creación: ${child.createdAt}'),
+            Text('Test: ${testid}'),
             const Divider(),
             const SizedBox(height: 8.0),
             Center(
@@ -41,8 +44,9 @@ class ChildDetailsPage extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) =>
-                          EvaluationScreen(), // Pasa el niño seleccionado a la página de detalles
+                      builder: (context) => EvaluationScreen(
+                          testId:
+                              testid), // Pasa el niño seleccionado a la página de detalles
                     ),
                   );
                 },
