@@ -1,30 +1,26 @@
 import 'package:flutter/material.dart';
 
-class ChildEvaluationFormWidget extends StatelessWidget {
+class ParentEvaluationFormWidget extends StatelessWidget {
   final String indicator;
   final String level;
-  final String motorName;
-  final String posicion;
   final String materiales;
   final String instrucciones;
-  final String respuesta;
   final String image;
   final bool? accomplished;
+  final Map<String, String> imagesRoute;
   final ValueChanged<bool?>?
       onChanged; // Callback function to notify parent widget
 
-  const ChildEvaluationFormWidget({
+  const ParentEvaluationFormWidget({
     Key? key,
-    required this.posicion,
     required this.image,
     required this.level,
     required this.materiales,
     required this.instrucciones,
-    required this.respuesta,
-    required this.motorName,
     required this.indicator,
     this.accomplished,
     this.onChanged,
+    required this.imagesRoute,
   }) : super(key: key);
 
   @override
@@ -36,7 +32,7 @@ class ChildEvaluationFormWidget extends StatelessWidget {
         children: [
           Center(
             child: Text(
-              '$motorName - $indicator - Nivel $level',
+              '$indicator - Nivel $level',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize:
@@ -45,13 +41,6 @@ class ChildEvaluationFormWidget extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 8.0),
-          const Text(
-            'Posición:',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          Text(posicion),
           const SizedBox(height: 8.0),
           const Text(
             'Materiales:',
@@ -69,16 +58,9 @@ class ChildEvaluationFormWidget extends StatelessWidget {
           ),
           Text(instrucciones),
           const SizedBox(height: 8.0),
-          const Text(
-            'Respuesta:',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          Text(respuesta),
           const SizedBox(height: 8.0),
           Image.asset(
-            'assets/images/$image.jpg', // Replace this with the path to your image asset
+            'assets/images_family_tasks/${imagesRoute[level]}/$image.png', // Replace this with the path to your image asset
             width: 200, // Adjust width as needed
             height: 200, // Adjust height as needed
             fit: BoxFit.contain, // Adjust the fit as needed

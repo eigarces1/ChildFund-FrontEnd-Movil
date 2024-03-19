@@ -1,13 +1,10 @@
-import 'package:childfund_evaluation/presentation/screens/evaluator/results_screen.dart';
 import 'package:childfund_evaluation/utils/json_parse.dart';
 import 'package:childfund_evaluation/utils/models/age_group.dart';
 import 'package:childfund_evaluation/utils/models/age_group_parent.dart';
-import 'package:childfund_evaluation/utils/models/indicator.dart';
-import 'package:childfund_evaluation/utils/models/motor.dart';
 import 'package:childfund_evaluation/utils/models/tarea.dart';
 import 'package:flutter/material.dart';
 import '../../../utils/colors.dart';
-import '../../widgets/child_evaluation_form.dart';
+import '../../widgets/parent_evaluation_form.dart';
 
 class EvaluationParentScreen extends StatefulWidget {
   final String selectedAge;
@@ -61,7 +58,21 @@ class _EvaluationScreenState extends State<EvaluationParentScreen> {
     }
   }
 
-  /*List<Step> getCurrentTaskStep() {
+  Map<String, String> imagesRoute = {
+    "1": "0-3 meses",
+    "2": "3-6 meses",
+    "3": "6-9 meses",
+    "4": "9-12 meses",
+    "5": "12-16 meses",
+    "6": "16-20 meses",
+    "7": "20-24 meses",
+    "8": "24-36 meses",
+    "9": "36-48 meses",
+    "10": "48-60 meses",
+    "11": "60-72 meses",
+  };
+
+  List<Step> getCurrentTaskStep() {
     List<Tarea> tasksToUse = isLowerLevel
         ? currentAgeGroup!.tareas.reversed.toList()
         : currentAgeGroup!.tareas;
@@ -72,22 +83,42 @@ class _EvaluationScreenState extends State<EvaluationParentScreen> {
       return Step(
         isActive: true,
         state: currentStep == index
-        ? StepState.editing
-        : index < currentStep
-          ? StepState.complete
-          : StepState.indexed,
+            ? StepState.editing
+            : index < currentStep
+                ? StepState.complete
+                : StepState.indexed,
         title: const Text(""),
-        content: ChildEvaluationFormWidget(
+        content: ParentEvaluationFormWidget(
+          indicator: task.indicador,
+          image: task.imagen,
+          level:
+              '${!isLowerLevel ? !isUpperLevel ? widget.selectedLevel : widget.selectedLevel + 1 : widget.selectedLevel - 1}',
+          materiales: getValueStringMaterials(task.materiales),
+          instrucciones: task.instrucciones,
+          accomplished: task.accomplished,
+          onChanged: (value) {
+            updateStepAccomplished(task, value!);
+          },
+          imagesRoute: imagesRoute,
+        ),
+      );
+    }).toList();
+    return steps;
+  }
 
-        )
-      )
-    });
-  }*/
-
-  void updateStepAccomplished(Indicator indicator, bool value) {
+  void updateStepAccomplished(Tarea task, bool value) {
     setState(() {
-      indicator.accomplished = value;
+      task.accomplished = value;
     });
+  }
+
+  int countAccomplishedIndicators() {
+    if (currentAgeGroup == null) {
+      return 0;
+    }
+    return currentAgeGroup!.tareas
+        .where((indicator) => indicator.accomplished == true)
+        .length;
   }
 
   String getValueStringMaterials(String? value) {
@@ -100,38 +131,115 @@ class _EvaluationScreenState extends State<EvaluationParentScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Lista con Listas Internas'),
-      ),
-      body: ListView.builder(
-        itemCount: ageGroupsData.length,
-        itemBuilder: (context, index) {
-          final item = ageGroupsData![index];
-          return ListTile(
-            title: Text(item.range),
-            subtitle: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: List.generate(
-                item.tareas.length,
-                (i) {
-                  final subItem = item.tareas[i];
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(subItem.indicador),
-                      Text(getValueStringMaterials(subItem.materiales)),
-                      Text(subItem.instrucciones),
-                      Divider(), // Añadir separador entre elementos
-                    ],
-                  );
-                },
+    // Check if currentMotor is null
+    if (currentAgeGroup == null) {
+      // Show a loading indicator or any other appropriate widget until currentMotor is initialized
+      return const CircularProgressIndicator();
+    } else {
+      // Once currentMotor is initialized, build the Stepper widget
+      return SafeArea(
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text('Evaluación'),
+            backgroundColor: AppColors.primaryColor,
+          ),
+          body: Column(
+            children: [
+              Expanded(
+                child: Stepper(
+                  type: StepperType.horizontal,
+                  steps: getCurrentTaskStep(),
+                  currentStep: currentStep,
+                  onStepContinue: () {
+                    final isLastStep =
+                        currentStep == getCurrentTaskStep().length - 1;
+
+                    List<Tarea> indicatorsToUse = isLowerLevel
+                        ? currentAgeGroup!.tareas.reversed.toList()
+                        : currentAgeGroup!.tareas;
+
+                    final isCurrentStepCompleted =
+                        indicatorsToUse[currentStep].accomplished != null;
+                    if (!isCurrentStepCompleted) {
+                      return;
+                    }
+
+                    if (isLastStep) {
+                      int currentScore = countAccomplishedIndicators();
+                      //score += isLowerLevel ? -currentScore : currentScore;
+
+                      if (currentMotorIndex >= 4 &&
+                          (isLowerLevel ||
+                              isUpperLevel ||
+                              (widget.selectedLevel == 1 && currentScore < 2) ||
+                              (widget.selectedLevel == 11 &&
+                                  currentScore >= 2))) {
+                        /* 
+                          * Aqui debe ir la pantalla al finalizar la prueba
+                        */
+                        return;
+                      }
+
+                      if (isLowerLevel ||
+                          isUpperLevel ||
+                          (currentScore < 2 && widget.selectedLevel == 1) ||
+                          (currentScore >= 2 && widget.selectedLevel == 11)) {
+                        setState(() {
+                          isLowerLevel = false;
+                          isUpperLevel = false;
+                          currentStep = 0;
+                          currentMotorIndex += 1;
+                          currentTask =
+                              currentAgeGroup?.tareas[currentMotorIndex];
+                        });
+                        return;
+                      }
+
+                      if (currentScore >= 2 &&
+                          widget.selectedLevel < 11 &&
+                          !isUpperLevel) {
+                        AgeGroupParent nextAgeGroup = ageGroupsData.firstWhere(
+                            (ageGroup) =>
+                                ageGroup.level == (widget.selectedLevel + 1));
+
+                        setState(() {
+                          isUpperLevel = true;
+                          currentTask = nextAgeGroup.tareas[currentMotorIndex];
+                          currentStep = 0;
+                        });
+                        return;
+                      }
+                      if (currentScore < 2 &&
+                          widget.selectedLevel > 1 &&
+                          !isLowerLevel) {
+                        AgeGroupParent prevousAgeGroup =
+                            ageGroupsData.firstWhere((ageGroup) =>
+                                ageGroup.level == (widget.selectedLevel - 1));
+
+                        setState(() {
+                          isLowerLevel = true;
+                          currentTask =
+                              prevousAgeGroup.tareas[currentMotorIndex];
+                          currentStep = 0;
+                        });
+                        return;
+                      }
+                    } else {
+                      setState(() {
+                        currentStep += 1;
+                      });
+                    }
+                  },
+                  onStepCancel: currentStep == 0
+                      ? null
+                      : () => setState(() => currentStep -= 1),
+                ),
               ),
-            ),
-          );
-        },
-      ),
-    );
+            ],
+          ),
+        ),
+      );
+    }
   }
 
   int countQuestions(AgeGroup ageGroup) {
