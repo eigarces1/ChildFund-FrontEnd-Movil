@@ -30,7 +30,7 @@ class _EvaluationScreenState extends State<EvaluationParentScreen> {
   int currentMotorIndex = 0;
   bool isLowerLevel = false;
   bool isUpperLevel = false;
-  Tarea? currentMotor;
+  Tarea? currentTask;
   AgeGroupParent? currentAgeGroup;
   int score = 0;
   List<AgeGroupParent> ageGroupsData = [];
@@ -54,17 +54,48 @@ class _EvaluationScreenState extends State<EvaluationParentScreen> {
         coeficientTable = dataCoeficent;
         ageGroupsData = data;
         currentAgeGroup = currentAgeGroupData;
-        currentMotor = currentAgeGroup?.tareas[currentMotorIndex];
+        currentTask = currentAgeGroup?.tareas[currentMotorIndex];
       });
     } catch (e) {
       print('Error loading JSON data: $e');
     }
   }
 
+  /*List<Step> getCurrentTaskStep() {
+    List<Tarea> tasksToUse = isLowerLevel
+        ? currentAgeGroup!.tareas.reversed.toList()
+        : currentAgeGroup!.tareas;
+
+    List<Step> steps = tasksToUse.asMap().entries.map((entry) {
+      final index = entry.key;
+      final task = entry.value;
+      return Step(
+        isActive: true,
+        state: currentStep == index
+        ? StepState.editing
+        : index < currentStep
+          ? StepState.complete
+          : StepState.indexed,
+        title: const Text(""),
+        content: ChildEvaluationFormWidget(
+
+        )
+      )
+    });
+  }*/
+
   void updateStepAccomplished(Indicator indicator, bool value) {
     setState(() {
       indicator.accomplished = value;
     });
+  }
+
+  String getValueStringMaterials(String? value) {
+    if (value != null) {
+      return value;
+    } else {
+      return "";
+    }
   }
 
   @override
@@ -89,7 +120,7 @@ class _EvaluationScreenState extends State<EvaluationParentScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(subItem.indicador),
-                      Text(subItem.materiales),
+                      Text(getValueStringMaterials(subItem.materiales)),
                       Text(subItem.instrucciones),
                       Divider(), // Añadir separador entre elementos
                     ],
