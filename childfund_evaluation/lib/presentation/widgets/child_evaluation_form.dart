@@ -12,20 +12,22 @@ class ChildEvaluationFormWidget extends StatelessWidget {
   final bool? accomplished;
   final ValueChanged<bool?>?
       onChanged; // Callback function to notify parent widget
+  final int testId;
 
-  const ChildEvaluationFormWidget({
-    Key? key,
-    required this.posicion,
-    required this.image,
-    required this.level,
-    required this.materiales,
-    required this.instrucciones,
-    required this.respuesta,
-    required this.motorName,
-    required this.indicator,
-    this.accomplished,
-    this.onChanged,
-  }) : super(key: key);
+  const ChildEvaluationFormWidget(
+      {Key? key,
+      required this.posicion,
+      required this.image,
+      required this.level,
+      required this.materiales,
+      required this.instrucciones,
+      required this.respuesta,
+      required this.motorName,
+      required this.indicator,
+      this.accomplished,
+      this.onChanged,
+      required this.testId})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,11 +41,12 @@ class ChildEvaluationFormWidget extends StatelessWidget {
               '$motorName - $indicator - Nivel $level',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 18, // Ajusta el tamaño del texto según tus necesidades
+                fontSize:
+                    18, // Ajusta el tamaño del texto según tus necesidades
               ),
             ),
-          ),   
-          const SizedBox(height: 8.0),       
+          ),
+          const SizedBox(height: 8.0),
           const Text(
             'Posición:',
             style: TextStyle(

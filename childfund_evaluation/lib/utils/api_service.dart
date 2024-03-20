@@ -214,4 +214,23 @@ class ApiService {
       print('Error al enviar la solicitud POST: ${response.body}');
     }
   }
+
+  static Future<void> submitResults(String json, int id, int value) async {
+    final url =
+        Uri.parse('https://escalav2.app/api/test/save_responses?test_id=$id');
+    final response = await http.put(url,
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+          'Authorization': token,
+        },
+        body: jsonEncode(<String, dynamic>{
+          'responses': json,
+          "development_ratio": value,
+        }));
+    if (response.statusCode == 200) {
+      print('Solicitud POST enviada con éxito');
+    } else {
+      print('Error al enviar la solicitud PUT: ${response.body}');
+    }
+  }
 }

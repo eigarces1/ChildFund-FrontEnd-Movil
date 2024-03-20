@@ -1,7 +1,8 @@
-import 'package:childfund_evaluation/presentation/screens/age_selection_screen.dart';
+import 'package:childfund_evaluation/presentation/screens/evaluator/success_results.dart';
+import 'package:childfund_evaluation/utils/api_service.dart';
 import 'package:childfund_evaluation/utils/colors.dart';
+import 'package:childfund_evaluation/utils/controllers/evaluator_results_convert.dart';
 import 'package:childfund_evaluation/utils/models/age_group.dart';
-import 'package:childfund_evaluation/utils/models/indicator.dart';
 import 'package:childfund_evaluation/utils/models/indicator_with_level.dart';
 import 'package:childfund_evaluation/utils/models/motor.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,7 @@ class ResultsScreen extends StatefulWidget {
   final String childAgeMonths;
   final double developmentCoeficient;
   final List<AgeGroup> ageGroups;
+  final int testId;
 
   const ResultsScreen(
       {super.key,
@@ -19,7 +21,8 @@ class ResultsScreen extends StatefulWidget {
       required this.selectedLevel,
       required this.childAgeMonths,
       required this.developmentCoeficient,
-      required this.ageGroups});
+      required this.ageGroups,
+      required this.testId});
 
   @override
   _ResultsScreenState createState() => _ResultsScreenState();
@@ -107,6 +110,14 @@ class _ResultsScreenState extends State<ResultsScreen> {
       }
     }
 
+    Future<void> _submit() async {
+      EvaluatorConverter controller =
+          EvaluatorConverter(motorsDict: motorsDict);
+      String jsonData = controller.convertToJson();
+      ApiService.submitResults(
+          jsonData, widget.testId, widget.developmentCoeficient.toInt());
+    }
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -128,7 +139,8 @@ class _ResultsScreenState extends State<ResultsScreen> {
               Text("Interpretación: ${getInterpretation()}"),
               Text("Total de puntos: ${getScore()}"),
               const SizedBox(height: 6),
-              const Text("Puntos obtenidos", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+              const Text("Puntos obtenidos",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
               Expanded(
                 child: ResultsListWidget(
                   motorsDict: motorsDict,
@@ -138,15 +150,16 @@ class _ResultsScreenState extends State<ResultsScreen> {
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
+                  _submit;
                   Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const AgeSelectionScreen(),
+                      builder: (context) => SuccessParent(),
                     ),
                     (route) => false, // This makes sure all routes are removed
                   );
                 },
-                child: const Text('Volver a Inicio'),
+                child: const Text('Enviar'),
               ),
               const SizedBox(height: 10),
             ],
@@ -172,7 +185,8 @@ class ResultsListWidget extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(16.0),
       child: ConstrainedBox(
-        constraints: BoxConstraints(maxWidth: 600.0), // Ajusta según tus necesidades
+        constraints:
+            BoxConstraints(maxWidth: 600.0), // Ajusta según tus necesidades
         child: Center(
           child: ListView.builder(
             shrinkWrap: true,

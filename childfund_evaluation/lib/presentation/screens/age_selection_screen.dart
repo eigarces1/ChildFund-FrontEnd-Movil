@@ -199,6 +199,7 @@ class _AgeSelectionScreenState extends State<AgeSelectionScreen> {
                         selectedAge: selectedAge,
                         selectedLevel: selectedLevel,
                         childAgeMonths: childAgeMonths,
+                        testId: 1,
                       ),
                     ),
                   );
