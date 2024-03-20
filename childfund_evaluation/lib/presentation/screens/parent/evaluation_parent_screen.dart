@@ -1,7 +1,5 @@
-import 'package:childfund_evaluation/presentation/screens/evaluator/results_screen.dart';
 import 'package:childfund_evaluation/presentation/screens/parent/evaluation_end_screen.dart';
 import 'package:childfund_evaluation/utils/json_parse.dart';
-import 'package:childfund_evaluation/utils/models/age_group.dart';
 import 'package:childfund_evaluation/utils/models/age_group_parent.dart';
 import 'package:childfund_evaluation/utils/models/tarea.dart';
 import 'package:flutter/material.dart';
@@ -170,27 +168,28 @@ class _EvaluationScreenState extends State<EvaluationParentScreen> {
                       int currentScore = countAccomplishedIndicators();
                       //score += isLowerLevel ? -currentScore : currentScore;
 
-                      if (currentMotorIndex >= 4 &&
-                          (isLowerLevel ||
-                              isUpperLevel ||
-                              (widget.selectedLevel == 1 && currentScore < 2) ||
+                      /*if (currentMotorIndex >= 4 &&
+                          ((widget.selectedLevel == 1 && currentScore < 2) ||
                               (widget.selectedLevel == 11 &&
-                                  currentScore >= 2))) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ResultsParentScreen(
-                              selectedAge: widget.selectedAge,
-                              selectedLevel: widget.selectedLevel,
-                              childAgeMonths: widget.childAgeMonths,
-                              developmentCoeficient:
-                                  getDevelopmentCoeficient(getScore()),
-                              ageGroups: ageGroupsData,
-                            ),
+                                  currentScore >= 2))) {*/
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => /*ChildrenListPage()*/
+                              ResultsParentsScreen(
+                            selectedAge: widget.selectedAge,
+                            selectedLevel: widget.selectedLevel,
+                            childAgeMonths: widget.childAgeMonths,
+                            developmentCoeficient:
+                                getDevelopmentCoeficient(getScore()),
+                            ageGroups: ageGroupsData,
                           ),
-                        );
-                        return;
-                      }
+                        ),
+                      );
+                      /*return;
+                      } else {
+                        print("No pasa nada :c ");
+                      }*/
 
                       if (isLowerLevel ||
                           isUpperLevel ||
@@ -200,7 +199,10 @@ class _EvaluationScreenState extends State<EvaluationParentScreen> {
                           isLowerLevel = false;
                           isUpperLevel = false;
                           currentStep = 0;
-                          //currentMotorIndex += 1;
+                          /* 
+                            TODO: Si no funciona, eliminar la linea de abajo
+                           */
+                          currentMotorIndex += 1;
                           currentTask =
                               currentAgeGroup?.tareas[currentMotorIndex];
                         });

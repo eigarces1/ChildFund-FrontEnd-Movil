@@ -1,22 +1,18 @@
 import 'package:childfund_evaluation/presentation/screens/age_selection_screen.dart';
 import 'package:childfund_evaluation/utils/colors.dart';
-import 'package:childfund_evaluation/utils/models/age_group.dart';
 import 'package:childfund_evaluation/utils/models/age_group_parent.dart';
-import 'package:childfund_evaluation/utils/models/indicator.dart';
-import 'package:childfund_evaluation/utils/models/indicator_with_level.dart';
-import 'package:childfund_evaluation/utils/models/motor.dart';
 import 'package:childfund_evaluation/utils/models/tarea.dart';
 import 'package:childfund_evaluation/utils/models/task_with_level.dart';
 import 'package:flutter/material.dart';
 
-class ResultsParentScreen extends StatefulWidget {
+class ResultsParentsScreen extends StatefulWidget {
   final String selectedAge;
   final int selectedLevel;
   final String childAgeMonths;
   final double developmentCoeficient;
   final List<AgeGroupParent> ageGroups;
 
-  const ResultsParentScreen(
+  const ResultsParentsScreen(
       {super.key,
       required this.selectedAge,
       required this.selectedLevel,
@@ -28,7 +24,7 @@ class ResultsParentScreen extends StatefulWidget {
   _ResultsScreenState createState() => _ResultsScreenState();
 }
 
-class _ResultsScreenState extends State<ResultsParentScreen> {
+class _ResultsScreenState extends State<ResultsParentsScreen> {
   String getInterpretation() {
     double score = widget.developmentCoeficient;
     if (score >= 130) {
@@ -122,9 +118,6 @@ class _ResultsScreenState extends State<ResultsParentScreen> {
                 "Resultados",
                 style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
               ),
-              Text(
-                  "Cociente de desarrollo obtenido: ${widget.developmentCoeficient.toInt()}"),
-              Text("Interpretación: ${getInterpretation()}"),
               Text("Total de puntos: ${getScore()}"),
               const SizedBox(height: 6),
               const Text("Puntos obtenidos",

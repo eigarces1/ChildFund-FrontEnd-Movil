@@ -42,13 +42,14 @@ class ParentEvaluationFormWidget extends StatelessWidget {
           ),
           const SizedBox(height: 8.0),
           const SizedBox(height: 8.0),
-          const Text(
-            'Materiales:',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
+          if (materiales != "")
+            const Text(
+              'Materiales:',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          Text(materiales),
+          if (materiales != "") Text(materiales),
           const SizedBox(height: 8.0),
           const Text(
             'Instrucciones:',

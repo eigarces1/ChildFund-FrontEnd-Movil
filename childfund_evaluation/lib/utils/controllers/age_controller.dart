@@ -1,5 +1,3 @@
-import 'package:childfund_evaluation/utils/models/child.dart';
-
 class AgeController {
   AgeController();
 
@@ -31,7 +29,6 @@ class AgeController {
 
     int differenceInDays = years * 360 + months * 30 + days;
     int differenceInMonths = differenceInDays ~/ 30;
-    int meses = differenceInMonths;
     int remainingDays = differenceInDays % 30;
 
     if (remainingDays > 0) {
