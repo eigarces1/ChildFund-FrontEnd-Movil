@@ -55,8 +55,8 @@ class _EvaluationScreenState extends State<EvaluationFormScreen> {
   bool estMalo = false;
   bool estRegular = false;
 
-  void _submit() {
-    print(evaluation.toString());
+  Future<void> _submit() async {
+    await ApiService.enviarEvaluacion(evaluation, widget.testId);
   }
 
   /*Future<void> _submit() async {
