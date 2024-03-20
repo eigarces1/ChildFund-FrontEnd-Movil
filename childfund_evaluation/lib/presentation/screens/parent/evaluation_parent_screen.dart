@@ -1,3 +1,5 @@
+import 'package:childfund_evaluation/presentation/screens/evaluator/results_screen.dart';
+import 'package:childfund_evaluation/presentation/screens/parent/evaluation_end_screen.dart';
 import 'package:childfund_evaluation/utils/json_parse.dart';
 import 'package:childfund_evaluation/utils/models/age_group.dart';
 import 'package:childfund_evaluation/utils/models/age_group_parent.dart';
@@ -174,9 +176,19 @@ class _EvaluationScreenState extends State<EvaluationParentScreen> {
                               (widget.selectedLevel == 1 && currentScore < 2) ||
                               (widget.selectedLevel == 11 &&
                                   currentScore >= 2))) {
-                        /* 
-                          * Aqui debe ir la pantalla al finalizar la prueba
-                        */
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ResultsParentScreen(
+                              selectedAge: widget.selectedAge,
+                              selectedLevel: widget.selectedLevel,
+                              childAgeMonths: widget.childAgeMonths,
+                              developmentCoeficient:
+                                  getDevelopmentCoeficient(getScore()),
+                              ageGroups: ageGroupsData,
+                            ),
+                          ),
+                        );
                         return;
                       }
 
@@ -188,14 +200,14 @@ class _EvaluationScreenState extends State<EvaluationParentScreen> {
                           isLowerLevel = false;
                           isUpperLevel = false;
                           currentStep = 0;
-                          currentMotorIndex += 1;
+                          //currentMotorIndex += 1;
                           currentTask =
                               currentAgeGroup?.tareas[currentMotorIndex];
                         });
                         return;
                       }
 
-                      if (currentScore >= 2 &&
+                      /*if (currentScore >= 2 &&
                           widget.selectedLevel < 11 &&
                           !isUpperLevel) {
                         AgeGroupParent nextAgeGroup = ageGroupsData.firstWhere(
@@ -223,7 +235,7 @@ class _EvaluationScreenState extends State<EvaluationParentScreen> {
                           currentStep = 0;
                         });
                         return;
-                      }
+                      }*/
                     } else {
                       setState(() {
                         currentStep += 1;
@@ -242,13 +254,32 @@ class _EvaluationScreenState extends State<EvaluationParentScreen> {
     }
   }
 
-  int countQuestions(AgeGroup ageGroup) {
+  int getScore() {
     int score = 0;
-    for (var motor in ageGroup.motors) {
-      for (var indicator in motor.indicators) {
-        if (indicator.accomplished == true) {
-          score++;
-        }
+    AgeGroupParent ageLevelSelected = ageGroupsData
+        .firstWhere((element) => element.level == widget.selectedLevel);
+    score += countQuestions(ageLevelSelected);
+
+    if (widget.selectedLevel > 1) {
+      AgeGroupParent ageLevelLower = ageGroupsData
+          .firstWhere((element) => element.level == (widget.selectedLevel - 1));
+
+      score -= countQuestions(ageLevelLower);
+    }
+
+    if (widget.selectedLevel < 11) {
+      AgeGroupParent ageLevelUpper = ageGroupsData
+          .firstWhere((element) => element.level == (widget.selectedLevel + 1));
+      score += countQuestions(ageLevelUpper);
+    }
+    return score;
+  }
+
+  int countQuestions(AgeGroupParent ageGroup) {
+    int score = 0;
+    for (var motor in ageGroup.tareas) {
+      if (motor.accomplished == true) {
+        score++;
       }
     }
 

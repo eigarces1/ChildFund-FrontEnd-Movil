@@ -59,12 +59,15 @@ class ParentEvaluationFormWidget extends StatelessWidget {
           Text(instrucciones),
           const SizedBox(height: 8.0),
           const SizedBox(height: 8.0),
-          Image.asset(
-            'assets/images_family_tasks/${imagesRoute[level]}/$image.png', // Replace this with the path to your image asset
-            width: 200, // Adjust width as needed
-            height: 200, // Adjust height as needed
-            fit: BoxFit.contain, // Adjust the fit as needed
-          ),
+          Center(
+              child: Container(
+            child: Image.asset(
+              'assets/images_family_tasks/${imagesRoute[level]}/$image.png', // Replace this with the path to your image asset
+              width: 200, // Adjust width as needed
+              height: 200, // Adjust height as needed
+              fit: BoxFit.contain, // Adjust the fit as needed
+            ),
+          )),
           const SizedBox(height: 10.0),
           Row(
             children: [
