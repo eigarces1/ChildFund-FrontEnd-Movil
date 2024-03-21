@@ -1,5 +1,7 @@
-import 'package:childfund_evaluation/presentation/screens/age_selection_screen.dart';
+import 'package:childfund_evaluation/presentation/screens/evaluator/success_results.dart';
+import 'package:childfund_evaluation/utils/api_service.dart';
 import 'package:childfund_evaluation/utils/colors.dart';
+import 'package:childfund_evaluation/utils/controllers/parent_results_convert.dart';
 import 'package:childfund_evaluation/utils/models/age_group_parent.dart';
 import 'package:childfund_evaluation/utils/models/tarea.dart';
 import 'package:childfund_evaluation/utils/models/task_with_level.dart';
@@ -11,14 +13,17 @@ class ResultsParentsScreen extends StatefulWidget {
   final String childAgeMonths;
   final double developmentCoeficient;
   final List<AgeGroupParent> ageGroups;
+  final int testId;
 
-  const ResultsParentsScreen(
-      {super.key,
-      required this.selectedAge,
-      required this.selectedLevel,
-      required this.childAgeMonths,
-      required this.developmentCoeficient,
-      required this.ageGroups});
+  const ResultsParentsScreen({
+    super.key,
+    required this.selectedAge,
+    required this.selectedLevel,
+    required this.childAgeMonths,
+    required this.developmentCoeficient,
+    required this.ageGroups,
+    required this.testId,
+  });
 
   @override
   _ResultsScreenState createState() => _ResultsScreenState();
@@ -102,6 +107,12 @@ class _ResultsScreenState extends State<ResultsParentsScreen> {
       }
     }
 
+    Future<void> _submit() async {
+      ParentConverter controller = ParentConverter(motorsDict: motorsDict);
+      String jsonData = controller.convertToJson();
+      ApiService.submitResultsParents(jsonData, widget.testId);
+    }
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -131,10 +142,11 @@ class _ResultsScreenState extends State<ResultsParentsScreen> {
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
+                  _submit;
                   Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const AgeSelectionScreen(),
+                      builder: (context) => SuccessParent(),
                     ),
                     (route) => false, // This makes sure all routes are removed
                   );

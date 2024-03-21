@@ -10,12 +10,14 @@ class EvaluationParentScreen extends StatefulWidget {
   final String selectedAge;
   final int selectedLevel;
   final String childAgeMonths;
+  final int testId;
 
   const EvaluationParentScreen(
       {super.key,
       required this.selectedAge,
       required this.selectedLevel,
-      required this.childAgeMonths});
+      required this.childAgeMonths,
+      required this.testId});
 
   @override
   _EvaluationScreenState createState() => _EvaluationScreenState();
@@ -183,6 +185,7 @@ class _EvaluationScreenState extends State<EvaluationParentScreen> {
                             developmentCoeficient:
                                 getDevelopmentCoeficient(getScore()),
                             ageGroups: ageGroupsData,
+                            testId: widget.testId,
                           ),
                         ),
                       );

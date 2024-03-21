@@ -22,7 +22,6 @@ class EvaluatorConverter {
         list.add(item.indicator.toJson());
       }
       data['indicadores'] = list;
-      //print("=============================================");
       jsonData.add(data);
     }
     String jsonRequest = jsonEncode(jsonData);

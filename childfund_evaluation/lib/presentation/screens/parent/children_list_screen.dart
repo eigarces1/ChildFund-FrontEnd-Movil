@@ -5,7 +5,6 @@ import '../../../utils/api_service.dart';
 import '../../../utils/models/child.dart'; // Importa la clase Child
 
 class ChildrenListPage extends StatefulWidget {
-
   const ChildrenListPage({Key? key}) : super(key: key);
 
   @override
@@ -42,19 +41,23 @@ class _ChildrenListPageState extends State<ChildrenListPage> {
               itemBuilder: (context, index) {
                 final child = children![index];
                 return ListTile(
-                  title: Text('${child['name'] ?? ''} ${child['lastname'] ?? ''}'),
+                  title:
+                      Text('${child['name'] ?? ''} ${child['lastname'] ?? ''}'),
                   subtitle: Text(
                       'Género: ${child['gender'] ?? ''}, Fecha de nacimiento: ${child['birthdate'] ?? ''}'),
                   onTap: () {
                     _navigateToChildDetails(
-                        child['child_id']); // Navegar a la página de detalles del niño al hacer clic
+                        child['child_id'],
+                        child[
+                            'test_id']); // Navegar a la página de detalles del niño al hacer clic
                   },
                 );
               },
             ),
     );
   }
-  void _navigateToChildDetails(int id) {
+
+  void _navigateToChildDetails(int id, int testId) {
     Future<dynamic> childOne = _getChild(id);
 
     childOne.then((ch) {
@@ -64,8 +67,9 @@ class _ChildrenListPageState extends State<ChildrenListPage> {
           context,
           MaterialPageRoute(
             builder: (context) => ChildDetailsPage(
-                child:
-                    children), // Pasa el niño seleccionado a la página de detalles
+              child: children,
+              testId: testId,
+            ), // Pasa el niño seleccionado a la página de detalles
           ),
         );
       } else {
@@ -78,4 +82,3 @@ class _ChildrenListPageState extends State<ChildrenListPage> {
     return ApiService.getChildrenById(id);
   }
 }
-

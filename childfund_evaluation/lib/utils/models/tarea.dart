@@ -14,4 +14,15 @@ class Tarea {
     this.response,
     this.accomplished, //Default value is false
   });
+
+  Map<String, dynamic> toJson() {
+    return {
+      ' indicator': indicador,
+      ' materials': materiales,
+      ' instructions': instrucciones,
+      ' response': response,
+      ' image': imagen,
+      ' accomplished': accomplished
+    };
+  }
 }
