@@ -16,4 +16,29 @@ class Indicator {
     required this.response,
     this.accomplished, // Default value is false
   });
+
+  @override
+  String toString() {
+    return 'Indicador {'
+        ' indicator: $indicator,'
+        ' materials: $materials,'
+        ' instructions: $instructions,'
+        ' response: $response,'
+        ' position: $position,'
+        ' image: $image,'
+        ' accomplished: $accomplished'
+        '}';
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      ' indicator': indicator,
+      ' materials': materials,
+      ' instructions': instructions,
+      ' response': response,
+      ' position': position,
+      ' image': image,
+      ' accomplished': accomplished
+    };
+  }
 }

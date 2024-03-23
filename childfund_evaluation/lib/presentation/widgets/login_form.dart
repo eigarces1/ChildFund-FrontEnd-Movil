@@ -21,8 +21,6 @@ class _LoginFormState extends State<LoginForm> {
   late String _password = '';
 
   Future<void> _submit() async {
-    final form = _formkey.currentState;
-
     final token = await ApiService.signIn(_email, _password);
 
     if (token != null) {

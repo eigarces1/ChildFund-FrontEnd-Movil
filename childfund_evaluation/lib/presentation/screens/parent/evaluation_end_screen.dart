@@ -1,34 +1,35 @@
 import 'package:childfund_evaluation/presentation/screens/evaluator/success_results.dart';
 import 'package:childfund_evaluation/utils/api_service.dart';
 import 'package:childfund_evaluation/utils/colors.dart';
-import 'package:childfund_evaluation/utils/controllers/evaluator_results_convert.dart';
-import 'package:childfund_evaluation/utils/models/age_group.dart';
-import 'package:childfund_evaluation/utils/models/indicator_with_level.dart';
-import 'package:childfund_evaluation/utils/models/motor.dart';
+import 'package:childfund_evaluation/utils/controllers/parent_results_convert.dart';
+import 'package:childfund_evaluation/utils/models/age_group_parent.dart';
+import 'package:childfund_evaluation/utils/models/tarea.dart';
+import 'package:childfund_evaluation/utils/models/task_with_level.dart';
 import 'package:flutter/material.dart';
 
-class ResultsScreen extends StatefulWidget {
+class ResultsParentsScreen extends StatefulWidget {
   final String selectedAge;
   final int selectedLevel;
   final String childAgeMonths;
   final double developmentCoeficient;
-  final List<AgeGroup> ageGroups;
+  final List<AgeGroupParent> ageGroups;
   final int testId;
 
-  const ResultsScreen(
-      {super.key,
-      required this.selectedAge,
-      required this.selectedLevel,
-      required this.childAgeMonths,
-      required this.developmentCoeficient,
-      required this.ageGroups,
-      required this.testId});
+  const ResultsParentsScreen({
+    super.key,
+    required this.selectedAge,
+    required this.selectedLevel,
+    required this.childAgeMonths,
+    required this.developmentCoeficient,
+    required this.ageGroups,
+    required this.testId,
+  });
 
   @override
   _ResultsScreenState createState() => _ResultsScreenState();
 }
 
-class _ResultsScreenState extends State<ResultsScreen> {
+class _ResultsScreenState extends State<ResultsParentsScreen> {
   String getInterpretation() {
     double score = widget.developmentCoeficient;
     if (score >= 130) {
@@ -46,32 +47,30 @@ class _ResultsScreenState extends State<ResultsScreen> {
 
   int getScore() {
     int score = 0;
-    AgeGroup ageLevelSelected = widget.ageGroups
+    AgeGroupParent ageLevelSelected = widget.ageGroups
         .firstWhere((element) => element.level == widget.selectedLevel);
     score += countQuestions(ageLevelSelected);
 
     if (widget.selectedLevel > 1) {
-      AgeGroup ageLevelLower = widget.ageGroups
+      AgeGroupParent ageLevelLower = widget.ageGroups
           .firstWhere((element) => element.level == (widget.selectedLevel - 1));
 
       score -= countQuestions(ageLevelLower);
     }
 
     if (widget.selectedLevel < 11) {
-      AgeGroup ageLevelUpper = widget.ageGroups
+      AgeGroupParent ageLevelUpper = widget.ageGroups
           .firstWhere((element) => element.level == (widget.selectedLevel + 1));
       score += countQuestions(ageLevelUpper);
     }
     return score;
   }
 
-  int countQuestions(AgeGroup ageGroup) {
+  int countQuestions(AgeGroupParent ageGroup) {
     int score = 0;
-    for (var motor in ageGroup.motors) {
-      for (var indicator in motor.indicators) {
-        if (indicator.accomplished == true) {
-          score++;
-        }
+    for (var motor in ageGroup.tareas) {
+      if (motor.accomplished == true) {
+        score++;
       }
     }
 
@@ -80,42 +79,38 @@ class _ResultsScreenState extends State<ResultsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    List<Motor> allMotors = [];
+    List<Tarea> allMotors = [];
     for (var ageGroup in widget.ageGroups) {
       if (ageGroup.level == widget.selectedLevel ||
           ageGroup.level == widget.selectedLevel - 1 ||
           ageGroup.level == widget.selectedLevel + 1) {
-        allMotors.addAll(ageGroup.motors);
+        allMotors.addAll(ageGroup.tareas);
       }
     }
 
-    Map<String, List<IndicatorWithLevel>> motorsDict = {};
+    Map<String, List<TaskWithLevel>> motorsDict = {};
     for (var ageGroup in widget.ageGroups) {
       if (ageGroup.level != widget.selectedLevel &&
           ageGroup.level != widget.selectedLevel - 1 &&
           ageGroup.level != widget.selectedLevel + 1) {
         continue;
       }
-      for (var motor in ageGroup.motors) {
+      for (var motor in ageGroup.tareas) {
         int i = 1;
-        for (var indicator in motor.indicators) {
-          if (indicator.accomplished == null) {
-            continue;
-          }
-          motorsDict
-              .putIfAbsent(motor.motorName, () => [])
-              .add(IndicatorWithLevel(indicator, ageGroup.level, i));
-          i++;
+        if (motor.accomplished == null) {
+          continue;
         }
+        motorsDict
+            .putIfAbsent(motor.indicador, () => [])
+            .add(TaskWithLevel(motor, ageGroup.level, i));
+        i++;
       }
     }
 
     Future<void> _submit() async {
-      EvaluatorConverter controller =
-          EvaluatorConverter(motorsDict: motorsDict);
+      ParentConverter controller = ParentConverter(motorsDict: motorsDict);
       String jsonData = controller.convertToJson();
-      ApiService.submitResults(
-          jsonData, widget.testId, widget.developmentCoeficient.toInt());
+      ApiService.submitResultsParents(jsonData, widget.testId);
     }
 
     return SafeArea(
@@ -134,9 +129,6 @@ class _ResultsScreenState extends State<ResultsScreen> {
                 "Resultados",
                 style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
               ),
-              Text(
-                  "Cociente de desarrollo obtenido: ${widget.developmentCoeficient.toInt()}"),
-              Text("Interpretación: ${getInterpretation()}"),
               Text("Total de puntos: ${getScore()}"),
               const SizedBox(height: 6),
               const Text("Puntos obtenidos",
@@ -159,7 +151,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
                     (route) => false, // This makes sure all routes are removed
                   );
                 },
-                child: const Text('Enviar'),
+                child: const Text('Volver a Inicio'),
               ),
               const SizedBox(height: 10),
             ],
@@ -171,7 +163,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
 }
 
 class ResultsListWidget extends StatelessWidget {
-  final Map<String, List<IndicatorWithLevel>> motorsDict;
+  final Map<String, List<TaskWithLevel>> motorsDict;
   final int selectedLevel;
 
   const ResultsListWidget({
@@ -213,7 +205,7 @@ class ResultsListWidget extends StatelessWidget {
 
                       return Center(
                         child: Text(
-                          'Pregunta: ${indicator.indicator ?? ""} / Nivel $level / ${selectedLevel - 1 == level ? "-" : accomplishedStatus == "0" ? "" : "+"}$accomplishedStatus',
+                          'Pregunta: ${indicator.indicador ?? ""} / Nivel $level / ${selectedLevel - 1 == level ? "-" : accomplishedStatus == "0" ? "" : "+"}$accomplishedStatus',
                           style: TextStyle(fontStyle: FontStyle.italic),
                         ),
                       );

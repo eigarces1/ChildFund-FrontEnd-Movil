@@ -94,31 +94,28 @@ Future<List<AgeGroupParent>> loadTasksJsonData() async {
 
     Map<String, dynamic> data = jsonDecode(jsonString);
 
-    List<AgeGroupParent> ageGroups = [];
-
+    List<AgeGroupParent> ageGroupsParent = [];
     // Extracting age groups
     List<dynamic> ageGroupDataList = data["edades"];
     for (var ageGroupData in ageGroupDataList) {
-      List<Tarea> tareas = [];
+      List<Tarea> tasks = [];
       // Extracting motors for each age group
-      List<dynamic> motorDataList = ageGroupData["tareas"];
-      for (var motorData in motorDataList) {
+      List<dynamic> taskDataList = ageGroupData["tareas"];
+      for (var task in taskDataList) {
         Tarea tarea = Tarea(
-            indicador: motorData['indicador'],
-            materiales: motorData['materiales'],
-            instrucciones: motorData['instrucciones'],
-            imagen: motorData['imagen']);
-        tareas.add(tarea);
+            indicador: task['indicador'],
+            materiales: task['materiales'],
+            instrucciones: task['instrucciones'],
+            imagen: task['imagen']);
+        tasks.add(tarea);
       }
-      AgeGroupParent ageGroup = AgeGroupParent(
-        level: int.parse(ageGroupData['level']),
-        range: ageGroupData['edad'],
-        tareas: tareas,
-      );
-      ageGroups.add(ageGroup);
+      AgeGroupParent ageGroupParent = AgeGroupParent(
+          level: int.parse(ageGroupData['level']),
+          range: ageGroupData['edad'],
+          tareas: tasks);
+      ageGroupsParent.add(ageGroupParent);
     }
-
-    return ageGroups;
+    return ageGroupsParent;
   } catch (e) {
     print('Error loading JSON data: $e');
     return []; // Or handle the error appropriately

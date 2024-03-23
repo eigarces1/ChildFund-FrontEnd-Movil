@@ -5,8 +5,10 @@ import '../../../utils/controllers/age_controller.dart';
 
 class ChildDetailsPage extends StatefulWidget {
   final Child child;
+  final int testId;
 
-  const ChildDetailsPage({Key? key, required this.child}) : super(key: key);
+  const ChildDetailsPage({Key? key, required this.child, required this.testId})
+      : super(key: key);
 
   @override
   _ChildDetailsPageState createState() => _ChildDetailsPageState();
@@ -51,9 +53,11 @@ class _ChildDetailsPageState extends State<ChildDetailsPage> {
         context,
         MaterialPageRoute(
             builder: (context) => EvaluationParentScreen(
-                selectedAge: ageLevelMapReversed[level]!,
-                selectedLevel: level,
-                childAgeMonths: '$diff')));
+                  selectedAge: ageLevelMapReversed[level]!,
+                  selectedLevel: level,
+                  childAgeMonths: '$diff',
+                  testId: widget.testId,
+                )));
   }
 
   @override

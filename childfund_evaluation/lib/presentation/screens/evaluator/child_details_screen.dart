@@ -54,9 +54,11 @@ class _ChildDetailsPageState extends State<ChildDetailsPage> {
         context,
         MaterialPageRoute(
             builder: (context) => EvaluationScreen(
-                selectedAge: ageLevelMapReversed[level]!,
-                selectedLevel: level,
-                childAgeMonths: '$diff')));
+                  selectedAge: ageLevelMapReversed[level]!,
+                  selectedLevel: level,
+                  childAgeMonths: '$diff',
+                  testId: widget.testid,
+                )));
   }
 
   @override

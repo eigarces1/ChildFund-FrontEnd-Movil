@@ -11,12 +11,14 @@ class EvaluationScreen extends StatefulWidget {
   final String selectedAge;
   final int selectedLevel;
   final String childAgeMonths;
+  final int testId;
 
   const EvaluationScreen(
       {super.key,
       required this.selectedAge,
       required this.selectedLevel,
-      required this.childAgeMonths});
+      required this.childAgeMonths,
+      required this.testId});
 
   @override
   _EvaluationScreenState createState() => _EvaluationScreenState();
@@ -94,6 +96,7 @@ class _EvaluationScreenState extends State<EvaluationScreen> {
             updateStepAccomplished(indicator,
                 value!); // Callback function to update the accomplished value
           },
+          testId: widget.testId,
         ),
       );
     }).toList();
@@ -172,6 +175,7 @@ class _EvaluationScreenState extends State<EvaluationScreen> {
                               developmentCoeficient:
                                   getDevelopmentCoeficient(getScore()),
                               ageGroups: ageGroupsData,
+                              testId: widget.testId,
                             ),
                           ),
                         );
