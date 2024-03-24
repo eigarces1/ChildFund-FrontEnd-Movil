@@ -7,7 +7,7 @@ class InputText extends StatelessWidget {
   final TextInputType keyboard;
   final bool obsecure;
   final void Function(String) onChanged;
-  final String Function(String) validator; // Cambiado a 'String Function(String)'
+  final String? Function(String?) validator; // Cambiado a 'String Function(String)'
 
   const InputText({
     Key? key,
@@ -27,7 +27,7 @@ class InputText extends StatelessWidget {
         keyboardType: keyboard,
         obscureText: obsecure,
         onChanged: onChanged,
-        validator: (String? data) => validator(data ?? ''), // Adaptado para cumplir con 'String? Function(String?)?'
+        validator: validator, // Adaptado para cumplir con 'String? Function(String?)?'
         decoration: InputDecoration(
           hintText: hint,
           labelText: label,

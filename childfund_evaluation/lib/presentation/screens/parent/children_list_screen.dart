@@ -1,5 +1,7 @@
+import 'package:childfund_evaluation/presentation/screens/login/sing_in.dart';
 import 'package:childfund_evaluation/presentation/screens/parent/child_details_screen.dart';
 import 'package:childfund_evaluation/system/globals.dart';
+import 'package:childfund_evaluation/utils/colors.dart';
 import 'package:flutter/material.dart';
 import '../../../utils/api_service.dart';
 import '../../../utils/models/child.dart'; // Importa la clase Child
@@ -32,7 +34,34 @@ class _ChildrenListPageState extends State<ChildrenListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Lista de Hijos'),
+        title: Text('Lista de hijos'),
+        backgroundColor: AppColors.primaryColor,
+        //automaticallyImplyLeading: false, 
+        actions: <Widget>[
+          PopupMenuButton<String>(
+            onSelected: (value) {
+              if (value == 'logout') {
+                // Limpia el token al cerrar la sesión
+                tokenGlobal = '';
+                // Navega a la pantalla de inicio de sesión
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => SingIn()),
+                  (route) => false,
+                );
+              }
+            },
+            itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+              const PopupMenuItem<String>(
+                value: 'logout',
+                child: ListTile(
+                  leading: Icon(Icons.exit_to_app),
+                  title: Text('Cerrar sesión'),
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
       body: children == null
           ? Center(child: CircularProgressIndicator())
@@ -47,9 +76,8 @@ class _ChildrenListPageState extends State<ChildrenListPage> {
                       'Género: ${child['gender'] ?? ''}, Fecha de nacimiento: ${child['birthdate'] ?? ''}'),
                   onTap: () {
                     _navigateToChildDetails(
-                        child['child_id'],
-                        child[
-                            'test_id']); // Navegar a la página de detalles del niño al hacer clic
+                        child['child_id']);
+                        //child['test_id']); // Navegar a la página de detalles del niño al hacer clic
                   },
                 );
               },
@@ -57,7 +85,7 @@ class _ChildrenListPageState extends State<ChildrenListPage> {
     );
   }
 
-  void _navigateToChildDetails(int id, int testId) {
+  void _navigateToChildDetails(int id) {
     Future<dynamic> childOne = _getChild(id);
 
     childOne.then((ch) {
@@ -68,7 +96,7 @@ class _ChildrenListPageState extends State<ChildrenListPage> {
           MaterialPageRoute(
             builder: (context) => ChildDetailsPage(
               child: children,
-              testId: testId,
+              //testId: testId,
             ), // Pasa el niño seleccionado a la página de detalles
           ),
         );

@@ -1,12 +1,28 @@
+import 'package:childfund_evaluation/presentation/screens/evaluator/evaluation_screen.dart';
+import 'package:childfund_evaluation/presentation/screens/login/sing_in.dart';
+import 'package:childfund_evaluation/system/globals.dart';
+import 'package:childfund_evaluation/utils/colors.dart';
 import 'package:childfund_evaluation/utils/models/evaluation.dart';
 import 'package:flutter/material.dart';
 import 'package:childfund_evaluation/utils/api_service.dart';
+import '../../../utils/models/child.dart';
+import '../../../utils/controllers/age_controller.dart';
 
 class EvaluationFormScreen extends StatefulWidget {
+  final String selectedAge;
+  final int selectedLevel;
+  final String childAgeMonths;
   final int testId;
+  final Child child;
 
-  const EvaluationFormScreen({Key? key, required this.testId})
-      : super(key: key);
+  const EvaluationFormScreen(
+      {super.key,
+      required this.selectedAge,
+      required this.selectedLevel,
+      required this.childAgeMonths,
+      required this.testId,
+      required this.child
+      });
 
   @override
   _EvaluationScreenState createState() => _EvaluationScreenState();
@@ -55,8 +71,42 @@ class _EvaluationScreenState extends State<EvaluationFormScreen> {
   bool estMalo = false;
   bool estRegular = false;
 
+AgeController controller = AgeController();
+
+final Map<String, int> ageLevelMap = {
+    '0 a 3 meses': 1,
+    '3.1 a 6 meses': 2,
+    '6.1 a 9 meses': 3,
+    '9.1 a 12 meses': 4,
+    '12.1 a 16 meses': 5,
+    '16.1 a 20 meses': 6,
+    '20.1 a 24 meses': 7,
+    '24.1 a 36 meses': 8,
+    '36.1 a 48 meses': 9,
+    '48.1 a 60 meses': 10,
+    '60.1 a 72 meses': 11,
+  };
+
+  final Map<int, String> ageLevelMapReversed = {
+    1: '0 a 3 meses',
+    2: '3.1 a 6 meses',
+    3: '6.1 a 9 meses',
+    4: '9.1 a 12 meses',
+    5: '12.1 a 16 meses',
+    6: '16.1 a 20 meses',
+    7: '20.1 a 24 meses',
+    8: '24.1 a 36 meses',
+    9: '36.1 a 48 meses',
+    10: '48.1 a 60 meses',
+    11: '60.1 a 72 meses',
+  };
+
   Future<void> _submit() async {
     await ApiService.enviarEvaluacion(evaluation, widget.testId);
+    List<int> data = controller.calculate(widget.child.birthdate);
+    int level = data[0];
+    int diff = data[1];
+    
   }
 
   /*Future<void> _submit() async {
@@ -67,7 +117,33 @@ class _EvaluationScreenState extends State<EvaluationFormScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Ingrese los datos de la evaluación'),
+        title: Text('Formulario de evaluación'),
+        backgroundColor: AppColors.primaryColor,
+        actions: <Widget>[
+          PopupMenuButton<String>(
+            onSelected: (value) {
+              if (value == 'logout') {
+                // Limpia el token al cerrar la sesión
+                tokenGlobal = '';
+                // Navega a la pantalla de inicio de sesión
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => SingIn()),
+                  (route) => false,
+                );
+              }
+            },
+            itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+              const PopupMenuItem<String>(
+                value: 'logout',
+                child: ListTile(
+                  leading: Icon(Icons.exit_to_app),
+                  title: Text('Cerrar sesión'),
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -484,7 +560,20 @@ class _EvaluationScreenState extends State<EvaluationFormScreen> {
               ),
               SizedBox(height: 20),
               ElevatedButton(
-                onPressed: _submit,
+                onPressed: () {_submit;
+                List<int> data = controller.calculate(widget.child.birthdate);
+                int level = data[0];
+                int diff = data[1];
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => EvaluationScreen (
+                            selectedAge: ageLevelMapReversed[level]!,
+                            selectedLevel: level,
+                            childAgeMonths: '$diff',
+                            testId: widget.testId,
+                            //child: widget.child,
+                          )));},
                 child: Text('Guardar'),
               ),
             ],

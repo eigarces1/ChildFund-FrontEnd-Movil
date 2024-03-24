@@ -1,5 +1,7 @@
 import 'package:childfund_evaluation/presentation/screens/evaluator/asignaciones_screen.dart';
+import 'package:childfund_evaluation/presentation/screens/login/sing_in.dart';
 import 'package:childfund_evaluation/system/globals.dart';
+import 'package:childfund_evaluation/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 class EvaluatorPage extends StatelessWidget {
@@ -9,8 +11,35 @@ class EvaluatorPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Evaluador'),
-        ),
+        title: Text('Evaluador'),
+        backgroundColor: AppColors.primaryColor,
+        automaticallyImplyLeading: false, // Esta línea evita que aparezca la flecha de retroceso
+        actions: <Widget>[
+          PopupMenuButton<String>(
+            onSelected: (value) {
+              if (value == 'logout') {
+                // Limpia el token al cerrar la sesión
+                tokenGlobal = '';
+                // Navega a la pantalla de inicio de sesión
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => SingIn()),
+                  (route) => false,
+                );
+              }
+            },
+            itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+              const PopupMenuItem<String>(
+                value: 'logout',
+                child: ListTile(
+                  leading: Icon(Icons.exit_to_app),
+                  title: Text('Cerrar sesión'),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
         body: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(

@@ -17,27 +17,20 @@ class _SingInState extends State<SingIn> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: <Color>[
-              AppColors.primaryColor,
-              AppColors.whiteColor,
-            ],
-            begin: Alignment.topCenter,
-          ),
-        ),
+        color: AppColors.whiteColor,
         child: ListView(
           padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 40.0),
           children: <Widget>[
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
+                SizedBox(height: 10),
                 Text(
                   'Escala de desarrollo infantil',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    color: AppColors.whiteColor,
+                    color: AppColors.primaryColor,
                   ),
                 ),
                 SizedBox(height: 2.0),
@@ -49,19 +42,15 @@ class _SingInState extends State<SingIn> {
                     IconContainer(url: 'assets/logos/logo-childfund.png', size: 140.0),
                   ],
                 ),
-                Divider(
-                  height: 20.0,
-                ),
+                const SizedBox(height: 10),
                 Text(
-                  'Login',
+                  'Iniciar sesión',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Divider(
-                  height: 0.0,
-                ),
+                const SizedBox(height: 20),
                 LoginForm()
               ],
             ),

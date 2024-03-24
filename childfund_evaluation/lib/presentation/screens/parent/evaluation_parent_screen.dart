@@ -1,4 +1,6 @@
+import 'package:childfund_evaluation/presentation/screens/login/sing_in.dart';
 import 'package:childfund_evaluation/presentation/screens/parent/evaluation_end_screen.dart';
+import 'package:childfund_evaluation/system/globals.dart';
 import 'package:childfund_evaluation/utils/json_parse.dart';
 import 'package:childfund_evaluation/utils/models/age_group_parent.dart';
 import 'package:childfund_evaluation/utils/models/tarea.dart';
@@ -17,7 +19,8 @@ class EvaluationParentScreen extends StatefulWidget {
       required this.selectedAge,
       required this.selectedLevel,
       required this.childAgeMonths,
-      required this.testId});
+      required this.testId
+      });
 
   @override
   _EvaluationScreenState createState() => _EvaluationScreenState();
@@ -132,132 +135,159 @@ class _EvaluationScreenState extends State<EvaluationParentScreen> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    // Check if currentMotor is null
-    if (currentAgeGroup == null) {
-      // Show a loading indicator or any other appropriate widget until currentMotor is initialized
-      return const CircularProgressIndicator();
-    } else {
-      // Once currentMotor is initialized, build the Stepper widget
-      return SafeArea(
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text('Evaluación'),
-            backgroundColor: AppColors.primaryColor,
-          ),
-          body: Column(
-            children: [
-              Expanded(
-                child: Stepper(
-                  type: StepperType.horizontal,
-                  steps: getCurrentTaskStep(),
-                  currentStep: currentStep,
-                  onStepContinue: () {
-                    final isLastStep =
-                        currentStep == getCurrentTaskStep().length - 1;
+Widget build(BuildContext context) {
+  // Check if currentMotor is null
+  if (currentAgeGroup == null) {
+    // Show a loading indicator or any other appropriate widget until currentMotor is initialized
+    return const CircularProgressIndicator();
+  } else {
+    // Once currentMotor is initialized, build the Stepper widget
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Actividades'),
+          backgroundColor: AppColors.primaryColor,
+          automaticallyImplyLeading: false, // Esta línea evita que aparezca la flecha de retroceso
+          actions: <Widget>[
+            PopupMenuButton<String>(
+              onSelected: (value) {
+                if (value == 'logout') {
+                  // Limpia el token al cerrar la sesión
+                  tokenGlobal = '';
+                  // Navega a la pantalla de inicio de sesión
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => SingIn()),
+                    (route) => false,
+                  );
+                }
+              },
+              itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+                const PopupMenuItem<String>(
+                  value: 'logout',
+                  child: ListTile(
+                    leading: Icon(Icons.exit_to_app),
+                    title: Text('Cerrar sesión'),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+        body: Column(
+          children: [
+            Expanded(
+              child: Stepper(
+                type: StepperType.horizontal,
+                steps: getCurrentTaskStep(),
+                currentStep: currentStep,
+                onStepContinue: () {
+                  final isLastStep = currentStep == getCurrentTaskStep().length - 1;
 
-                    List<Tarea> indicatorsToUse = isLowerLevel
-                        ? currentAgeGroup!.tareas.reversed.toList()
-                        : currentAgeGroup!.tareas;
+                  List<Tarea> indicatorsToUse = isLowerLevel
+                      ? currentAgeGroup!.tareas.reversed.toList()
+                      : currentAgeGroup!.tareas;
 
-                    final isCurrentStepCompleted =
-                        indicatorsToUse[currentStep].accomplished != null;
-                    if (!isCurrentStepCompleted) {
+                  final isCurrentStepCompleted = indicatorsToUse[currentStep].accomplished != null;
+                  if (!isCurrentStepCompleted) {
+                    return;
+                  }
+
+                  if (isLastStep) {
+                    int currentScore = countAccomplishedIndicators();
+                    //score += isLowerLevel ? -currentScore : currentScore;
+
+                    /*if (currentMotorIndex >= 4 &&
+                        ((widget.selectedLevel == 1 && currentScore < 2) ||
+                            (widget.selectedLevel == 11 &&
+                                currentScore >= 2))) {*/
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => /*ChildrenListPage()*/
+                            ResultsParentsScreen(
+                          selectedAge: widget.selectedAge,
+                          selectedLevel: widget.selectedLevel,
+                          childAgeMonths: widget.childAgeMonths,
+                          developmentCoeficient:
+                          getDevelopmentCoeficient(getScore()),
+                          ageGroups: ageGroupsData,
+                          testId: widget.testId,
+                        ),
+                      ),
+                    );
+                    /*return;
+                  } else {
+                    print("No pasa nada :c ");
+                  }*/
+
+                    if (isLowerLevel ||
+                        isUpperLevel ||
+                        (currentScore < 2 && widget.selectedLevel == 1) ||
+                        (currentScore >= 2 && widget.selectedLevel == 11)) {
+                      setState(() {
+                        isLowerLevel = false;
+                        isUpperLevel = false;
+                        currentStep = 0;
+                        /* 
+                        TODO: Si no funciona, eliminar la linea de abajo
+                       */
+                        currentMotorIndex += 1;
+                        currentTask =
+                            currentAgeGroup?.tareas[currentMotorIndex];
+                      });
                       return;
                     }
 
-                    if (isLastStep) {
-                      int currentScore = countAccomplishedIndicators();
-                      //score += isLowerLevel ? -currentScore : currentScore;
+                    /*if (currentScore >= 2 &&
+                        widget.selectedLevel < 11 &&
+                        !isUpperLevel) {
+                      AgeGroupParent nextAgeGroup = ageGroupsData.firstWhere(
+                              (ageGroup) =>
+                          ageGroup.level == (widget.selectedLevel + 1));
 
-                      /*if (currentMotorIndex >= 4 &&
-                          ((widget.selectedLevel == 1 && currentScore < 2) ||
-                              (widget.selectedLevel == 11 &&
-                                  currentScore >= 2))) {*/
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => /*ChildrenListPage()*/
-                              ResultsParentsScreen(
-                            selectedAge: widget.selectedAge,
-                            selectedLevel: widget.selectedLevel,
-                            childAgeMonths: widget.childAgeMonths,
-                            developmentCoeficient:
-                                getDevelopmentCoeficient(getScore()),
-                            ageGroups: ageGroupsData,
-                            testId: widget.testId,
-                          ),
-                        ),
-                      );
-                      /*return;
-                      } else {
-                        print("No pasa nada :c ");
-                      }*/
-
-                      if (isLowerLevel ||
-                          isUpperLevel ||
-                          (currentScore < 2 && widget.selectedLevel == 1) ||
-                          (currentScore >= 2 && widget.selectedLevel == 11)) {
-                        setState(() {
-                          isLowerLevel = false;
-                          isUpperLevel = false;
-                          currentStep = 0;
-                          /* 
-                            TODO: Si no funciona, eliminar la linea de abajo
-                           */
-                          currentMotorIndex += 1;
-                          currentTask =
-                              currentAgeGroup?.tareas[currentMotorIndex];
-                        });
-                        return;
-                      }
-
-                      /*if (currentScore >= 2 &&
-                          widget.selectedLevel < 11 &&
-                          !isUpperLevel) {
-                        AgeGroupParent nextAgeGroup = ageGroupsData.firstWhere(
-                            (ageGroup) =>
-                                ageGroup.level == (widget.selectedLevel + 1));
-
-                        setState(() {
-                          isUpperLevel = true;
-                          currentTask = nextAgeGroup.tareas[currentMotorIndex];
-                          currentStep = 0;
-                        });
-                        return;
-                      }
-                      if (currentScore < 2 &&
-                          widget.selectedLevel > 1 &&
-                          !isLowerLevel) {
-                        AgeGroupParent prevousAgeGroup =
-                            ageGroupsData.firstWhere((ageGroup) =>
-                                ageGroup.level == (widget.selectedLevel - 1));
-
-                        setState(() {
-                          isLowerLevel = true;
-                          currentTask =
-                              prevousAgeGroup.tareas[currentMotorIndex];
-                          currentStep = 0;
-                        });
-                        return;
-                      }*/
-                    } else {
                       setState(() {
-                        currentStep += 1;
+                        isUpperLevel = true;
+                        currentTask = nextAgeGroup.tareas[currentMotorIndex];
+                        currentStep = 0;
                       });
+                      return;
                     }
-                  },
-                  onStepCancel: currentStep == 0
-                      ? null
-                      : () => setState(() => currentStep -= 1),
-                ),
+                    if (currentScore < 2 &&
+                        widget.selectedLevel > 1 &&
+                        !isLowerLevel) {
+                      AgeGroupParent prevousAgeGroup =
+                      ageGroupsData.firstWhere((ageGroup) =>
+                      ageGroup.level == (widget.selectedLevel - 1));
+
+                      setState(() {
+                        isLowerLevel = true;
+                        currentTask =
+                        prevousAgeGroup.tareas[currentMotorIndex];
+                        currentStep = 0;
+                      });
+                      return;
+                    }*/
+                  } else {
+                    setState(() {
+                      currentStep += 1;
+                    });
+                  }
+                },
+                onStepCancel: currentStep == 0
+                    ? null
+                    : () => setState(() => currentStep -= 1),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-      );
-    }
+      ),
+    );
   }
+}
+
+
+
 
   int getScore() {
     int score = 0;

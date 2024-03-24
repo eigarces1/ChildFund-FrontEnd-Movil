@@ -1,4 +1,6 @@
 import 'package:childfund_evaluation/presentation/screens/evaluator/results_screen.dart';
+import 'package:childfund_evaluation/presentation/screens/login/sing_in.dart';
+import 'package:childfund_evaluation/system/globals.dart';
 import 'package:childfund_evaluation/utils/json_parse.dart';
 import 'package:childfund_evaluation/utils/models/age_group.dart';
 import 'package:childfund_evaluation/utils/models/indicator.dart';
@@ -83,6 +85,7 @@ class _EvaluationScreenState extends State<EvaluationScreen> {
           // Use indicator data to populate the content of the ChildEvaluationFormWidget
           indicator: indicator.indicator,
           image: indicator.image,
+          testId: widget.testId,
           level:
               '${!isLowerLevel ? !isUpperLevel ? widget.selectedLevel : widget.selectedLevel + 1 : widget.selectedLevel - 1}',
           motorName: currentMotor!.motorName,
@@ -96,7 +99,6 @@ class _EvaluationScreenState extends State<EvaluationScreen> {
             updateStepAccomplished(indicator,
                 value!); // Callback function to update the accomplished value
           },
-          testId: widget.testId,
         ),
       );
     }).toList();
@@ -131,9 +133,35 @@ class _EvaluationScreenState extends State<EvaluationScreen> {
       return SafeArea(
         child: Scaffold(
           appBar: AppBar(
-            title: Text('Evaluación'),
-            backgroundColor: AppColors.primaryColor,
+        title: Text('Evaluación'),
+        backgroundColor: AppColors.primaryColor,
+        automaticallyImplyLeading: false, // Esta línea evita que aparezca la flecha de retroceso
+        actions: <Widget>[
+          PopupMenuButton<String>(
+            onSelected: (value) {
+              if (value == 'logout') {
+                // Limpia el token al cerrar la sesión
+                tokenGlobal = '';
+                // Navega a la pantalla de inicio de sesión
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => SingIn()),
+                  (route) => false,
+                );
+              }
+            },
+            itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+              const PopupMenuItem<String>(
+                value: 'logout',
+                child: ListTile(
+                  leading: Icon(Icons.exit_to_app),
+                  title: Text('Cerrar sesión'),
+                ),
+              ),
+            ],
           ),
+        ],
+      ),
           body: Column(
             children: [
               Expanded(
