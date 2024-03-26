@@ -7,4 +7,9 @@ class AgeGroupParent {
 
   const AgeGroupParent(
       {required this.level, required this.range, required this.tareas});
+
+  @override
+  String toString() {
+    return 'AgeGroupParent(level: $level, range: "$range", tareas: ${tareas.toString()})';
+  }
 }

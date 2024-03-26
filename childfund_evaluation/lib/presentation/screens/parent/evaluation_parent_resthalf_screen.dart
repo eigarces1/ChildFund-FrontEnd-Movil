@@ -1,6 +1,5 @@
 import 'package:childfund_evaluation/presentation/screens/login/sing_in.dart';
 import 'package:childfund_evaluation/presentation/screens/parent/evaluation_end_screen.dart';
-import 'package:childfund_evaluation/presentation/screens/parent/evaluation_parent_resthalf_screen.dart';
 import 'package:childfund_evaluation/system/globals.dart';
 import 'package:childfund_evaluation/utils/json_parse.dart';
 import 'package:childfund_evaluation/utils/models/age_group_parent.dart';
@@ -8,36 +7,40 @@ import 'package:childfund_evaluation/utils/models/tarea.dart';
 import 'package:flutter/material.dart';
 import '../../../utils/colors.dart';
 import '../../widgets/parent_evaluation_form.dart';
-import 'package:childfund_evaluation/system/globals.dart';
 
-class EvaluationParentScreen extends StatefulWidget {
+class EvaluationParentRestHalfTaskScreen extends StatefulWidget {
   final String selectedAge;
   final int selectedLevel;
   final String childAgeMonths;
   final int testId;
+  List<AgeGroupParent>? ageGroupsData;
 
-  const EvaluationParentScreen(
+  EvaluationParentRestHalfTaskScreen(
       {super.key,
       required this.selectedAge,
       required this.selectedLevel,
       required this.childAgeMonths,
-      required this.testId});
+      required this.testId,
+      this.ageGroupsData});
 
   @override
-  _EvaluationScreenState createState() => _EvaluationScreenState();
+  _EvaluationRestScreenState createState() => _EvaluationRestScreenState();
 }
 
-class _EvaluationScreenState extends State<EvaluationParentScreen> {
+class _EvaluationRestScreenState
+    extends State<EvaluationParentRestHalfTaskScreen> {
   int currentQuestionIndex = 0;
   int currentStep = 0;
   int currentMotorIndex = 0;
   bool isLowerLevel = false;
   bool isUpperLevel = false;
   Tarea? currentTask;
-  AgeGroupParent? currentAgeGroup;
   int score = 0;
   int tam = 0;
-  List<AgeGroupParent> ageGroupsData = [];
+  AgeGroupParent? currentAgeGroup;
+  List<AgeGroupParent>? ageGroupsData2;
+  List<AgeGroupParent>? ageGroupsDataAux;
+
   List<List<int>> coeficientTable = [];
 
   @override
@@ -56,7 +59,7 @@ class _EvaluationScreenState extends State<EvaluationParentScreen> {
 
       setState(() {
         coeficientTable = dataCoeficent;
-        ageGroupsData = data;
+        ageGroupsData2 = data;
         currentAgeGroup = currentAgeGroupData;
         currentTask = currentAgeGroup?.tareas[currentMotorIndex];
       });
@@ -80,6 +83,7 @@ class _EvaluationScreenState extends State<EvaluationParentScreen> {
   };
 
   List<Step> getCurrentTaskStep() {
+    //halfSteps
     List<Tarea> tasksToUse = isLowerLevel
         ? currentAgeGroup!.tareas.reversed.toList()
         : currentAgeGroup!.tareas;
@@ -115,10 +119,11 @@ class _EvaluationScreenState extends State<EvaluationParentScreen> {
     return stepsGlobal;
   }
 
-  List<Step> getHalfSteps() {
+  List<Step> getRestHalfSteps() {
     getCurrentTaskStep();
-    List<Step> halfSteps = stepsGlobal.sublist(0, stepsGlobal.length ~/ 2);
-    return halfSteps;
+    List<Step> lista =
+        stepsGlobal.sublist((stepsGlobal.length ~/ 2), stepsGlobal.length);
+    return lista;
   }
 
   void updateStepAccomplished(Tarea task, bool value) {
@@ -192,34 +197,33 @@ class _EvaluationScreenState extends State<EvaluationParentScreen> {
             children: [
               Expanded(
                 child: Stepper(
-                  steps:
-                      getCurrentTaskStep().sublist(0, stepsGlobal.length ~/ 2),
+                  steps: getCurrentTaskStep()
+                      .sublist((stepsGlobal.length ~/ 2), stepsGlobal.length),
                   type: StepperType.horizontal,
                   currentStep: currentStep,
                   onStepContinue: () {
                     final isLastStep = currentStep == tam - 1;
-                    print("STEP ${currentStep}");
+
+                    print("STEP => ${currentStep}");
                     List<Tarea> indicatorsToUse = isLowerLevel
                         ? currentAgeGroup!.tareas.reversed.toList()
                         : currentAgeGroup!.tareas;
 
-                    final isCurrentStepCompleted =
-                        indicatorsToUse[currentStep].accomplished != null;
-                    if (!isCurrentStepCompleted) {
-                      return;
-                    }
                     if (isLastStep) {
                       int currentScore = countAccomplishedIndicators();
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => /*ChildrenListPage()*/
-                              EvaluationParentRestHalfTaskScreen(
+                              ResultsParentsScreen(
                             selectedAge: widget.selectedAge,
                             selectedLevel: widget.selectedLevel,
                             childAgeMonths: widget.childAgeMonths,
+                            developmentCoeficient:
+                                getDevelopmentCoeficient(getScore()),
+                            ageGroups:
+                                (widget.ageGroupsData! + ageGroupsData2!),
                             testId: widget.testId,
-                            ageGroupsData: ageGroupsData,
                           ),
                         ),
                       );
@@ -243,19 +247,19 @@ class _EvaluationScreenState extends State<EvaluationParentScreen> {
 
   int getScore() {
     int score = 0;
-    AgeGroupParent ageLevelSelected = ageGroupsData
+    AgeGroupParent ageLevelSelected = ageGroupsData2!
         .firstWhere((element) => element.level == widget.selectedLevel);
     score += countQuestions(ageLevelSelected);
 
     if (widget.selectedLevel > 1) {
-      AgeGroupParent ageLevelLower = ageGroupsData
+      AgeGroupParent ageLevelLower = ageGroupsData2!
           .firstWhere((element) => element.level == (widget.selectedLevel - 1));
 
       score -= countQuestions(ageLevelLower);
     }
 
     if (widget.selectedLevel < 11) {
-      AgeGroupParent ageLevelUpper = ageGroupsData
+      AgeGroupParent ageLevelUpper = ageGroupsData2!
           .firstWhere((element) => element.level == (widget.selectedLevel + 1));
       score += countQuestions(ageLevelUpper);
     }

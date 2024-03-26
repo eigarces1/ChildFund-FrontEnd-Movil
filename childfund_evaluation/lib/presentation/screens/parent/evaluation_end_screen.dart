@@ -14,7 +14,7 @@ class ResultsParentsScreen extends StatefulWidget {
   final int selectedLevel;
   final String childAgeMonths;
   final double developmentCoeficient;
-  final List<AgeGroupParent> ageGroups;
+  final List<AgeGroupParent>? ageGroups;
   final int testId;
 
   const ResultsParentsScreen({
@@ -23,7 +23,7 @@ class ResultsParentsScreen extends StatefulWidget {
     required this.selectedLevel,
     required this.childAgeMonths,
     required this.developmentCoeficient,
-    required this.ageGroups,
+    this.ageGroups,
     required this.testId,
   });
 
@@ -49,19 +49,19 @@ class _ResultsScreenState extends State<ResultsParentsScreen> {
 
   int getScore() {
     int score = 0;
-    AgeGroupParent ageLevelSelected = widget.ageGroups
+    AgeGroupParent ageLevelSelected = widget.ageGroups!
         .firstWhere((element) => element.level == widget.selectedLevel);
     score += countQuestions(ageLevelSelected);
 
     if (widget.selectedLevel > 1) {
-      AgeGroupParent ageLevelLower = widget.ageGroups
+      AgeGroupParent ageLevelLower = widget.ageGroups!
           .firstWhere((element) => element.level == (widget.selectedLevel - 1));
 
       score -= countQuestions(ageLevelLower);
     }
 
     if (widget.selectedLevel < 11) {
-      AgeGroupParent ageLevelUpper = widget.ageGroups
+      AgeGroupParent ageLevelUpper = widget.ageGroups!
           .firstWhere((element) => element.level == (widget.selectedLevel + 1));
       score += countQuestions(ageLevelUpper);
     }
@@ -82,7 +82,7 @@ class _ResultsScreenState extends State<ResultsParentsScreen> {
   @override
   Widget build(BuildContext context) {
     List<Tarea> allMotors = [];
-    for (var ageGroup in widget.ageGroups) {
+    for (var ageGroup in widget.ageGroups!) {
       if (ageGroup.level == widget.selectedLevel ||
           ageGroup.level == widget.selectedLevel - 1 ||
           ageGroup.level == widget.selectedLevel + 1) {
@@ -91,7 +91,7 @@ class _ResultsScreenState extends State<ResultsParentsScreen> {
     }
 
     Map<String, List<TaskWithLevel>> motorsDict = {};
-    for (var ageGroup in widget.ageGroups) {
+    for (var ageGroup in widget.ageGroups!) {
       if (ageGroup.level != widget.selectedLevel &&
           ageGroup.level != widget.selectedLevel - 1 &&
           ageGroup.level != widget.selectedLevel + 1) {
@@ -118,35 +118,36 @@ class _ResultsScreenState extends State<ResultsParentsScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-        title: Text('Resultados'),
-        backgroundColor: AppColors.primaryColor,
-        automaticallyImplyLeading: false, // Esta línea evita que aparezca la flecha de retroceso
-        actions: <Widget>[
-          PopupMenuButton<String>(
-            onSelected: (value) {
-              if (value == 'logout') {
-                // Limpia el token al cerrar la sesión
-                tokenGlobal = '';
-                // Navega a la pantalla de inicio de sesión
-                Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(builder: (context) => SingIn()),
-                  (route) => false,
-                );
-              }
-            },
-            itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-              const PopupMenuItem<String>(
-                value: 'logout',
-                child: ListTile(
-                  leading: Icon(Icons.exit_to_app),
-                  title: Text('Cerrar sesión'),
+          title: Text('Resultados'),
+          backgroundColor: AppColors.primaryColor,
+          automaticallyImplyLeading:
+              false, // Esta línea evita que aparezca la flecha de retroceso
+          actions: <Widget>[
+            PopupMenuButton<String>(
+              onSelected: (value) {
+                if (value == 'logout') {
+                  // Limpia el token al cerrar la sesión
+                  tokenGlobal = '';
+                  // Navega a la pantalla de inicio de sesión
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => SingIn()),
+                    (route) => false,
+                  );
+                }
+              },
+              itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+                const PopupMenuItem<String>(
+                  value: 'logout',
+                  child: ListTile(
+                    leading: Icon(Icons.exit_to_app),
+                    title: Text('Cerrar sesión'),
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ],
-      ),
+              ],
+            ),
+          ],
+        ),
         body: Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
