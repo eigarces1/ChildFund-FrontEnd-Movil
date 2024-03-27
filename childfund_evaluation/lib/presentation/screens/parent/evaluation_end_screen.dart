@@ -109,12 +109,6 @@ class _ResultsScreenState extends State<ResultsParentsScreen> {
       }
     }
 
-    Future<void> _submit() async {
-      ParentConverter controller = ParentConverter(motorsDict: motorsDict);
-      String jsonData = controller.convertToJson();
-      ApiService.submitResultsParents(jsonData, widget.testId);
-    }
-
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -171,7 +165,10 @@ class _ResultsScreenState extends State<ResultsParentsScreen> {
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  _submit;
+                  ParentConverter controller =
+                      ParentConverter(motorsDict: motorsDict);
+                  String jsonData = controller.convertToJson();
+                  ApiService.submitResultsParents(jsonData, widget.testId);
                   Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
