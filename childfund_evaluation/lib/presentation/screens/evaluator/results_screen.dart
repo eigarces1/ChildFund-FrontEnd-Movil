@@ -112,14 +112,6 @@ class _ResultsScreenState extends State<ResultsScreen> {
       }
     }
 
-    Future<void> _submit() async {
-      EvaluatorConverter controller =
-          EvaluatorConverter(motorsDict: motorsDict);
-      String jsonData = controller.convertToJson();
-      ApiService.submitResults(
-          jsonData, widget.testId, widget.developmentCoeficient.toInt());
-    }
-
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -179,7 +171,13 @@ class _ResultsScreenState extends State<ResultsScreen> {
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  _submit;
+                  EvaluatorConverter controller =
+                      EvaluatorConverter(motorsDict: motorsDict);
+                  String jsonData = controller.convertToJson();
+                  ApiService.submitResults(jsonData, widget.testId,
+                      widget.developmentCoeficient.toInt());
+                  print("responses: ${jsonData}");
+                  print("dev ratio: ${widget.developmentCoeficient.toInt()}}");
                   Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
