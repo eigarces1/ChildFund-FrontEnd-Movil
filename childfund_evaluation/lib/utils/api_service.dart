@@ -237,12 +237,12 @@ class ApiService {
   static Future<void> submitResultsParents(String json, int id) async {
     final url = Uri.parse(
         'https://escalav2.app/api/child_family_activity/save_responses?child_id=$id');
-    final response = await http.put(url,
+    final response = await http.post(url,
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
           'Authorization': token,
         },
-        body: jsonEncode(<String, dynamic>{'responses': json}));
+        body: jsonEncode(<String, String>{'responses': json}));
     if (response.statusCode == 200) {
       print('Solicitud POST enviada con éxito');
     } else {

@@ -169,13 +169,13 @@ class _ResultsScreenState extends State<ResultsParentsScreen> {
                       ParentConverter(motorsDict: motorsDict);
                   String jsonData = controller.convertToJson();
                   ApiService.submitResultsParents(jsonData, widget.testId);
-                  Navigator.pushAndRemoveUntil(
+                  /*Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
                       builder: (context) => SuccessParent(),
                     ),
                     (route) => false, // This makes sure all routes are removed
-                  );
+                  );*/
                 },
                 child: const Text('Enviar'),
               ),

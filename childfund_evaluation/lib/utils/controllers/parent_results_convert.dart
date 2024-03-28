@@ -21,7 +21,6 @@ class ParentConverter {
       for (var item in motor.value) {
         list.add(item.indicator.toJson());
       }
-      //print(list);
     }
     data['tareas'] = list;
     String jsonRequest = jsonEncode(data);
