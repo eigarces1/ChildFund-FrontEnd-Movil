@@ -189,25 +189,26 @@ class ApiService {
         },
         body: jsonEncode(<String, dynamic>{
           'person_in_charge': evaluation.personInCharge,
-          'reading': evaluation.reading.toString(),
-          'education': evaluation.education.toString(),
+          'reading': evaluation.reading,
+          'education': evaluation.education,
           'education_years': evaluation.educationYears,
-          'initial_stimulation': evaluation.initialStimulation.toString(),
+          'initial_stimulation': evaluation.initialStimulation,
           'program_place': evaluation.programPlace,
           'childfund_partner': evaluation.childfundPartner,
           'nongovernmental': evaluation.nongovernmental,
           'governmental': evaluation.governmental,
-          'CIBV': evaluation.CIBV.toString(),
-          'CNH': evaluation.CNH.toString(),
-          'initial_education': evaluation.initialEducation.toString(),
+          'CIBV': evaluation.CIBV,
+          'CNH': evaluation.CNH,
+          'initial_education': evaluation.initialEducation,
           'other_sponsor': evaluation.otherSponsor,
           'disability': evaluation.disability,
           'health_condition': evaluation.healthCondition,
           'health_condition_description': evaluation.healthConditionDescription,
-          'height': evaluation.height.toString(),
-          'weight': evaluation.weight.toString(),
+          'height': evaluation.height,
+          'weight': evaluation.weight,
           'observations': evaluation.observations,
         }));
+    print(response.toString());
     if (response.statusCode == 200) {
       print('Solicitud POST enviada con éxito');
     } else {

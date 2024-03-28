@@ -21,15 +21,33 @@ class EvaluationFormScreen extends StatefulWidget {
       required this.selectedLevel,
       required this.childAgeMonths,
       required this.testId,
-      required this.child
-      });
+      required this.child});
 
   @override
   _EvaluationScreenState createState() => _EvaluationScreenState();
 }
 
 class _EvaluationScreenState extends State<EvaluationFormScreen> {
-  Evaluation evaluation = Evaluation.vacio();
+  Evaluation evaluation = Evaluation(
+      personInCharge: " ",
+      reading: 0,
+      education: 0,
+      educationYears: " ",
+      initialStimulation: 0,
+      programPlace: " ",
+      childfundPartner: false,
+      nongovernmental: " ",
+      governmental: " ",
+      CIBV: 0,
+      CNH: 0,
+      initialEducation: 0,
+      otherSponsor: " ",
+      disability: " ",
+      healthCondition: " ",
+      healthConditionDescription: " ",
+      height: 0,
+      weight: 0,
+      observations: " ");
   // **Estas si
   //1
   bool personaMadre = false;
@@ -71,9 +89,9 @@ class _EvaluationScreenState extends State<EvaluationFormScreen> {
   bool estMalo = false;
   bool estRegular = false;
 
-AgeController controller = AgeController();
+  AgeController controller = AgeController();
 
-final Map<String, int> ageLevelMap = {
+  final Map<String, int> ageLevelMap = {
     '0 a 3 meses': 1,
     '3.1 a 6 meses': 2,
     '6.1 a 9 meses': 3,
@@ -100,18 +118,6 @@ final Map<String, int> ageLevelMap = {
     10: '48.1 a 60 meses',
     11: '60.1 a 72 meses',
   };
-
-  Future<void> _submit() async {
-    await ApiService.enviarEvaluacion(evaluation, widget.testId);
-    List<int> data = controller.calculate(widget.child.birthdate);
-    int level = data[0];
-    int diff = data[1];
-    
-  }
-
-  /*Future<void> _submit() async {
-    await ApiService.enviarEvaluacion(evaluation, widget.testId);
-  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -368,7 +374,7 @@ final Map<String, int> ageLevelMap = {
                     ),
                     onChanged: (data) {
                       setState(() {
-                        evaluation?.nongovernmental = noGub ? data : "";
+                        evaluation?.nongovernmental = noGub ? data : "NINGUNO";
                       });
                     },
                   ),
@@ -560,20 +566,22 @@ final Map<String, int> ageLevelMap = {
               ),
               SizedBox(height: 20),
               ElevatedButton(
-                onPressed: () {_submit;
-                List<int> data = controller.calculate(widget.child.birthdate);
-                int level = data[0];
-                int diff = data[1];
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => EvaluationScreen (
-                            selectedAge: ageLevelMapReversed[level]!,
-                            selectedLevel: level,
-                            childAgeMonths: '$diff',
-                            testId: widget.testId,
-                            //child: widget.child,
-                          )));},
+                onPressed: () {
+                  ApiService.enviarEvaluacion(evaluation, widget.testId);
+                  List<int> data = controller.calculate(widget.child.birthdate);
+                  int level = data[0];
+                  int diff = data[1];
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => EvaluationScreen(
+                                selectedAge: ageLevelMapReversed[level]!,
+                                selectedLevel: level,
+                                childAgeMonths: '$diff',
+                                testId: widget.testId,
+                                //child: widget.child,
+                              )));
+                },
                 child: Text('Guardar'),
               ),
             ],
