@@ -6,6 +6,7 @@ import 'package:childfund_evaluation/utils/api_service.dart';
 import 'package:childfund_evaluation/presentation/screens/evaluator/evaluator_screen.dart';
 import 'package:childfund_evaluation/presentation/screens/parent/parent_screen.dart';
 import 'package:childfund_evaluation/system/globals.dart';
+import 'package:childfund_evaluation/preference/prefs.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({Key? key}) : super(key: key);
@@ -18,6 +19,7 @@ class _LoginFormState extends State<LoginForm> {
   GlobalKey<FormState> _formkey = GlobalKey();
   late String _email = '';
   late String _password = '';
+  Storage stg = new Storage();
 
   Future<void> _submit() async {
     if (_formkey.currentState!.validate()) {
@@ -41,6 +43,7 @@ class _LoginFormState extends State<LoginForm> {
             evGlobal.userId = evaluator.userId;
             evGlobal.officerId = evaluator.officerId;
             print(evGlobal.getData());
+            this.stg.guardarDatosUsuario(evGlobal, null);
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => EvaluatorPage()),
@@ -56,6 +59,7 @@ class _LoginFormState extends State<LoginForm> {
             paGlobal.rol = parent.rol;
             paGlobal.userId = parent.userId;
             paGlobal.parentId = parent.parentId;
+            this.stg.guardarDatosUsuario(null, paGlobal);
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => ParentPage()),
