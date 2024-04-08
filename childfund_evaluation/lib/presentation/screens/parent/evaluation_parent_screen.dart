@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:childfund_evaluation/presentation/screens/login/sing_in.dart';
 import 'package:childfund_evaluation/presentation/screens/parent/evaluation_end_screen.dart';
 import 'package:childfund_evaluation/presentation/screens/parent/evaluation_parent_resthalf_screen.dart';
@@ -9,6 +11,8 @@ import 'package:flutter/material.dart';
 import '../../../utils/colors.dart';
 import '../../widgets/parent_evaluation_form.dart';
 import 'package:childfund_evaluation/system/globals.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 class EvaluationParentScreen extends StatefulWidget {
   final String selectedAge;
@@ -39,11 +43,31 @@ class _EvaluationScreenState extends State<EvaluationParentScreen> {
   int tam = 0;
   List<AgeGroupParent> ageGroupsData = [];
   List<List<int>> coeficientTable = [];
+  late StreamSubscription subscription;
+  late StreamSubscription internetSubscription;
+  bool hasInternet = false;
 
   @override
   void initState() {
     super.initState();
     loadData();
+    subscription = Connectivity().onConnectivityChanged.listen(_showState);
+    internetSubscription =
+        InternetConnectionChecker().onStatusChange.listen((status) {
+      final hasInternet = status == InternetConnectionStatus.connected;
+      setState(() => this.hasInternet = hasInternet);
+    });
+  }
+
+  void _showState(ConnectivityResult result) {
+    final hasInternet = result != ConnectivityResult.none;
+    final message = hasInternet
+        ? result == ConnectivityResult.mobile
+            ? 'Datos moviles'
+            : 'Internet wifi'
+        : 'No tienes internet';
+
+    print(message);
   }
 
   Future<void> loadData() async {
