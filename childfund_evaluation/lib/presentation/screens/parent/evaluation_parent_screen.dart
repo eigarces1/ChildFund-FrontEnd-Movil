@@ -4,6 +4,7 @@ import 'package:childfund_evaluation/presentation/screens/login/sing_in.dart';
 import 'package:childfund_evaluation/presentation/screens/parent/evaluation_end_screen.dart';
 import 'package:childfund_evaluation/presentation/screens/parent/evaluation_parent_resthalf_screen.dart';
 import 'package:childfund_evaluation/system/globals.dart';
+import 'package:childfund_evaluation/utils/controllers/net_controller.dart';
 import 'package:childfund_evaluation/utils/json_parse.dart';
 import 'package:childfund_evaluation/utils/models/age_group_parent.dart';
 import 'package:childfund_evaluation/utils/models/tarea.dart';
@@ -46,6 +47,7 @@ class _EvaluationScreenState extends State<EvaluationParentScreen> {
   late StreamSubscription subscription;
   late StreamSubscription internetSubscription;
   bool hasInternet = false;
+  NetController netController = new NetController();
 
   @override
   void initState() {
@@ -59,15 +61,10 @@ class _EvaluationScreenState extends State<EvaluationParentScreen> {
     });
   }
 
-  void _showState(ConnectivityResult result) {
-    final hasInternet = result != ConnectivityResult.none;
-    final message = hasInternet
-        ? result == ConnectivityResult.mobile
-            ? 'Datos moviles'
-            : 'Internet wifi'
-        : 'No tienes internet';
-
-    print(message);
+  bool _showState(ConnectivityResult result) {
+    final hasInternet = this.netController.isConected(result);
+    print('Is Conected? : ${hasInternet}');
+    return hasInternet;
   }
 
   Future<void> loadData() async {

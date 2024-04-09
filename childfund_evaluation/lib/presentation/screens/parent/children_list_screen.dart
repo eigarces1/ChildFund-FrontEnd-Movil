@@ -1,11 +1,16 @@
+import 'dart:async';
+
 import 'package:childfund_evaluation/preference/prefs.dart';
 import 'package:childfund_evaluation/presentation/screens/login/sing_in.dart';
 import 'package:childfund_evaluation/presentation/screens/parent/child_details_screen.dart';
 import 'package:childfund_evaluation/system/globals.dart';
 import 'package:childfund_evaluation/utils/colors.dart';
+import 'package:childfund_evaluation/utils/controllers/net_controller.dart';
 import 'package:flutter/material.dart';
 import '../../../utils/api_service.dart';
 import '../../../utils/models/child.dart'; // Importa la clase Child
+import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 class ChildrenListPage extends StatefulWidget {
   const ChildrenListPage({Key? key}) : super(key: key);
@@ -18,11 +23,27 @@ class _ChildrenListPageState extends State<ChildrenListPage> {
   List<Map<String, dynamic>>? children;
   List<dynamic>? childrenLocalStg;
   Storage stg = new Storage();
+  late StreamSubscription subscription;
+  late StreamSubscription internetSubscription;
+  bool hasInternet = false;
+  NetController netController = new NetController();
 
   @override
   void initState() {
     super.initState();
     _loadChildren();
+    subscription = Connectivity().onConnectivityChanged.listen(_showState);
+    internetSubscription =
+        InternetConnectionChecker().onStatusChange.listen((status) {
+      final hasInternet = status == InternetConnectionStatus.connected;
+      setState(() => this.hasInternet = hasInternet);
+    });
+  }
+
+  bool _showState(ConnectivityResult result) {
+    final hasInternet = this.netController.isConected(result);
+    print('Is Conected? : ${hasInternet}');
+    return hasInternet;
   }
 
   Future<void> _loadChildren() async {
