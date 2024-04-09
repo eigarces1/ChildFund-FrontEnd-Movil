@@ -34,4 +34,31 @@ class Evaluator {
   String getData() {
     return 'Usuario {name: $name $lastname, identificacion: $identificacion, rol: $rol, mail: $mail, officer_id: $officerId}';
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'lastname': lastname,
+      'identificacion': identificacion,
+      'rol': rol,
+      'mail': mail,
+      'userId': userId,
+      'officerId': officerId,
+      'phone': phone,
+      'position': position,
+    };
+  }
+
+  factory Evaluator.fromJson(Map<String, dynamic> json) {
+    return Evaluator(
+        userId: json['userId'],
+        rol: json['rol'],
+        mail: json['mail'],
+        name: json['name'],
+        lastname: json['lastname'],
+        identificacion: json['identificacion'],
+        phone: json['phone'],
+        position: json['position'],
+        officerId: json['officerId']);
+  }
 }

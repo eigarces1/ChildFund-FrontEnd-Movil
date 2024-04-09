@@ -35,5 +35,31 @@ class Parent {
   String getData() {
     return 'Usuario {name: $name $lastname, identificacion: $identificacion, rol: $rol, mail: $mail}';
   }
-  
+
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'lastname': lastname,
+      'identificacion': identificacion,
+      'rol': rol,
+      'mail': mail,
+      'userId': userId,
+      'parentId': parentId,
+      'phone': phone,
+      'position': position,
+    };
+  }
+
+  factory Parent.fromJson(Map<String, dynamic> json) {
+    return Parent(
+        userId: json['userId'],
+        parentId: json['parentId'],
+        rol: json['rol'],
+        mail: json['mail'],
+        name: json['name'],
+        lastname: json['lastname'],
+        identificacion: json['identificacion'],
+        phone: json['phone'],
+        position: json['position']);
+  }
 }

@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:childfund_evaluation/presentation/screens/login/sing_in.dart';
 import 'package:childfund_evaluation/presentation/screens/parent/children_list_screen.dart';
 import 'package:childfund_evaluation/utils/colors.dart';
+import 'package:childfund_evaluation/utils/models/parent.dart';
 import 'package:flutter/material.dart';
 import 'package:childfund_evaluation/system/globals.dart';
 import 'package:childfund_evaluation/preference/prefs.dart';
@@ -10,6 +13,10 @@ class ParentPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Storage stg = new Storage();
+    stg.obtenerPadre().then((Parent? p) {
+      print('Data guardada => ');
+      print(p!.getData());
+    });
     return Scaffold(
         appBar: AppBar(
           title: Text('Padre'),
@@ -48,9 +55,8 @@ class ParentPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(height: 20),
-                //TODO: Aqui abajo se debe mostrar la data guardada en el local storage
                 Text(
-                  'Data ' + stg.obtenerDatosUsuario().toString(),
+                  'Hola ${paGlobal.name} ${paGlobal.lastname}',
                   style: const TextStyle(
                     fontSize: 18.0,
                     fontWeight: FontWeight.bold,

@@ -43,7 +43,7 @@ class _LoginFormState extends State<LoginForm> {
             evGlobal.userId = evaluator.userId;
             evGlobal.officerId = evaluator.officerId;
             print(evGlobal.getData());
-            this.stg.guardarDatosUsuario(evGlobal, null);
+            //this.stg.guardarDatosUsuario(evGlobal, null);
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => EvaluatorPage()),
@@ -59,7 +59,8 @@ class _LoginFormState extends State<LoginForm> {
             paGlobal.rol = parent.rol;
             paGlobal.userId = parent.userId;
             paGlobal.parentId = parent.parentId;
-            this.stg.guardarDatosUsuario(null, paGlobal);
+            stg.guardarPadre(paGlobal);
+            stg.guardarListadoHijos(paGlobal, token);
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => ParentPage()),

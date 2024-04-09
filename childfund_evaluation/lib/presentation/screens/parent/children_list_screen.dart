@@ -1,3 +1,4 @@
+import 'package:childfund_evaluation/preference/prefs.dart';
 import 'package:childfund_evaluation/presentation/screens/login/sing_in.dart';
 import 'package:childfund_evaluation/presentation/screens/parent/child_details_screen.dart';
 import 'package:childfund_evaluation/system/globals.dart';
@@ -15,6 +16,8 @@ class ChildrenListPage extends StatefulWidget {
 
 class _ChildrenListPageState extends State<ChildrenListPage> {
   List<Map<String, dynamic>>? children;
+  List<dynamic>? childrenLocalStg;
+  Storage stg = new Storage();
 
   @override
   void initState() {
@@ -28,6 +31,11 @@ class _ChildrenListPageState extends State<ChildrenListPage> {
     setState(() {
       children = childrenData;
     });
+    print('Data obtenida desde el localstorage: ');
+    this.stg.obtenerChildrenList().then((List<dynamic>? value) {
+      this.childrenLocalStg = value;
+      print(value);
+    });
   }
 
   @override
@@ -36,7 +44,7 @@ class _ChildrenListPageState extends State<ChildrenListPage> {
       appBar: AppBar(
         title: Text('Lista de hijos'),
         backgroundColor: AppColors.primaryColor,
-        //automaticallyImplyLeading: false, 
+        //automaticallyImplyLeading: false,
         actions: <Widget>[
           PopupMenuButton<String>(
             onSelected: (value) {
@@ -66,7 +74,7 @@ class _ChildrenListPageState extends State<ChildrenListPage> {
       body: children == null
           ? Center(child: CircularProgressIndicator())
           : ListView.builder(
-              itemCount: children!.length,
+              itemCount: childrenLocalStg!.length,
               itemBuilder: (context, index) {
                 final child = children![index];
                 return ListTile(
@@ -75,9 +83,8 @@ class _ChildrenListPageState extends State<ChildrenListPage> {
                   subtitle: Text(
                       'Género: ${child['gender'] ?? ''}, Fecha de nacimiento: ${child['birthdate'] ?? ''}'),
                   onTap: () {
-                    _navigateToChildDetails(
-                        child['child_id']);
-                        //child['test_id']); // Navegar a la página de detalles del niño al hacer clic
+                    _navigateToChildDetails(child['child_id']);
+                    //child['test_id']); // Navegar a la página de detalles del niño al hacer clic
                   },
                 );
               },
