@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:childfund_evaluation/utils/api_service.dart';
+import 'package:childfund_evaluation/utils/models/child.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:childfund_evaluation/utils/models/evaluator.dart';
 import 'package:childfund_evaluation/utils/models/parent.dart';
@@ -44,11 +45,17 @@ class Storage {
   }
 
   Future<void> guardarListadoHijos(Parent pdGlobal, String token) async {
-    ApiService service;
     final childrenData =
         await ApiService.getChildrenByParentId(pdGlobal.parentId, token);
     SharedPreferences prefs = await SharedPreferences.getInstance();
+
     await prefs.setString('childrenList', jsonEncode(childrenData));
+    final aux = [];
+    for (int i = 0; i < childrenData!.length; i++) {
+      Child ch = await ApiService.getChildrenById(childrenData[i]['child_id']);
+      aux.add(ch.toJson());
+    }
+    await prefs.setString('childInfoList', jsonEncode(aux));
   }
 
   Future<List<dynamic>?> obtenerChildrenList() async {
@@ -57,6 +64,21 @@ class Storage {
     if (jsonString != null) {
       List<dynamic>? jsonMap = jsonDecode((jsonString));
       return jsonMap;
+    } else {
+      return null;
+    }
+  }
+
+  Future<List<dynamic>?> obtenerInfoChildList() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final jsonString = prefs.getString('childInfoList');
+    if (jsonString != null) {
+      List<dynamic>? jsonMap = jsonDecode((jsonString));
+      List<dynamic>? toReturn = [];
+      for (int i = 0; i < jsonMap!.length; i++) {
+        toReturn.add(Child.fromJson(jsonMap[i]));
+      }
+      return toReturn;
     } else {
       return null;
     }

@@ -60,6 +60,7 @@ class _LoginFormState extends State<LoginForm> {
             paGlobal.userId = parent.userId;
             paGlobal.parentId = parent.parentId;
             stg.guardarPadre(paGlobal);
+            stg.guardarToken(token);
             stg.guardarListadoHijos(paGlobal, token);
             Navigator.push(
               context,

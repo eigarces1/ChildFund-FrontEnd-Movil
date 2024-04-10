@@ -13,9 +13,9 @@ class ParentPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Storage stg = new Storage();
+    Parent? padre;
     stg.obtenerPadre().then((Parent? p) {
-      print('Data guardada => ');
-      print(p!.getData());
+      padre = p;
     });
     return Scaffold(
         appBar: AppBar(
@@ -56,7 +56,7 @@ class ParentPage extends StatelessWidget {
               children: [
                 const SizedBox(height: 20),
                 Text(
-                  'Hola ${paGlobal.name} ${paGlobal.lastname}',
+                  'Bienvenido',
                   style: const TextStyle(
                     fontSize: 18.0,
                     fontWeight: FontWeight.bold,

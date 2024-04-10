@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:childfund_evaluation/preference/prefs.dart';
 import 'package:childfund_evaluation/presentation/screens/login/sing_in.dart';
 import 'package:childfund_evaluation/presentation/screens/parent/child_details_screen.dart';
+import 'package:childfund_evaluation/presentation/widgets/message_box.dart';
 import 'package:childfund_evaluation/system/globals.dart';
 import 'package:childfund_evaluation/utils/colors.dart';
 import 'package:childfund_evaluation/utils/controllers/net_controller.dart';
@@ -22,6 +23,7 @@ class ChildrenListPage extends StatefulWidget {
 class _ChildrenListPageState extends State<ChildrenListPage> {
   List<Map<String, dynamic>>? children;
   List<dynamic>? childrenLocalStg;
+  List<dynamic>? childrenInfoData;
   Storage stg = new Storage();
   late StreamSubscription subscription;
   late StreamSubscription internetSubscription;
@@ -47,16 +49,27 @@ class _ChildrenListPageState extends State<ChildrenListPage> {
   }
 
   Future<void> _loadChildren() async {
-    final childrenData =
-        await ApiService.getChildrenByParentId(paGlobal.parentId, tokenGlobal);
-    setState(() {
-      children = childrenData;
-    });
-    print('Data obtenida desde el localstorage: ');
-    this.stg.obtenerChildrenList().then((List<dynamic>? value) {
-      this.childrenLocalStg = value;
-      print(value);
-    });
+    if (hasInternet) {
+      final childrenData = await ApiService.getChildrenByParentId(
+          paGlobal.parentId, tokenGlobal);
+      setState(() {
+        children = childrenData;
+      });
+    } else {
+      stg.obtenerChildrenList().then((value) {
+        setState(() {
+          childrenLocalStg = value;
+        });
+      });
+      stg.obtenerInfoChildList().then((value) {
+        setState(() {
+          childrenInfoData = value;
+        });
+      });
+    }
+    for (int i = 0; i < childrenLocalStg!.length; i++) {
+      print(childrenInfoData![i].toString());
+    }
   }
 
   @override
@@ -92,24 +105,59 @@ class _ChildrenListPageState extends State<ChildrenListPage> {
           ),
         ],
       ),
-      body: children == null
-          ? Center(child: CircularProgressIndicator())
-          : ListView.builder(
-              itemCount: childrenLocalStg!.length,
-              itemBuilder: (context, index) {
-                final child = children![index];
-                return ListTile(
-                  title:
-                      Text('${child['name'] ?? ''} ${child['lastname'] ?? ''}'),
-                  subtitle: Text(
-                      'Género: ${child['gender'] ?? ''}, Fecha de nacimiento: ${child['birthdate'] ?? ''}'),
-                  onTap: () {
-                    _navigateToChildDetails(child['child_id']);
-                    //child['test_id']); // Navegar a la página de detalles del niño al hacer clic
+      body: hasInternet
+          ? children == null
+              ? Center(child: CircularProgressIndicator())
+              : ListView.builder(
+                  itemCount: children!.length,
+                  itemBuilder: (context, index) {
+                    final child = children![index];
+                    return ListTile(
+                      title: Text(
+                          '${child['name'] ?? ''} ${child['lastname'] ?? ''}'),
+                      subtitle: Text(
+                          'Género: ${child['gender'] ?? ''}, Fecha de nacimiento: ${child['birthdate'] ?? ''}'),
+                      onTap: () {
+                        _navigateToChildDetails(child['child_id']);
+                        //child['test_id']); // Navegar a la página de detalles del niño al hacer clic
+                      },
+                    );
                   },
-                );
-              },
-            ),
+                )
+          : childrenLocalStg == null
+              ? Center(child: CircularProgressIndicator())
+              : Stack(children: <Widget>[
+                  SnackMessage(),
+                  ListView.builder(
+                    itemCount: childrenLocalStg!.length,
+                    itemBuilder: (context, index) {
+                      final child = childrenLocalStg![index];
+                      return ListTile(
+                        title: Text(
+                            '${child['name'] ?? ''} ${child['lastname'] ?? ''}'),
+                        subtitle: Text(
+                            'Género: ${child['gender'] ?? ''}, Fecha de nacimiento: ${child['birthdate'] ?? ''}'),
+                        onTap: () {
+                          _navigateToChildDetailsOffline(child['child_id']);
+                          //child['test_id']); // Navegar a la página de detalles del niño al hacer clic
+                        },
+                      );
+                    },
+                  )
+                ]),
+    );
+  }
+
+  void _navigateToChildDetailsOffline(int id) {
+    Child? childOff = getOffLineDataChildren(id);
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ChildDetailsPage(
+          child: childOff!,
+          //testId: testId,
+        ), // Pasa el niño seleccionado a la página de detalles
+      ),
     );
   }
 
@@ -136,5 +184,14 @@ class _ChildrenListPageState extends State<ChildrenListPage> {
 
   Future<dynamic> _getChild(int id) async {
     return ApiService.getChildrenById(id);
+  }
+
+  Child? getOffLineDataChildren(int id) {
+    for (int i = 0; i < childrenInfoData!.length; i++) {
+      if (childrenInfoData![i].childId == id) {
+        return childrenInfoData![i];
+      }
+    }
+    return null;
   }
 }
