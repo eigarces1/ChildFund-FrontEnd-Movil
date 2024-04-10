@@ -50,6 +50,7 @@ class Storage {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     await prefs.setString('childrenList', jsonEncode(childrenData));
+
     final aux = [];
     for (int i = 0; i < childrenData!.length; i++) {
       Child ch = await ApiService.getChildrenById(childrenData[i]['child_id']);
@@ -103,10 +104,54 @@ class Storage {
     }
   }
 
+  Future<void> guardarAsignaciones(int id, String token) async {
+    final childrenData = await ApiService.getAsignaciones(id, token);
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('asignaciones', jsonEncode(childrenData));
+
+    final aux = [];
+    for (int i = 0; i < childrenData!.length; i++) {
+      Child ch = await ApiService.getChildrenById(childrenData[i]['child_id']);
+      aux.add(ch.toJson());
+    }
+    await prefs.setString('childInfoListEv', jsonEncode(aux));
+  }
+
+  Future<List<dynamic>?> obtenerAsignaciones() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final jsonString = prefs.getString('asignaciones');
+    if (jsonString != null) {
+      final jsonMap = jsonDecode(jsonString);
+      return jsonMap;
+    } else {
+      return null;
+    }
+  }
+
+  Future<List<dynamic>?> obtenerChildInfoEv() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final jsonString = prefs.getString('childInfoListEv');
+    if (jsonString != null) {
+      List<dynamic>? jsonMap = jsonDecode((jsonString));
+      List<dynamic>? toReturn = [];
+      for (int i = 0; i < jsonMap!.length; i++) {
+        toReturn.add(Child.fromJson(jsonMap[i]));
+      }
+      return toReturn;
+    } else {
+      return null;
+    }
+  }
+
   /*
     * Funcion para eliminar cualquier elemento del local storage
   */
-  Future<void> eliminar(String key) async {
+  Future<void> eliminarDataParent(String key) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.remove(key);
+  }
+
+  Future<void> eliminarDataEv(String key) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.remove(key);
   }

@@ -44,6 +44,9 @@ class _LoginFormState extends State<LoginForm> {
             evGlobal.officerId = evaluator.officerId;
             print(evGlobal.getData());
             //this.stg.guardarDatosUsuario(evGlobal, null);
+            stg.guardarEv(evGlobal);
+            stg.guardarToken(token);
+            stg.guardarAsignaciones(evGlobal.officerId, token);
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => EvaluatorPage()),

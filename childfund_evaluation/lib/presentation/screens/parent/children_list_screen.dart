@@ -67,9 +67,6 @@ class _ChildrenListPageState extends State<ChildrenListPage> {
         });
       });
     }
-    for (int i = 0; i < childrenLocalStg!.length; i++) {
-      print(childrenInfoData![i].toString());
-    }
   }
 
   @override
