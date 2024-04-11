@@ -1,17 +1,23 @@
+import 'dart:async';
+
+import 'package:childfund_evaluation/preference/prefs.dart';
 import 'package:childfund_evaluation/presentation/screens/login/sing_in.dart';
 import 'package:childfund_evaluation/presentation/screens/parent/evaluation_parent_screen.dart';
 import 'package:childfund_evaluation/system/globals.dart';
+import 'package:childfund_evaluation/utils/api_service.dart';
 import 'package:childfund_evaluation/utils/colors.dart';
+import 'package:childfund_evaluation/utils/controllers/net_controller.dart';
 import 'package:flutter/material.dart';
 import '../../../utils/models/child.dart';
 import '../../../utils/controllers/age_controller.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 class ChildDetailsPage extends StatefulWidget {
   final Child child;
   //final int testId;
 
-  const ChildDetailsPage({Key? key, required this.child})
-      : super(key: key);
+  const ChildDetailsPage({Key? key, required this.child}) : super(key: key);
 
   @override
   _ChildDetailsPageState createState() => _ChildDetailsPageState();
@@ -19,6 +25,40 @@ class ChildDetailsPage extends StatefulWidget {
 
 class _ChildDetailsPageState extends State<ChildDetailsPage> {
   AgeController controller = AgeController();
+  late StreamSubscription subscription;
+  late StreamSubscription internetSubscription;
+  bool hasInternet = false;
+  NetController netController = new NetController();
+  Storage stg = Storage();
+
+  @override
+  void initState() {
+    super.initState();
+    subscription = Connectivity().onConnectivityChanged.listen(_showState);
+    internetSubscription =
+        InternetConnectionChecker().onStatusChange.listen((status) {
+      final hasInternet = status == InternetConnectionStatus.connected;
+      setState(() => this.hasInternet = hasInternet);
+    });
+  }
+
+  bool _showState(ConnectivityResult result) {
+    final hasInternet = this.netController.isConected(result);
+    print('Is Conected? : ${hasInternet}');
+    bool existTest = false;
+    stg.existenTest().then((value) {
+      if (value) {
+        stg.obtenerTestParent().then((t) {
+          for (int i = 0; i < t!.length; i++) {
+            ApiService.submitResultsParents(t[i]['jsonData'], t[i]['testId']);
+          }
+        });
+      } else {
+        print('No hay tests por guardad');
+      }
+    });
+    return hasInternet;
+  }
 
   final Map<String, int> ageLevelMap = {
     '0 a 3 meses': 1,

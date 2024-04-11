@@ -1,3 +1,10 @@
+import 'dart:async';
+import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:childfund_evaluation/preference/prefs.dart';
+import 'package:childfund_evaluation/utils/api_service.dart';
+import 'package:childfund_evaluation/utils/controllers/net_controller.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 
 class ChildEvaluationFormWidget extends StatelessWidget {
@@ -22,6 +29,39 @@ class ChildEvaluationFormWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    late StreamSubscription subscription;
+    late StreamSubscription internetSubscription;
+    bool hasInternet = false;
+    NetController netController = NetController();
+
+    Storage stg = new Storage();
+
+    bool _showState(ConnectivityResult result) {
+      final hasInternet = netController.isConected(result);
+      print('Is Conected? : ${hasInternet}');
+      bool existTest = false;
+      stg.existenTest().then((value) {
+        if (value) {
+          //Si existen pruebas pendientes
+          stg.obtenerTestParent().then((t) {
+            for (int j = 0; j < t!.length; j++) {
+              ApiService.submitResultsParents(t[j]['jsonData'], t[j]['testId']);
+            }
+          });
+        } else {
+          print('No hay tests por guardad');
+        }
+      });
+      return hasInternet;
+    }
+
+    subscription = Connectivity().onConnectivityChanged.listen(_showState);
+    internetSubscription =
+        InternetConnectionChecker().onStatusChange.listen((status) {
+      final hasInternet_ = status == InternetConnectionStatus.connected;
+      hasInternet = hasInternet_;
+    });
+
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Column(

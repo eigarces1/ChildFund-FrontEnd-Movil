@@ -171,6 +171,20 @@ class Storage {
     }
   }
 
+  Future<void> guardarTest1Ev(List<dynamic> test) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('evTest1', jsonEncode(test));
+  }
+
+  Future<void> guardarTest2Ev(List<dynamic> test) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('evTest2', jsonEncode(test));
+  }
+
+  Future<bool> existeTest1Ev() async {
+    return false;
+  }
+
   /*
     * Funcion para eliminar cualquier elemento del local storage
   */
