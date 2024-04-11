@@ -1,8 +1,12 @@
+import 'dart:async';
 import 'dart:convert';
-
+import 'package:childfund_evaluation/utils/api_service.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:childfund_evaluation/presentation/screens/login/sing_in.dart';
 import 'package:childfund_evaluation/presentation/screens/parent/children_list_screen.dart';
 import 'package:childfund_evaluation/utils/colors.dart';
+import 'package:childfund_evaluation/utils/controllers/net_controller.dart';
 import 'package:childfund_evaluation/utils/models/parent.dart';
 import 'package:flutter/material.dart';
 import 'package:childfund_evaluation/system/globals.dart';
@@ -12,11 +16,43 @@ class ParentPage extends StatelessWidget {
   const ParentPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    late StreamSubscription subscription;
+    late StreamSubscription internetSubscription;
+    bool hasInternet = false;
+    NetController netController = NetController();
+
     Storage stg = new Storage();
     Parent? padre;
     stg.obtenerPadre().then((Parent? p) {
       padre = p;
     });
+
+    bool _showState(ConnectivityResult result) {
+      final hasInternet = netController.isConected(result);
+      print('Is Conected? : ${hasInternet}');
+      bool existTest = false;
+      stg.existenTest().then((value) {
+        if (value) {
+          //Si existen pruebas pendientes
+          stg.obtenerTestParent().then((t) {
+            for (int j = 0; j < t!.length; j++) {
+              ApiService.submitResultsParents(t[j]['jsonData'], t[j]['testId']);
+            }
+          });
+        } else {
+          print('No hay tests por guardad');
+        }
+      });
+      return hasInternet;
+    }
+
+    subscription = Connectivity().onConnectivityChanged.listen(_showState);
+    internetSubscription =
+        InternetConnectionChecker().onStatusChange.listen((status) {
+      final hasInternet_ = status == InternetConnectionStatus.connected;
+      hasInternet = hasInternet_;
+    });
+
     return Scaffold(
         appBar: AppBar(
           title: Text('Padre'),

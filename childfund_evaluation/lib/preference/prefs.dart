@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:childfund_evaluation/utils/api_service.dart';
 import 'package:childfund_evaluation/utils/models/child.dart';
+import 'package:childfund_evaluation/utils/models/test_send.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:childfund_evaluation/utils/models/evaluator.dart';
 import 'package:childfund_evaluation/utils/models/parent.dart';
@@ -78,6 +79,33 @@ class Storage {
       List<dynamic>? toReturn = [];
       for (int i = 0; i < jsonMap!.length; i++) {
         toReturn.add(Child.fromJson(jsonMap[i]));
+      }
+      return toReturn;
+    } else {
+      return null;
+    }
+  }
+
+  Future<void> guardarTestParent(List<dynamic> test) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('parentTest', jsonEncode(test));
+  }
+
+  //Funcion para evaluar si existen pruebas pendientes de los padres
+  Future<bool> existenTest() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final jsonString = prefs.getString('parentTest');
+    return (jsonString == null);
+  }
+
+  Future<List<dynamic>?> obtenerTestParent() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final jsonString = prefs.getString('parentTest');
+    if (jsonString != null) {
+      List<dynamic>? jsonMap = jsonDecode(jsonString);
+      List<dynamic>? toReturn = [];
+      for (int i = 0; i < jsonMap!.length; i++) {
+        toReturn.add(TestToSend.fromJson(jsonMap[i]));
       }
       return toReturn;
     } else {

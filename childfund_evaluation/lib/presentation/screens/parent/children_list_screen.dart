@@ -21,7 +21,7 @@ class ChildrenListPage extends StatefulWidget {
 }
 
 class _ChildrenListPageState extends State<ChildrenListPage> {
-  List<Map<String, dynamic>>? children;
+  List<dynamic>? children;
   List<dynamic>? childrenLocalStg;
   List<dynamic>? childrenInfoData;
   Storage stg = new Storage();
@@ -49,24 +49,16 @@ class _ChildrenListPageState extends State<ChildrenListPage> {
   }
 
   Future<void> _loadChildren() async {
-    if (hasInternet) {
-      final childrenData = await ApiService.getChildrenByParentId(
-          paGlobal.parentId, tokenGlobal);
+    stg.obtenerChildrenList().then((value) {
       setState(() {
-        children = childrenData;
+        children = value;
       });
-    } else {
-      stg.obtenerChildrenList().then((value) {
-        setState(() {
-          childrenLocalStg = value;
-        });
+    });
+    stg.obtenerInfoChildList().then((value) {
+      setState(() {
+        childrenInfoData = value;
       });
-      stg.obtenerInfoChildList().then((value) {
-        setState(() {
-          childrenInfoData = value;
-        });
-      });
-    }
+    });
   }
 
   @override
@@ -121,14 +113,14 @@ class _ChildrenListPageState extends State<ChildrenListPage> {
                     );
                   },
                 )
-          : childrenLocalStg == null
+          : children == null
               ? Center(child: CircularProgressIndicator())
               : Stack(children: <Widget>[
                   SnackMessage(),
                   ListView.builder(
-                    itemCount: childrenLocalStg!.length,
+                    itemCount: children!.length,
                     itemBuilder: (context, index) {
-                      final child = childrenLocalStg![index];
+                      final child = children![index];
                       return ListTile(
                         title: Text(
                             '${child['name'] ?? ''} ${child['lastname'] ?? ''}'),
