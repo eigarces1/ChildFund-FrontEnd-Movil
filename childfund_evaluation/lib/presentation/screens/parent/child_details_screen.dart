@@ -115,6 +115,7 @@ class _ChildDetailsPageState extends State<ChildDetailsPage> {
               if (value == 'logout') {
                 // Limpia el token al cerrar la sesión
                 tokenGlobal = '';
+                stg.eliminarDataParent('all');
                 // Navega a la pantalla de inicio de sesión
                 Navigator.pushAndRemoveUntil(
                   context,

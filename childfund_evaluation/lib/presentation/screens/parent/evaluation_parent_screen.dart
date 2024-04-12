@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:childfund_evaluation/preference/prefs.dart';
 import 'package:childfund_evaluation/presentation/screens/login/sing_in.dart';
 import 'package:childfund_evaluation/presentation/screens/parent/evaluation_end_screen.dart';
 import 'package:childfund_evaluation/presentation/screens/parent/evaluation_parent_resthalf_screen.dart';
@@ -48,6 +49,7 @@ class _EvaluationScreenState extends State<EvaluationParentScreen> {
   late StreamSubscription internetSubscription;
   bool hasInternet = false;
   NetController netController = new NetController();
+  Storage stg = Storage();
 
   @override
   void initState() {
@@ -189,6 +191,7 @@ class _EvaluationScreenState extends State<EvaluationParentScreen> {
                   if (value == 'logout') {
                     // Limpia el token al cerrar la sesión
                     tokenGlobal = '';
+                    stg.eliminarDataParent('all');
                     // Navega a la pantalla de inicio de sesión
                     Navigator.pushAndRemoveUntil(
                       context,

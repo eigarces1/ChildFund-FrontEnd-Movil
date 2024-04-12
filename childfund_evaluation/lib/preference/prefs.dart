@@ -36,6 +36,12 @@ class Storage {
     await prefs.setString('padre', jsonEncode(pdGlobal!.toJson()));
   }
 
+  Future<bool> existePadre() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final jsonString = prefs.getString('padre');
+    return (jsonString != null);
+  }
+
   Future<Parent?> obtenerPadre() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     final jsonString = prefs.getString('padre');
@@ -120,12 +126,18 @@ class Storage {
   */
   Future<void> guardarEv(Evaluator? evGlobal) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString('padre', jsonEncode(evGlobal!.toJson()));
+    await prefs.setString('evaluador', jsonEncode(evGlobal!.toJson()));
+  }
+
+  Future<bool> existeEv() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final jsonString = prefs.getString('evaluador');
+    return (jsonString != null);
   }
 
   Future<Parent?> obtenerEv() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    final jsonString = prefs.getString('padre');
+    final jsonString = prefs.getString('evaluador');
     if (jsonString != null) {
       final jsonMap = jsonDecode(jsonString);
       return Parent.fromJson(jsonMap);
@@ -229,11 +241,28 @@ class Storage {
   */
   Future<void> eliminarDataParent(String key) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.remove(key);
+    if (key == "all") {
+      await prefs.remove('token');
+      await prefs.remove('padre');
+      await prefs.remove('childrenList');
+      await prefs.remove('childInfoList');
+      await prefs.remove('parentTest');
+    } else {
+      await prefs.remove(key);
+    }
   }
 
   Future<void> eliminarDataEv(String key) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.remove(key);
+    if (key == "all") {
+      await prefs.remove('token');
+      await prefs.remove('evaluador');
+      await prefs.remove('asignaciones');
+      await prefs.remove('childInfoListEv');
+      await prefs.remove('evTest1');
+      await prefs.remove('evTest2');
+    } else {
+      await prefs.remove(key);
+    }
   }
 }

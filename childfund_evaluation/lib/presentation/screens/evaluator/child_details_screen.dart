@@ -1,4 +1,5 @@
 //import 'package:childfund_evaluation/presentation/screens/evaluator/evaluation_screen.dart';
+import 'package:childfund_evaluation/preference/prefs.dart';
 import 'package:childfund_evaluation/presentation/screens/login/sing_in.dart';
 import 'package:childfund_evaluation/system/globals.dart';
 import 'package:childfund_evaluation/utils/colors.dart';
@@ -20,6 +21,7 @@ class ChildDetailsPage extends StatefulWidget {
 
 class _ChildDetailsPageState extends State<ChildDetailsPage> {
   AgeController controller = AgeController();
+  Storage stg = Storage();
 
   final Map<String, int> ageLevelMap = {
     '0 a 3 meses': 1,
@@ -56,13 +58,12 @@ class _ChildDetailsPageState extends State<ChildDetailsPage> {
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => EvaluationFormScreen (
-                  selectedAge: ageLevelMapReversed[level]!,
-                  selectedLevel: level,
-                  childAgeMonths: '$diff',
-                  testId: widget.testid,
-                  child: widget.child
-                )));
+            builder: (context) => EvaluationFormScreen(
+                selectedAge: ageLevelMapReversed[level]!,
+                selectedLevel: level,
+                childAgeMonths: '$diff',
+                testId: widget.testid,
+                child: widget.child)));
   }
 
   @override
@@ -77,6 +78,7 @@ class _ChildDetailsPageState extends State<ChildDetailsPage> {
               if (value == 'logout') {
                 // Limpia el token al cerrar la sesión
                 tokenGlobal = '';
+                stg.eliminarDataEv('all');
                 // Navega a la pantalla de inicio de sesión
                 Navigator.pushAndRemoveUntil(
                   context,

@@ -1,3 +1,4 @@
+import 'package:childfund_evaluation/preference/prefs.dart';
 import 'package:childfund_evaluation/presentation/screens/login/sing_in.dart';
 import 'package:childfund_evaluation/presentation/screens/parent/evaluation_end_screen.dart';
 import 'package:childfund_evaluation/system/globals.dart';
@@ -40,7 +41,7 @@ class _EvaluationRestScreenState
   AgeGroupParent? currentAgeGroup;
   List<AgeGroupParent>? ageGroupsData2;
   List<AgeGroupParent>? ageGroupsDataAux;
-
+  Storage stg = Storage();
   List<List<int>> coeficientTable = [];
 
   @override
@@ -173,6 +174,7 @@ class _EvaluationRestScreenState
                   if (value == 'logout') {
                     // Limpia el token al cerrar la sesión
                     tokenGlobal = '';
+                    stg.eliminarDataParent('all');
                     // Navega a la pantalla de inicio de sesión
                     Navigator.pushAndRemoveUntil(
                       context,
