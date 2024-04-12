@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:childfund_evaluation/utils/api_service.dart';
 import 'package:childfund_evaluation/utils/models/child.dart';
 import 'package:childfund_evaluation/utils/models/test_send.dart';
+import 'package:childfund_evaluation/utils/models/test_send_ev1.dart';
+import 'package:childfund_evaluation/utils/models/test_send_ev2.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:childfund_evaluation/utils/models/evaluator.dart';
 import 'package:childfund_evaluation/utils/models/parent.dart';
@@ -181,8 +183,45 @@ class Storage {
     await prefs.setString('evTest2', jsonEncode(test));
   }
 
+  Future<List<dynamic>?> obtenerTest1Ev() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final jsonString = prefs.getString('evTest1');
+    if (jsonString != null) {
+      List<dynamic>? jsonMap = jsonDecode(jsonString);
+      List<dynamic>? toReturn = [];
+      for (int i = 0; i < jsonMap!.length; i++) {
+        toReturn.add(TestEv1.fromJson(jsonMap[i]));
+      }
+      return toReturn;
+    } else {
+      return null;
+    }
+  }
+
+  Future<List<dynamic>?> obtenerTest2Ev() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final jsonString = prefs.getString('evTest2');
+    if (jsonString != null) {
+      List<dynamic>? jsonMap = jsonDecode(jsonString);
+      List<dynamic>? toReturn = [];
+      for (int i = 0; i < jsonMap!.length; i++) {
+        toReturn.add(TestEnv2.fromJson(jsonMap[i]));
+      }
+      return toReturn;
+    } else {
+      return null;
+    }
+  }
+
   Future<bool> existeTest1Ev() async {
-    return false;
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final jsonString1 = prefs.getString('evTest1');
+    final jsonString2 = prefs.getString('evTest2');
+    return (jsonString1 != null || jsonString2 != null);
+    /**
+     * * V -> existe
+     * * F -> no existe
+     */
   }
 
   /*

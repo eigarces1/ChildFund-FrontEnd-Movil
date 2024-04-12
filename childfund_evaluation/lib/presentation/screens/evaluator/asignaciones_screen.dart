@@ -45,6 +45,24 @@ class _AsignacionesPageState extends State<AsignacionesPage> {
   bool _showState(ConnectivityResult result) {
     final hasInternet = this.netController.isConected(result);
     print('Is Conected? : ${hasInternet}');
+    bool existTest = false;
+    stg.existeTest1Ev().then((value) {
+      if (value) {
+        stg.obtenerTest1Ev().then((t) {
+          for (int i = 0; i < t!.length; i++) {
+            ApiService.enviarEvaluacion(t[i]['ev'], t[i]['testId']);
+          }
+        });
+        stg.obtenerTest2Ev().then((t) {
+          for (int i = 0; i < t!.length; i++) {
+            ApiService.submitResults(
+                t[i]['jsonData'], t[i]['testId'], t[i]['coeff']);
+          }
+        });
+      } else {
+        print('No hay tests por guardad');
+      }
+    });
     return hasInternet;
   }
 

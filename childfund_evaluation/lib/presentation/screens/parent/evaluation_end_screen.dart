@@ -212,10 +212,13 @@ class _ResultsScreenState extends State<ResultsParentsScreen> {
                   ParentConverter controller =
                       ParentConverter(motorsDict: motorsDict);
                   String jsonData = controller.convertToJson();
-                  list.add(
-                      TestToSend(testId: widget.testId, jsonData: jsonData));
-                  stg.guardarTestParent(list);
-                  //ApiService.submitResultsParents(jsonData, widget.testId);
+                  if (hasInternet) {
+                    ApiService.submitResultsParents(jsonData, widget.testId);
+                  } else {
+                    list.add(
+                        TestToSend(testId: widget.testId, jsonData: jsonData));
+                    stg.guardarTestParent(list);
+                  }
                   Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(

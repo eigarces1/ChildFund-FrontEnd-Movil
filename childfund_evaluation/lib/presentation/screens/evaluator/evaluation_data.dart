@@ -1,12 +1,21 @@
+import 'dart:async';
+
+import 'package:childfund_evaluation/preference/prefs.dart';
 import 'package:childfund_evaluation/presentation/screens/evaluator/evaluation_screen.dart';
 import 'package:childfund_evaluation/presentation/screens/login/sing_in.dart';
 import 'package:childfund_evaluation/system/globals.dart';
 import 'package:childfund_evaluation/utils/colors.dart';
+import 'package:childfund_evaluation/utils/controllers/net_controller.dart';
 import 'package:childfund_evaluation/utils/models/evaluation.dart';
+import 'package:childfund_evaluation/utils/models/test_send_ev1.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:childfund_evaluation/utils/api_service.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import '../../../utils/models/child.dart';
 import '../../../utils/controllers/age_controller.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 class EvaluationFormScreen extends StatefulWidget {
   final String selectedAge;
@@ -90,6 +99,47 @@ class _EvaluationScreenState extends State<EvaluationFormScreen> {
   bool estRegular = false;
 
   AgeController controller = AgeController();
+  Storage stg = Storage();
+  List<TestEv1> list = [];
+  late StreamSubscription subscription;
+  late StreamSubscription internetSubscription;
+  bool hasInternet = false;
+  NetController netController = new NetController();
+
+  @override
+  void initState() {
+    super.initState();
+    subscription = Connectivity().onConnectivityChanged.listen(_showState);
+    internetSubscription =
+        InternetConnectionChecker().onStatusChange.listen((status) {
+      final hasInternet = status == InternetConnectionStatus.connected;
+      setState(() => this.hasInternet = hasInternet);
+    });
+  }
+
+  bool _showState(ConnectivityResult result) {
+    final hasInternet = this.netController.isConected(result);
+    print('Is Conected? : ${hasInternet}');
+    bool existTest = false;
+    stg.existeTest1Ev().then((value) {
+      if (value) {
+        stg.obtenerTest1Ev().then((t) {
+          for (int i = 0; i < t!.length; i++) {
+            ApiService.enviarEvaluacion(t[i]['ev'], t[i]['testId']);
+          }
+        });
+        stg.obtenerTest2Ev().then((t) {
+          for (int i = 0; i < t!.length; i++) {
+            ApiService.submitResults(
+                t[i]['jsonData'], t[i]['testId'], t[i]['coeff']);
+          }
+        });
+      } else {
+        print('No hay tests por guardad');
+      }
+    });
+    return hasInternet;
+  }
 
   final Map<String, int> ageLevelMap = {
     '0 a 3 meses': 1,
@@ -567,7 +617,12 @@ class _EvaluationScreenState extends State<EvaluationFormScreen> {
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  ApiService.enviarEvaluacion(evaluation, widget.testId);
+                  if (hasInternet) {
+                    ApiService.enviarEvaluacion(evaluation, widget.testId);
+                  } else {
+                    list.add(TestEv1(testId: widget.testId, ev: evaluation));
+                    stg.guardarTest1Ev(list);
+                  }
                   List<int> data = controller.calculate(widget.child.birthdate);
                   int level = data[0];
                   int diff = data[1];

@@ -1,13 +1,21 @@
+import 'dart:async';
+
+import 'package:childfund_evaluation/preference/prefs.dart';
 import 'package:childfund_evaluation/presentation/screens/evaluator/success_results.dart';
 import 'package:childfund_evaluation/presentation/screens/login/sing_in.dart';
 import 'package:childfund_evaluation/system/globals.dart';
 import 'package:childfund_evaluation/utils/api_service.dart';
 import 'package:childfund_evaluation/utils/colors.dart';
 import 'package:childfund_evaluation/utils/controllers/evaluator_results_convert.dart';
+import 'package:childfund_evaluation/utils/controllers/net_controller.dart';
 import 'package:childfund_evaluation/utils/models/age_group.dart';
 import 'package:childfund_evaluation/utils/models/indicator_with_level.dart';
 import 'package:childfund_evaluation/utils/models/motor.dart';
+import 'package:childfund_evaluation/utils/models/test_send_ev1.dart';
+import 'package:childfund_evaluation/utils/models/test_send_ev2.dart';
 import 'package:flutter/material.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 class ResultsScreen extends StatefulWidget {
   final String selectedAge;
@@ -44,6 +52,48 @@ class _ResultsScreenState extends State<ResultsScreen> {
     } else {
       return "En riesgo";
     }
+  }
+
+  Storage stg = Storage();
+  List<TestEnv2> list = [];
+  late StreamSubscription subscription;
+  late StreamSubscription internetSubscription;
+  bool hasInternet = false;
+  NetController netController = new NetController();
+
+  @override
+  void initState() {
+    super.initState();
+    subscription = Connectivity().onConnectivityChanged.listen(_showState);
+    internetSubscription =
+        InternetConnectionChecker().onStatusChange.listen((status) {
+      final hasInternet = status == InternetConnectionStatus.connected;
+      setState(() => this.hasInternet = hasInternet);
+    });
+  }
+
+  bool _showState(ConnectivityResult result) {
+    final hasInternet = this.netController.isConected(result);
+    print('Is Conected? : ${hasInternet}');
+    bool existTest = false;
+    stg.existeTest1Ev().then((value) {
+      if (value) {
+        stg.obtenerTest1Ev().then((t) {
+          for (int i = 0; i < t!.length; i++) {
+            ApiService.enviarEvaluacion(t[i]['ev'], t[i]['testId']);
+          }
+        });
+        stg.obtenerTest2Ev().then((t) {
+          for (int i = 0; i < t!.length; i++) {
+            ApiService.submitResults(
+                t[i]['jsonData'], t[i]['testId'], t[i]['coeff']);
+          }
+        });
+      } else {
+        print('No hay tests por guardad');
+      }
+    });
+    return hasInternet;
   }
 
   int getScore() {
@@ -174,10 +224,16 @@ class _ResultsScreenState extends State<ResultsScreen> {
                   EvaluatorConverter controller =
                       EvaluatorConverter(motorsDict: motorsDict);
                   String jsonData = controller.convertToJson();
-                  ApiService.submitResults(jsonData, widget.testId,
-                      widget.developmentCoeficient.toInt());
-                  print("responses: ${jsonData}");
-                  print("dev ratio: ${widget.developmentCoeficient.toInt()}}");
+                  if (true) {
+                    ApiService.submitResults(jsonData, widget.testId,
+                        widget.developmentCoeficient.toInt());
+                  } else {
+                    list.add(TestEnv2(
+                        jsonData: jsonData,
+                        testId: widget.testId,
+                        coeff: widget.developmentCoeficient.toInt()));
+                    stg.guardarTest2Ev(list);
+                  }
                   Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
