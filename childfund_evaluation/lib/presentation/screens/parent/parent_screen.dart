@@ -27,6 +27,8 @@ class ParentPage extends StatelessWidget {
       padre = p;
     });
 
+    //funcion del click del boton, aqui ya va el llamado al servicio apra guaradar la info
+
     bool _showState(ConnectivityResult result) {
       final hasInternet = netController.isConected(result);
       print('Is Conected? : ${hasInternet}');
@@ -34,13 +36,16 @@ class ParentPage extends StatelessWidget {
       stg.existenTest().then((value) {
         if (value) {
           //Si existen pruebas pendientes
+
+          //Aqui mostrar el boton
+
           stg.obtenerTestParent().then((t) {
             for (int j = 0; j < t!.length; j++) {
               ApiService.submitResultsParents(t[j]['jsonData'], t[j]['testId']);
             }
           });
         } else {
-          print('No hay tests por guardad');
+          print('No hay tests por guardar');
         }
       });
       return hasInternet;

@@ -14,20 +14,26 @@ class SingIn extends StatefulWidget {
 }
 
 class _SingInState extends State<SingIn> {
-  @override
-  Widget build(BuildContext context) {
-    bool ev = false;
-    bool padre = false;
-    Storage stg = Storage();
+  bool ev = false;
+  bool padre = false;
+  Storage stg = Storage();
 
+  @override
+  void initState() {
+    super.initState();
     stg.existePadre().then((value) {
       padre = value;
+      print('Existe Padre => ${value}');
     });
 
     stg.existeEv().then((value) {
       ev = value;
+      print('Existe Ev => ${value}');
     });
+  }
 
+  @override
+  Widget build(BuildContext context) {
     if (padre) {
       return (ParentPage());
     } else if (ev) {

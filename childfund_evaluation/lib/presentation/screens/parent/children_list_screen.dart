@@ -27,7 +27,7 @@ class _ChildrenListPageState extends State<ChildrenListPage> {
   Storage stg = new Storage();
   late StreamSubscription subscription;
   late StreamSubscription internetSubscription;
-  bool hasInternet = false;
+  bool hasInternet = true;
   NetController netController = new NetController();
 
   @override
